@@ -41,3 +41,5 @@ export '../app.dart';
 export '../common/index.dart';
 
 export '../pages/index.dart';
+
+export '../models/index.dart';

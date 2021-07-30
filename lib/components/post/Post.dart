@@ -1,4 +1,5 @@
 import '../importer.dart';
+import 'parts/index.dart';
 
 class Post extends StatelessWidget {
   @override
@@ -9,14 +10,8 @@ class Post extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              ElevatedButton(
-                onPressed: () => {Navigator.of(context).push(MaterialPageRoute(builder: (context) => PostPermanentLessonPage()))},
-                child: Text('常設レッスンの投稿'),
-              ),
-              ElevatedButton(
-                onPressed: () => {Navigator.of(context).push(MaterialPageRoute(builder: (context) => PostEventPage()))},
-                child: Text('イベントの投稿'),
-              ),
+              NewPost(),
+              PublishedPost(),
               Image.asset('images/post.png'),
             ],
           ),
