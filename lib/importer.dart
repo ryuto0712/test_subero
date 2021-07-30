@@ -14,32 +14,13 @@ export 'package:flappy_search_bar_ns/scaled_tile.dart';
 // export 'package:speech_to_text/speech_to_text.dart' as stt;
 // export 'package:speech_to_text/speech_to_text_provider.dart' as stp;
 
-// componentsのエクスポート
-export 'home/Home.dart';
-export 'search/Search.dart';
-export 'message/Message.dart';
-export 'myPage/MyPage.dart';
-export 'post/Post.dart';
-export 'lessonDetails/LessonDetails.dart';
-export 'video/Video.dart';
-export 'searched/Searched.dart';
-export 'userPage/UserPage.dart';
-export 'editProfile/EditProfile.dart';
-export 'postPermanentLesson/PostPermanentLesson.dart';
-export 'beforePurchase/BeforePurchase.dart';
-export 'individualMessage/IndividualMessage.dart';
-export 'postEvent/PostEvent.dart';
-export 'iineList/IineList.dart';
-export 'accountConfig/AccountConfig.dart';
-export 'notificationConfig/NotificationConfig.dart';
-export 'QandA/QandA.dart';
-export 'guide/Guide.dart';
-
-export '../app.dart';
+export 'app.dart';
 
 //commonからのエクスポート
-export '../common/index.dart';
+export 'common/index.dart';
 
-export '../pages/index.dart';
+export 'pages/index.dart';
 
-export '../models/index.dart';
+export 'models/index.dart';
+
+export 'components/index.dart';

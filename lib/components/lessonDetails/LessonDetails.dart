@@ -1,7 +1,7 @@
 import 'package:provider/provider.dart';
 import 'package:subero_mobile/common/LikeButton.dart';
 
-import '../importer.dart';
+import '../../importer.dart';
 import 'parts/index.dart';
 
 class LessonDetails extends StatelessWidget {

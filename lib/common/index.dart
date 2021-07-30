@@ -6,6 +6,7 @@ export 'tag/TagGenerator.dart';
 export 'ExpandableText.dart';
 export 'lessonCard/medium/LessonCardMedium.dart';
 export 'lessonCard/small/LessonCardSmall.dart';
+export 'lessonCard/wide/LessonCardWide.dart';
 export 'LikeButton.dart';
 export 'MoviePlayer.dart';
 export 'SampleIcons.dart';

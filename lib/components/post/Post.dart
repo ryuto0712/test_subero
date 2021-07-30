@@ -1,4 +1,4 @@
-import '../importer.dart';
+import '../../importer.dart';
 import 'parts/index.dart';
 
 class Post extends StatelessWidget {

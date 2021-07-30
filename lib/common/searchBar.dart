@@ -1,5 +1,4 @@
-import '../components/importer.dart';
-
+import '../importer.dart';
 
 // class PlaceSeaarchBar extends StatefulWidget {
 //   // PlaceSeaarchBar({Key key}) : super(key: key);
@@ -105,7 +104,7 @@ import '../components/importer.dart';
 //     return Scaffold(
 //       body: SafeArea(
 //         child: SearchBar<String>(
-//           searchBarPadding: EdgeInsets.symmetric(horizontal: 10), 
+//           searchBarPadding: EdgeInsets.symmetric(horizontal: 10),
 //           minimumChars: 1,    //検索時の最小文字数
 //           hintText: "検索",
 //           cancellationWidget: Text("キャンセル"),
@@ -156,19 +155,12 @@ import '../components/importer.dart';
 //   }
 // }
 
-
-
-
-
-
 class _Post {
   final String title;
   final String body;
 
   _Post(this.title, this.body);
 }
-
-
 
 class PlaceSearchBar extends StatefulWidget {
   @override
@@ -209,15 +201,15 @@ class _PlaceSearchBarState extends State<PlaceSearchBar> {
       padding: const EdgeInsets.all(10.0),
       child: SearchBar(
         onSearch: search,
-        minimumChars: 1,  // 検索結果を表示する最小の文字数の指定
+        minimumChars: 1, // 検索結果を表示する最小の文字数の指定
         onItemFound: (myList, int index) {
           return ListTile();
           // return ListView.builder(
-            // itemCount: 5,  // 表示する長さの指定
-            // itemBuilder: (BuildContext context, int index){
-              // return _searchList(context, myList, index);
-            // }
-            // アプリ情報から必要な情報を取得して画面に表示する処理を行っています。
+          // itemCount: 5,  // 表示する長さの指定
+          // itemBuilder: (BuildContext context, int index){
+          // return _searchList(context, myList, index);
+          // }
+          // アプリ情報から必要な情報を取得して画面に表示する処理を行っています。
           // );
         },
         hintText: 'レッスンを探す',
@@ -229,14 +221,9 @@ class _PlaceSearchBarState extends State<PlaceSearchBar> {
   Future<List<String>> search(String? search) async {
     final apps = ['Youtube', 'Google map', 'Chrome', 'LINE'];
     if (search != null) {
-      var searchApps = apps
-          .where(
-              (app) =>
-              app.contains(search))
-          .toList();
+      var searchApps = apps.where((app) => app.contains(search)).toList();
       return searchApps;
-    }
-    else{
+    } else {
       var searchApps = [''];
       return searchApps;
     }

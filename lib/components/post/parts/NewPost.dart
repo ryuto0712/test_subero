@@ -1,4 +1,4 @@
-import '../../importer.dart';
+import '../../../importer.dart';
 
 class NewPost extends StatelessWidget {
   NewPost();

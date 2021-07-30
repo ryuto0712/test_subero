@@ -1,4 +1,4 @@
-import '../importer.dart';
+import '../../importer.dart';
 
 class Video extends StatefulWidget {
   String video;
@@ -9,7 +9,6 @@ class Video extends StatefulWidget {
 }
 
 class _VideoState extends State<Video> {
-
   @override
   Widget build(BuildContext context) {
     return Container(

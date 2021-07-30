@@ -1,4 +1,4 @@
-import 'components/importer.dart';
+import 'importer.dart';
 import 'package:flutter/rendering.dart';
 
 void main() {

@@ -1,11 +1,11 @@
-import '../../components/importer.dart';
+import '../../importer.dart';
 
-class VideoPage extends StatelessWidget{
+class VideoPage extends StatelessWidget {
   String video;
   VideoPage(this.video);
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Video(video);
   }
 }

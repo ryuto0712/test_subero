@@ -1,4 +1,4 @@
-import '../../importer.dart';
+import '../../../importer.dart';
 
 class ContractingLessons extends StatelessWidget {
   final List<String> lessonNames = [

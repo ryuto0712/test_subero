@@ -1,4 +1,4 @@
-import '../importer.dart';
+import '../../importer.dart';
 
 class PostEvent extends StatelessWidget {
   PostEvent();

@@ -1,5 +1,5 @@
 // #todo: スノボ歴～～の表示
-import '../../importer.dart';
+import '../../../importer.dart';
 import 'index.dart';
 
 class MyProfile extends StatefulWidget {

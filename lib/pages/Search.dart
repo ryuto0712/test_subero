@@ -1,13 +1,13 @@
-import '../components/importer.dart';
+import '../importer.dart';
 
-class SearchPage extends StatelessWidget{
+class SearchPage extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Navigator(
       onGenerateRoute: (settings) {
         return MaterialPageRoute(
           settings: settings,
-          builder: (context)  {
+          builder: (context) {
             return Search();
           },
         );

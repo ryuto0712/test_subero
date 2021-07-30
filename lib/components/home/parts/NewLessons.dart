@@ -1,4 +1,4 @@
-import '../../importer.dart';
+import '../../../importer.dart';
 
 class NewLessons extends StatelessWidget {
   final double width;

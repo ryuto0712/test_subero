@@ -1,4 +1,4 @@
-import '../../importer.dart';
+import '../../../importer.dart';
 import 'CommentBuilder.dart';
 
 class Comments extends StatelessWidget {
@@ -10,22 +10,16 @@ class Comments extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: EdgeInsets.only(left: 50),
-            margin: EdgeInsets.only(bottom: 5),
-            child: Text(
-              'コメント',
-              style: TextStyle(
-                fontSize: 13
-              )
-            ),
-          ),
-          CommentBuilder(comments, users, icons),
-        ],
-      )
-    );
+        child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: EdgeInsets.only(left: 50),
+          margin: EdgeInsets.only(bottom: 5),
+          child: Text('コメント', style: TextStyle(fontSize: 13)),
+        ),
+        CommentBuilder(comments, users, icons),
+      ],
+    ));
   }
 }

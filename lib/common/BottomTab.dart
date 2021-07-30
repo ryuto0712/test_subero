@@ -1,4 +1,4 @@
-import '../components/importer.dart'; 
+import '../importer.dart';
 import '../pages/index.dart';
 
 // #todo 投稿ボタンを表示するかどうかの判断
@@ -11,21 +11,14 @@ class BottomTab extends StatefulWidget {
 }
 
 class _BottomTabState extends State<BottomTab> {
-
   // Widgetを切り替えるためのインデックス
   int _currentIndex = 0;
   // タブバー内に設定するWidgetの設定
-  final _pageWidgets = [
-    HomePage(),
-    SearchPage(),
-    PostPage(),
-    MessagePage(),
-    MyPagePage()
-  ];
+  final _pageWidgets = [HomePage(), SearchPage(), PostPage(), MessagePage(), MyPagePage()];
 
   // stateの更新
   // _pageWidgetsのインデックスを切り替えることでページの切り替えを実装
-  void _onItemTapped(int index) => setState(() => _currentIndex = index );
+  void _onItemTapped(int index) => setState(() => _currentIndex = index);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +26,7 @@ class _BottomTabState extends State<BottomTab> {
       // appBar: AppBar(
       //   title: Text('Subero mobile'),
       // ),
-      body: _pageWidgets.elementAt(_currentIndex),  // _pageWidgetの現在のインデックスのWidgetをbodyに設定
+      body: _pageWidgets.elementAt(_currentIndex), // _pageWidgetの現在のインデックスのWidgetをbodyに設定
       // タブバーの設定
       bottomNavigationBar: BottomNavigationBar(
         // タブバー内のアイコン，文字の設定  #todo 自作アイコンの設定
@@ -44,10 +37,10 @@ class _BottomTabState extends State<BottomTab> {
           BottomNavigationBarItem(icon: Icon(Icons.message_outlined), title: Text('メッセージ')),
           BottomNavigationBarItem(icon: Icon(Icons.settings), title: Text('マイページ')),
         ],
-        currentIndex: _currentIndex,  // 現在のインデックスの入力
-        fixedColor: Colors.blueAccent,  // 選択時の色の設定
-        onTap: _onItemTapped,  // 押されたときの処理の設定
-        type: BottomNavigationBarType.fixed,  // ?
+        currentIndex: _currentIndex, // 現在のインデックスの入力
+        fixedColor: Colors.blueAccent, // 選択時の色の設定
+        onTap: _onItemTapped, // 押されたときの処理の設定
+        type: BottomNavigationBarType.fixed, // ?
       ),
     );
   }

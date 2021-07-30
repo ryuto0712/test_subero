@@ -1,4 +1,4 @@
-import '../../importer.dart';
+import '../../../importer.dart';
 
 class Host extends StatelessWidget {
   const Host(this.hostName, this.hostIcon, this.rating, {Key? key}) : super(key: key);

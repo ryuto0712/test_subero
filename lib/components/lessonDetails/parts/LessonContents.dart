@@ -1,7 +1,4 @@
-import 'package:flutter/rendering.dart';
-import 'package:subero_mobile/common/tag/ClickableTagGenerator.dart';
-
-import '../../importer.dart';
+import '../../../importer.dart';
 import 'index.dart';
 
 class LessonContents extends StatelessWidget {

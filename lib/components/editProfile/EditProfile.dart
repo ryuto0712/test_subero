@@ -1,4 +1,4 @@
-import '../importer.dart';
+import '../../importer.dart';
 
 class EditProfile extends StatelessWidget {
   EditProfile();

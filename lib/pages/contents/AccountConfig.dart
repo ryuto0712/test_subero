@@ -1,4 +1,4 @@
-import '../../components/importer.dart';
+import '../../importer.dart';
 
 class AccountConfigPage extends StatelessWidget {
   AccountConfigPage();

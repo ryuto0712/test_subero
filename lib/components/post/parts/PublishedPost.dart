@@ -1,6 +1,4 @@
-import 'package:subero_mobile/common/lessonCard/wide/LessonCardWide.dart';
-
-import '../../importer.dart';
+import '../../../importer.dart';
 
 class PublishedPost extends StatelessWidget {
   PublishedPost();

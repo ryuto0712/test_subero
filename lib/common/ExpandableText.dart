@@ -1,8 +1,7 @@
-import '../components/importer.dart';
+import '../importer.dart';
 import 'package:flutter/gestures.dart';
 
 class ExpandableText extends StatefulWidget {
-  
   ExpandableText(this.text, {this.trimLines = 2});
 
   final String text;
@@ -70,9 +69,7 @@ class ExpandableTextState extends State<ExpandableText> {
         TextSpan textSpan;
         if (textPainter.didExceedMaxLines) {
           textSpan = TextSpan(
-            text: _readMore
-                ? widget.text.substring(0, endIndex)
-                : widget.text,
+            text: _readMore ? widget.text.substring(0, endIndex) : widget.text,
             style: DefaultTextStyle.of(context).style,
             children: _readMore
                 ? <TextSpan>[

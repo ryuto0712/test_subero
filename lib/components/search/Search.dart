@@ -1,4 +1,4 @@
-import '../importer.dart';
+import '../../importer.dart';
 
 class Search extends StatelessWidget {
   const Search({Key? key}) : super(key: key);
