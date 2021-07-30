@@ -1,4 +1,4 @@
-import '../../../importer.dart';
+import '../../importer.dart';
 
 class LessonCardSmall extends StatelessWidget {
   LessonCardSmall(this.lessonName, this.hostName, this.lessonIcon, this.hostIcon);

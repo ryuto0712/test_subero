@@ -1,4 +1,4 @@
-import '../importer.dart';
+import '../../../importer.dart';
 // import 'package:page_view_indicators/circle_page_indicator.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 

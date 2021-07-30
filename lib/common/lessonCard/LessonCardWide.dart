@@ -1,4 +1,4 @@
-import '../../../importer.dart';
+import '../../importer.dart';
 
 class LessonCardWide extends StatelessWidget {
   LessonData lessonData; // レッスンデータ

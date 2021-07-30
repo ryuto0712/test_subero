@@ -10,7 +10,7 @@ class Guide extends StatelessWidget {
         title: Text('ガイド'),
       ),
       body: Container(
-        child: SlideShow(),
+        child: Text('ガイド'),
       ),
     );
   }
