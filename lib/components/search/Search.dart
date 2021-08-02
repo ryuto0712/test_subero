@@ -1,4 +1,5 @@
 import '../../importer.dart';
+import 'parts/index.dart';
 
 class Search extends StatelessWidget {
   const Search({Key? key}) : super(key: key);
@@ -10,11 +11,8 @@ class Search extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // PlaceSearchBar(),
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchedPage())),
-              child: Text('検索'),
-            ),
+            SearchList(),
+            SearchButton(),
             Image.asset('images/search.png'),
           ],
         ),
