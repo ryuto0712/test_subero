@@ -1,5 +1,4 @@
 export 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart'; // レンダリング確認
 import 'package:flutter/gestures.dart'; //
 import 'package:video_player/video_player.dart';
 export 'dart:math';

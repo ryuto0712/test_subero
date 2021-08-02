@@ -1,4 +1,5 @@
 import '../../importer.dart';
+import 'parts/index.dart';
 
 class Searched extends StatelessWidget {
   Searched();
@@ -8,7 +9,13 @@ class Searched extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('検索画面')),
       body: SingleChildScrollView(
-        child: Image.asset('images/searched.png'),
+        child: Column(
+          children: [
+            TopCaption(),
+            SearchedLessons(400),
+            Image.asset('images/searched.png'),
+          ],
+        ),
       ),
     );
   }
