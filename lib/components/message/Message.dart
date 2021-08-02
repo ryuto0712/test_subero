@@ -1,4 +1,5 @@
 import '../../importer.dart';
+import 'parts/index.dart';
 
 class Message extends StatelessWidget {
   @override
@@ -16,6 +17,7 @@ class Message extends StatelessWidget {
               ),
               child: Text('個別メッセージ'),
             ),
+            MessageContents(),
             Image.asset('images/message.png'),
           ],
         ),
