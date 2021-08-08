@@ -29,22 +29,25 @@ class Categories extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[for (int i = 0; i < categoryNames.length; i++) category(icons[i], categoryNames[i])],
+              children: <Widget>[for (int i = 0; i < categoryNames.length; i++) category(context, icons[i], categoryNames[i])],
             )
           ],
         ));
   }
 
-  Widget category(String icon, String name) {
-    return Column(
-      children: <Widget>[
-        Container(
-          child: CircleImage(icon, 50, width: 1, color: Colors.grey.shade400),
-        ),
-        Container(
-          child: Text(name, style: TextStyle(fontSize: 9)),
-        ),
-      ],
+  Widget category(BuildContext context, String icon, String name) {
+    return GestureDetector(
+      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchedPage())),
+      child: Column(
+        children: <Widget>[
+          Container(
+            child: CircleImage(icon, 50, width: 1, color: Colors.grey.shade400),
+          ),
+          Container(
+            child: Text(name, style: TextStyle(fontSize: 9)),
+          ),
+        ],
+      ),
     );
   }
 }

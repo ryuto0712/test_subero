@@ -75,11 +75,13 @@ lib
 | | | └ index.dart : Home.dartでインポートする用
 | | └ Home.dart
 | ├ search/Search.dart
-| └ importer.dart
+| └ ~~~/~~~.dart
 ├ Pages : ページ構成
 | ├ Home.dart
 | ├ Search.dart
 | └ index.dart
+├ models/ : モデルクラスを配置
+├ importer.dart : パッケージ，components/index.dart, Pages/index.dart等をexport
 ├ app.dart
 └ main.dart
 

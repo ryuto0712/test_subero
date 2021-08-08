@@ -2,109 +2,12 @@ import 'importer.dart';
 import 'package:flutter/rendering.dart';
 
 void main() {
-  // debugPaintSizeEnabled = true;
+  // debugPaintSizeEnabled = true; // widgetのレンダリングチェック
   runApp(MyApp());
 }
 
 
-// 画像スライド
-// import 'package:carousel_slider/carousel_slider.dart';
-// import 'package:flutter/material.dart';
-
-// class ImageList extends StatefulWidget {
-//   @override
-//   State<StatefulWidget> createState() => _ImageList();
-// }
-
-// class _ImageList extends State<ImageList> {
-//   final List images = [
-//     "images/sample1.png",
-//     "images/sample2.png",
-//     "images/sample3.png",
-//     "images/sample4.png",
-//     "images/sample5.png",
-//     "images/sample6.png"
-//   ];
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('画像を表示'),
-//       ),
-//       body: GridView.builder(
-//         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//           crossAxisCount: 2,
-//         ),
-//         itemCount: images.length,
-//         itemBuilder: (BuildContext context, int index) {
-//           return _photoItem(images[index], index);
-//         },
-//       ),
-//     );
-//   }
-
-//   Widget _photoItem(String image, int index) {
-//     return GestureDetector(
-//       child: Container(
-//         decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-//         child: Image.asset(
-//           image,
-//           fit: BoxFit.cover,
-//         ),
-//       ),
-//       onTap: () {
-//         Navigator.push(
-//           context,
-//           MaterialPageRoute(
-//             builder: (context) => SampleCarouselSlider(images, index),
-//             fullscreenDialog: true,
-//           ),
-//         );
-//       },
-//     );
-//   }
-// }
-
-// class SampleCarouselSlider extends StatefulWidget {
-//   final List images;
-//   final int index;
-
-//   SampleCarouselSlider(this.images, this.index);
-
-//   @override
-//   State<StatefulWidget> createState() => _SampleCarouselSlider(images, index);
-// }
-
-// class _SampleCarouselSlider extends State<SampleCarouselSlider> {
-//   List images;
-//   int index;
-
-//   _SampleCarouselSlider(this.images, this.index);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('carousel_slider'),
-//       ),
-//       body: CarouselSlider.builder(
-//         options: CarouselOptions(
-//           height: 600.0,
-//           initialPage: index,
-//           viewportFraction: 1,
-//           enableInfiniteScroll: false,
-//         ),
-//         itemCount: images.length,
-//         itemBuilder: (BuildContext context, int index) {
-//           return Image.asset(images[index],);
-//         },
-//       ),
-//     );
-//   }
-// }
-
-
+//videoのやつ
 // import 'dart:async';
 // import 'package:video_player/video_player.dart';
 // import 'package:flutter/material.dart';

@@ -1,15 +1,27 @@
 import 'importer.dart';
-import 'pages/index.dart';
 
 // #todo: 現在のルートのアイコンを押したらルートの初期ページに直接移動できない
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: _MyApp());
+    return MaterialApp(
+      // テーマの変更
+      theme: ThemeData(
+        // fontFamily: , // あれば指定
+        primaryColor: Colors.white,
+
+        // ボタンの色の初期設定
+        buttonColor: Colors.black45,
+        // buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.accent),
+        accentColor: Colors.green,
+      ),
+
+      home: _MyApp(),
+    );
   }
 }
 
+// タブの設定
 class _MyApp extends StatefulWidget {
   const _MyApp({Key? key}) : super(key: key);
 

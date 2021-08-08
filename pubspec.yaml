@@ -31,8 +31,12 @@ dependencies:
   video_player: ^2.1.10 # 動画再生用パッケージ
   carousel_slider: ^4.0.0 # 画像スライド
   page_view_indicators: ^2.0.0 # スライドしたの○○○●
-  # firebase_core: "^1.0.0"
-  # cloud_firestore: "^1.0.0"
+
+  # Firebase連携用
+  firebase_core: ^0.4.0+9
+  firebase_analytics: ^5.0.2
+  firebase_auth: ^0.14.0+5
+  cloud_firestore: ^0.12.9+5
 
   # 検索用，必要ない
   # flutter_searchbox: ^2.0.1-without-speech
