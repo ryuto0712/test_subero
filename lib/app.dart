@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/index.dart';
+import 'package:subero_mobile/app/ui/screens/index.dart';
 
 // #todo: 現在のルートのアイコンを押したらルートの初期ページに直接移動できない
 class MyApp extends StatelessWidget {
@@ -39,7 +39,7 @@ class __MyAppState extends State<_MyApp> {
     Search(),
     Post(),
     Message(),
-    MyPage(),
+    Mypage(),
   ];
 
   @override
