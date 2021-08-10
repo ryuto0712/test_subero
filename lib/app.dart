@@ -1,4 +1,5 @@
-import 'importer.dart';
+import 'package:flutter/material.dart';
+import 'package:subero_mobile/ui/screens/index.dart';
 
 // #todo: 現在のルートのアイコンを押したらルートの初期ページに直接移動できない
 class MyApp extends StatelessWidget {
@@ -34,11 +35,11 @@ class __MyAppState extends State<_MyApp> {
   int _currentIndex = 0;
   // タブバー内に設定するWidgetの設定
   final _pageWidgets = [
-    HomePage(),
-    SearchPage(),
-    PostPage(),
-    MessagePage(),
-    MyPagePage(),
+    Home(),
+    Search(),
+    Post(),
+    Message(),
+    Mypage(),
   ];
 
   @override
