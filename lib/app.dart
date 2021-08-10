@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:subero_mobile/app/ui/screens/index.dart';
+import 'package:subero_mobile/ui/screens/index.dart';
 
 // #todo: 現在のルートのアイコンを押したらルートの初期ページに直接移動できない
 class MyApp extends StatelessWidget {
