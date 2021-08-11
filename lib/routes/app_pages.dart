@@ -6,10 +6,7 @@ part './app_routes.dart';
 
 class AppPages {
   static final routes = [
-    GetPage(
-      name: Routes.INITIAL,
-      page: () => Home(),
-    ),
+    GetPage(name: Routes.INITIAL, page: () => Home()),
     GetPage(name: Routes.DETAILS, page: () => Mypage(), binding: DetailsBinding()), //適当
   ];
 }
