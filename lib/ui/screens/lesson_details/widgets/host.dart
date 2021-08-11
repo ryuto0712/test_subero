@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:subero_mobile/ui/screens/index.dart';
 
 class Host extends StatelessWidget {
@@ -14,7 +15,7 @@ class Host extends StatelessWidget {
       child: Row(
         children: [
           GestureDetector(
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserPage())),
+            onTap: () => Get.to(UserPage(), id: null),
             child: Container(
               margin: EdgeInsets.symmetric(
                 horizontal: 20,
@@ -36,7 +37,7 @@ class Host extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     GestureDetector(
-                      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserPage())),
+                      onTap: () => Get.to(UserPage(), id: null),
                       child: Text(hostName),
                     ),
                     Container(

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:subero_mobile/ui/widgets/index.dart';
+import 'package:subero_mobile/ui/screens/index.dart';
 
 class OnGoingLesson extends StatelessWidget {
-  OnGoingLesson();
   List products = ['aa', 'bb', 'cc', 'dd'];
 
   @override
@@ -36,7 +38,7 @@ class OnGoingLesson extends StatelessWidget {
 
   Widget lessonList(BuildContext context) {
     return GestureDetector(
-      // onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => LessonDetailsPage())),
+      onTap: () => Get.to(LessonDetails(), id: null),
       child: Container(
         height: 80,
         decoration: BoxDecoration(

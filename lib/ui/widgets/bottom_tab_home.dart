@@ -14,7 +14,7 @@ class _BottomTabHomeState extends State<BottomTabHome> {
   // Widgetを切り替えるためのインデックス
   int _currentIndex = 0;
   // タブバー内に設定するWidgetの設定
-  final _pageWidgets = [Home(), Search(), Post(), Message(), Mypage()];
+  final _pageWidgets = [Home(), Search(), Post(), Message(), MyPage()];
 
   // stateの更新
   // _pageWidgetsのインデックスを切り替えることでページの切り替えを実装

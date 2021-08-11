@@ -6,19 +6,6 @@ class Search extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Navigator(
-      onGenerateRoute: (settings) {
-        return MaterialPageRoute(
-          settings: settings,
-          builder: (context) {
-            return _();
-          },
-        );
-      },
-    );
-  }
-
-  Widget _() {
     return Scaffold(
       appBar: AppBar(title: Text('検索')),
       body: SingleChildScrollView(

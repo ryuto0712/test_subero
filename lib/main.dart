@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-// import 'package:subero_mobile/routes/app_pages.dart';
+import 'controller/tab/tab_controller.dart';
+import 'routes/app_pages.dart';
 // import 'package:subero_mobile/bindings/my_bindings.dart';
 import 'ui/screens/index.dart';
 import 'ui/theme/app_theme.dart';
-import 'controller/tab/tab_controller.dart';
 
 // todo: 現在のルートのアイコンを押したらルートの初期ページに直接移動できない
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
   // debugPaintSizeEnabled = true; // widgetのレンダリングチェック
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false, // Remoce the debug banner
@@ -24,17 +29,17 @@ void main() {
 
 class MyApp extends StatelessWidget {
   // _pageWidgetsを引数に入れたかったけど入れられなかった．
-  final MyTabController tabController = Get.put(MyTabController([Home(), Search(), if (isHost) Post(), Message(), Mypage()]));
+  final MyTabController tabController = Get.put(MyTabController([Home(), Search(), if (isHost) Post(), Message(), MyPage()]));
 
   static const isHost = true; // 登録したライダーかどうか
 
   // 表示するタブ
   final _pageWidgets = [
-    Home(),
-    Search(),
-    if (isHost) Post(),
-    Message(),
-    Mypage(),
+    HomeNavigator(),
+    SearchNavigator(),
+    if (isHost) PostNavigator(),
+    MessageNavigator(),
+    MyPageNavigator(),
   ];
 
   @override

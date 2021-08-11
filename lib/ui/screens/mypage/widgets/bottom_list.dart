@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:subero_mobile/ui/screens/index.dart';
 
 class BottomList extends StatelessWidget {
@@ -56,25 +58,22 @@ class BottomList extends StatelessWidget {
     );
   }
 
-  // onTap(BuildContext context, String text) {
-  //   print('$text was tapped.');
-  // }
   onTap(BuildContext context, String text) {
     switch (text) {
       case 'いいね一覧':
-        return Navigator.of(context).push(MaterialPageRoute(builder: (context) => IineList()));
+        return Get.to(IineList(), id: null);
 
       case 'アカウント設定':
-        return Navigator.of(context).push(MaterialPageRoute(builder: (context) => AccountConfig()));
+        return Get.to(AccountConfig());
 
       case '通知設定':
-        return Navigator.of(context).push(MaterialPageRoute(builder: (context) => NotificationConfig()));
+        return Get.to(NotificationConfig());
 
       case 'よくある質問':
-        return Navigator.of(context).push(MaterialPageRoute(builder: (context) => QuestionAndAnswer()));
+        return Get.to(QuestionAndAnswer());
 
       case 'ガイド':
-        return Navigator.of(context).push(MaterialPageRoute(builder: (context) => Guide()));
+        return Get.to(Guide());
     }
   }
 }

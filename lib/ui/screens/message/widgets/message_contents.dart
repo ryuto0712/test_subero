@@ -1,32 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+import 'package:get/get.dart';
+import 'package:subero_mobile/controller/message/messege_contents_controller.dart';
 
 import 'index.dart';
 
-class MessageContents extends StatefulWidget {
-  const MessageContents();
-
-  @override
-  _MessageContentsState createState() => _MessageContentsState();
-}
-
-class _MessageContentsState extends State<MessageContents> {
-  bool onGoing = true;
+class MessageContents extends StatelessWidget {
+  final MessageContentsController c = Get.put(MessageContentsController());
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: <Widget>[
-          if (onGoing) toggleButtonsOnGoing(context) else toggleButtonsFinished(context),
-          if (onGoing) OnGoingLesson() else OnGoingLesson(),
-        ],
+      child: Obx(
+        () => Column(
+          children: <Widget>[
+            if (c.isOngoing.value) toggleButtonsOnGoing() else toggleButtonsFinished(),
+            if (c.isOngoing.value) OnGoingLesson() else OnGoingLesson(),
+          ],
+        ),
       ),
     );
   }
 
 // #todo: いい感じの切り替えボタンのwidgetを使用する
-  Widget toggleButtonsOnGoing(BuildContext context) {
+  Widget toggleButtonsOnGoing() {
     double height = 50;
     double width = 150;
     return Container(
@@ -40,7 +36,7 @@ class _MessageContentsState extends State<MessageContents> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           GestureDetector(
-            onTap: () => setState(() => onGoing = true),
+            onTap: () => c.toOngoing(),
             child: Container(
               height: height,
               width: width,
@@ -54,7 +50,7 @@ class _MessageContentsState extends State<MessageContents> {
           ),
           SizedBox(width: 10),
           GestureDetector(
-            onTap: () => setState(() => onGoing = false),
+            onTap: () => c.toDone(),
             child: Container(
               width: width,
               height: height,
@@ -66,7 +62,7 @@ class _MessageContentsState extends State<MessageContents> {
     );
   }
 
-  Widget toggleButtonsFinished(BuildContext context) {
+  Widget toggleButtonsFinished() {
     double height = 50;
     double width = 150;
     return Container(
@@ -80,16 +76,16 @@ class _MessageContentsState extends State<MessageContents> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           GestureDetector(
-            onTap: () => setState(() => onGoing = true),
+            onTap: () => c.toOngoing(),
             child: Container(
-              height: height,
+              // height: height,
               width: width,
               child: Center(child: Text('進行中のレッスン')),
             ),
           ),
           SizedBox(width: 10),
           GestureDetector(
-            onTap: () => setState(() => onGoing = false),
+            onTap: () => c.toDone(),
             child: Container(
               width: width,
               height: height,

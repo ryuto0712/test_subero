@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:subero_mobile/ui/widgets/index.dart';
 
 class MyPageIcon extends StatefulWidget {
@@ -26,15 +27,15 @@ class _MyPageIconState extends State<MyPageIcon> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        // onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => Video(widget.video))),
+        onTap: () => Get.to(MoviePlayer(widget.video)),
         child: Container(
-      height: 120,
-      child: Stack(
-        children: [
-          iconBackground[1],
-          CircleImage('images/app_icon2.png', size),
-        ],
-      ),
-    ));
+          height: 120,
+          child: Stack(
+            children: [
+              iconBackground[1],
+              CircleImage('images/app_icon2.png', size),
+            ],
+          ),
+        ));
   }
 }
