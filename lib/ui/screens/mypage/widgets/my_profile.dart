@@ -1,5 +1,7 @@
-// #todo: スノボ歴～～の表示
+// TODO: スノボ歴～～の表示
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:subero_mobile/ui/screens/index.dart';
 import 'package:subero_mobile/ui/widgets/index.dart';
 import 'index.dart';
@@ -62,7 +64,7 @@ class _MyProfileState extends State<MyProfile> {
   Widget _profileEditButton() {
     return Container(
       child: ElevatedButton(
-        onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => EditProfile())),
+        onPressed: () => Get.to(EditProfile(), id: null),
         child: Text('プロフィールを編集する'),
       ),
     );

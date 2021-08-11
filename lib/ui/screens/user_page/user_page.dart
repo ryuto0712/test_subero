@@ -5,8 +5,9 @@ class UserPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(title: Text('ユーザー')),
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Image.asset('images/user_page.png'),

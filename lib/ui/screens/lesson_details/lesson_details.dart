@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:get/get.dart';
+
 import 'package:subero_mobile/ui/widgets/like_button.dart';
+import 'package:subero_mobile/ui/screens/index.dart';
 
 import 'widgets/index.dart';
 
@@ -46,12 +49,9 @@ class LessonDetails extends StatelessWidget {
               Positioned(child: LikeButton(30), top: 130, left: 330),
               Positioned(
                 child: ElevatedButton(
-                  // onPressed: () => Navigator.of(context).push(
-                  //   MaterialPageRoute(
-                  //     builder: (context) => BeforePurchasePage(),
-                  //   ),
-                  // ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(BeforePurchase(), id: null);
+                  },
                   child: Text('購入'),
                 ),
                 top: 30,

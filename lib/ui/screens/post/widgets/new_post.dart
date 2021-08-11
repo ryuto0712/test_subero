@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:subero_mobile/ui/screens/index.dart';
 
 class NewPost extends StatelessWidget {
@@ -27,7 +29,7 @@ class NewPost extends StatelessWidget {
   Widget postLesson(BuildContext context) {
     return Container(
       child: GestureDetector(
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => PostPermanentLesson())),
+        onTap: () => Get.to(PostPermanentLesson(), id: null),
         child: Card(
           child: Column(
             children: <Widget>[
@@ -44,7 +46,7 @@ class NewPost extends StatelessWidget {
   Widget postEvent(BuildContext context) {
     return Container(
       child: GestureDetector(
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => PostEvent())),
+        onTap: () => Get.to(PostEvent(), id: null),
         child: Card(
           child: Column(
             children: <Widget>[

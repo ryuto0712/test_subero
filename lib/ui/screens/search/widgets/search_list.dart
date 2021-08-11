@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:subero_mobile/ui/screens/index.dart';
 
 class SearchList extends StatelessWidget {
@@ -22,7 +24,7 @@ class SearchList extends StatelessWidget {
     double height = 35;
     if (i == 0) {
       return GestureDetector(
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => Searched())),
+        onTap: () => Get.to(Searched(), id: 1),
         child: Container(
           height: height,
           decoration: BoxDecoration(border: Border.symmetric(horizontal: BorderSide(color: Colors.grey.shade300, width: 1))),
@@ -31,7 +33,7 @@ class SearchList extends StatelessWidget {
       );
     } else {
       return GestureDetector(
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => Searched())),
+        onTap: () => Get.to(Searched(), id: 1),
         child: Container(
           height: height,
           decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.grey.shade300, width: 1))),

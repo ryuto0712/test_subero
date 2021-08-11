@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:subero_mobile/ui/screens/index.dart';
 import 'package:subero_mobile/ui/widgets/index.dart';
 
@@ -17,7 +19,7 @@ class LessonCardWide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => LessonDetails())),
+      onTap: () => Get.to(LessonDetails(), id: null),
       child: Container(
         width: width,
         height: 100,
@@ -59,7 +61,7 @@ class LessonCardWide extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.only(left: 5),
                             child: GestureDetector(
-                              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserPage())),
+                              onTap: () => Get.to(UserPage(), id: null),
                               child: Row(
                                 children: [
                                   Container(
