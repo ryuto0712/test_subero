@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:subero_mobile/ui/screens/index.dart';
 import 'package:subero_mobile/ui/widgets/index.dart';
 
@@ -12,7 +14,7 @@ class LessonCardSmall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => LessonDetails())),
+      onTap: () => Get.to(LessonDetails(), id: null),
       child: Card(
         margin: const EdgeInsets.all(5),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
@@ -38,7 +40,7 @@ class LessonCardSmall extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(left: 5),
                 child: GestureDetector(
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserPage())),
+                  onTap: () => Get.to(UserPage(), id: null),
                   child: Row(
                     children: [
                       Container(margin: EdgeInsets.only(right: 5), child: CircleImage(hostIcon, 15, width: 1, color: Colors.grey.shade500), width: 15, height: 15),

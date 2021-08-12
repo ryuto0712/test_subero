@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:subero_mobile/ui/screens/index.dart';
 
 class SearchButton extends StatelessWidget {
@@ -8,7 +10,7 @@ class SearchButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: ElevatedButton(
-        onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => Searched())),
+        onPressed: () => Get.to(Searched(), id: 1),
         child: Text('検索'),
       ),
     );

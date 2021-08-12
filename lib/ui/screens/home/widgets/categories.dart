@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:subero_mobile/ui/screens/index.dart';
+
 import 'package:subero_mobile/ui/widgets/index.dart';
 
 class Categories extends StatelessWidget {
@@ -38,7 +41,7 @@ class Categories extends StatelessWidget {
 
   Widget category(BuildContext context, String icon, String name) {
     return GestureDetector(
-      // onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchedPage())),
+      onTap: () => Get.to(Searched(), id: 0),
       child: Column(
         children: <Widget>[
           Container(

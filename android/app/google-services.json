@@ -29,6 +29,49 @@
             {
               "client_id": "732770489404-mm4mm40me3s0vpkp4to570h8en50ke3u.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "732770489404-0jvenk9v2fqddj7n8sarfm924h1qdt4e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.suberoMobile"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732770489404:android:5087de6f1307568cd15f39",
+        "android_client_info": {
+          "package_name": "com.example.subero_mobile_"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732770489404-mm4mm40me3s0vpkp4to570h8en50ke3u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQ-nxdcwpZnTTziXi9Z4K1FzLe3kgU5os"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732770489404-mm4mm40me3s0vpkp4to570h8en50ke3u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "732770489404-0jvenk9v2fqddj7n8sarfm924h1qdt4e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.suberoMobile"
+              }
             }
           ]
         }
