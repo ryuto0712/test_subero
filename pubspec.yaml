@@ -29,9 +29,9 @@ dependencies:
   cupertino_icons: ^1.0.3
 
   # 状態管理
-  provider: ^5.0.0 
+  provider: ^5.0.0
   get:
-    
+
   video_player: ^2.1.10 # 動画再生
   carousel_slider: ^4.0.0 # 画像スライド
   page_view_indicators: ^2.0.0 # スライドしたの○○○●

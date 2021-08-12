@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "732770489404",
+    "project_id": "subero-app",
+    "storage_bucket": "subero-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732770489404:android:97128b66d4e20a78d15f39",
+        "android_client_info": {
+          "package_name": "com.example.subero_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732770489404-mm4mm40me3s0vpkp4to570h8en50ke3u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQ-nxdcwpZnTTziXi9Z4K1FzLe3kgU5os"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732770489404-mm4mm40me3s0vpkp4to570h8en50ke3u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

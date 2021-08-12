@@ -26,13 +26,14 @@ class Guide extends StatelessWidget {
 
 // * データの取得
 class GetUserName extends StatelessWidget {
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
   final String documentId;
 
   GetUserName(this.documentId);
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference users = FirebaseFirestore.instance.collection('users');
+    CollectionReference users = firestore.collection('users');
 
     return FutureBuilder<DocumentSnapshot>(
       future: users.doc(documentId).get(),
