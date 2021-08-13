@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'widgets/index.dart';
+import "package:get/get.dart";
 
 class Home extends StatelessWidget {
   final String area = '湯沢';
@@ -18,6 +19,7 @@ class Home extends StatelessWidget {
               Categories(),
               AreaLessons(area),
               NewLessons(constraints.maxWidth),
+              FloatingActionButton(onPressed: ()=>Get.toNamed("/mypage"),child:Text("move_mypage")),
               Image.asset('images/home.png'),
             ],
           );
