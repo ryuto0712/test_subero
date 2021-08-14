@@ -4,10 +4,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'controller/tab/tab_controller.dart';
-import 'routes/app_pages.dart';
+import './routes/routes.dart';
 // import 'package:subero_mobile/bindings/my_bindings.dart';
 import 'ui/screens/index.dart';
 import 'ui/theme/app_theme.dart';
+import './bindings/bidings.dart';
 
 // todo: 現在のルートのアイコンを押したらルートの初期ページに直接移動できない
 
@@ -17,12 +18,13 @@ void main() async {
   // FirebaseFirestore firestore = FirebaseFirestore.instance;
   // debugPaintSizeEnabled = true; // widgetのレンダリングチェック
   runApp(GetMaterialApp(
+    initialBinding: MyPageBinding(), //最初に呼び出すバインディング。理想的にはログインに関わるコントローラーの初期化のみにしたい。
     debugShowCheckedModeBanner: false, // Remoce the debug banner
     // initialRoute: Routes.INITIAL,
     // initialBinding: HomeBinding(),
     theme: appThemeData,
     defaultTransition: Transition.fade,
-    // getPages: AppPages.pages,
+    getPages: AppPages.routes,
     home: MyApp(),
   ));
 }
