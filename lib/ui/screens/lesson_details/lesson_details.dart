@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:get/get.dart';
+import 'package:subero_mobile/controller/lesson_details/lesson_details_controller.dart';
 
 import 'package:subero_mobile/ui/widgets/like_button.dart';
 import 'package:subero_mobile/ui/screens/index.dart';
@@ -8,6 +8,8 @@ import 'package:subero_mobile/ui/screens/index.dart';
 import 'widgets/index.dart';
 
 class LessonDetails extends StatelessWidget {
+  final LessonDetailsController c = Get.find<LessonDetailsController>();
+
   final String hostName = 'Toichi Shogo';
   final String hostIcon = 'images/icon_sample.png';
   final double rating = 5.0;
@@ -26,25 +28,31 @@ class LessonDetails extends StatelessWidget {
   ];
   final String titleText = '【初心者におすすめ】グラトリ入門3時間レッスン';
   final String description = '「グラトリをやってみたいけど，どうすればいいかわからない。」「始めてみたいけどいまいち上手くいかない。」といった方におすすめのレッスンです！\n\n私は5年のスノボ歴があり，誰にでも分かりやすい指導には定評があります！\n\nお悩みの方はぜひ受講してください！';
-  final bool _isLiked = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('レッスン詳細')),
       body: SingleChildScrollView(
-        child: ChangeNotifierProvider<_LikeButtonChangeNotifier>(
-          create: (context) => _LikeButtonChangeNotifier(_isLiked),
-          child: Stack(
+        child: Obx(
+          () => Stack(
             children: [
               Column(
                 children: [
                   EyeCatch(lessonIcon),
-                  LessonContents(titleText, tagNames, description, comments, userNames, userIcons),
+                  LessonContents(
+                    c.lesson.lessonName,
+                    tagNames,
+                    c.lesson.lessonDescription,
+                    comments,
+                    userNames,
+                    userIcons,
+                  ),
+                  Text('更新済'),
                   Image.asset('images/lesson_detail_event.png'),
                 ],
               ),
-              Host(hostName, hostIcon, rating),
+              Host(c.lesson.hostName, c.lesson.hostIcon, c.lesson.hostRating),
               // #todo: 位置の設定の見直し
               Positioned(child: LikeButton(30), top: 130, left: 330),
               Positioned(
@@ -62,17 +70,5 @@ class LessonDetails extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-// #todo: 状態管理
-class _LikeButtonChangeNotifier extends ChangeNotifier {
-  _LikeButtonChangeNotifier(this._isLiked);
-  bool _isLiked;
-
-  void toggle() {
-    _isLiked = !_isLiked;
-    // increment()が呼ばれると、Listenerたちに変更を通知する
-    notifyListeners();
   }
 }
