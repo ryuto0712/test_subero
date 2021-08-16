@@ -32,7 +32,7 @@ class LessonModel {
     this.lessonId: '',
     this.lessonName: '',
     this.lessonDescription: '',
-    this.lessonImage: '',
+    this.lessonImage: 'images/app_icon.png',
     this.skiResort: '',
     this.price: 0,
     this.lessonDuration: 0,
@@ -46,7 +46,7 @@ class LessonModel {
 
     this.hostId: '',
     this.hostName: '',
-    this.hostIcon: '',
+    this.hostIcon: 'images/app_icon.png',
     this.hostRating: 0,
     // this.comment: '',
   });
@@ -55,21 +55,20 @@ class LessonModel {
     this.lessonId = documentSnapshot.id;
     this.lessonName = documentSnapshot['lesson_name'];
     this.lessonDescription = documentSnapshot['lesson_description'];
-    this.lessonImage = documentSnapshot['lesson_image'];
+    this.lessonImage = documentSnapshot['lesson_image_url'];
     this.skiResort = documentSnapshot['ski_resort'];
     this.price = documentSnapshot['price'];
-    this.lessonDuration = documentSnapshot['lessonDuration'];
+    this.lessonDuration = documentSnapshot['lesson_duration'];
     this.date = documentSnapshot['date'];
     // this.dates = documentSnapshot['dates'];
     this.category = documentSnapshot['category'];
-
     // this.tags = documentSnapshot[''];
     // this.createdAt = documentSnapshot[''];
     // this.editedAt = documentSnapshot[''];
 
     this.hostId = documentSnapshot['host_id'];
     this.hostName = documentSnapshot['host_name'];
-    this.hostIcon = documentSnapshot['host_icon'];
+    this.hostIcon = documentSnapshot['host_icon_url'];
     this.hostRating = documentSnapshot['host_rating'];
     // this.comment = documentSnapshot[''];
   }

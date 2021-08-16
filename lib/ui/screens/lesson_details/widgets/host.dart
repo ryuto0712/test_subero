@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:subero_mobile/ui/screens/index.dart';
 
 class Host extends StatelessWidget {
-  const Host(this.hostName, this.hostIcon, this.rating, {Key? key}) : super(key: key);
   final String hostName;
   final String hostIcon;
-  final double rating;
+  final num rating;
+  const Host(this.hostName, this.hostIcon, this.rating, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

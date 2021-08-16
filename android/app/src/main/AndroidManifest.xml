@@ -37,7 +37,9 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <!-- firebaseデータ取得エラー回避(意味なし) -->
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+        <!-- 動画再生用 -->
+        <uses-permission android:name="android.permission.INTERNET"/>
     </application>
-    <!-- 動画再生用 -->
-    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

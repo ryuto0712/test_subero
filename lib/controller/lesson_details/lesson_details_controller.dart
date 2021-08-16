@@ -12,7 +12,7 @@ class LessonDetailsController extends GetxController {
 
   getLesson(String lessonId) async {
     try {
-      _lesson.value = await repository.getLesson(lessonId);
+      this._lesson.value = await repository.getLesson(lessonId);
     } catch (e) {
       print('Controller Error: $e');
     }

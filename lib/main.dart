@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'controller/tab/tab_controller.dart';
 import './routes/routes.dart';
@@ -15,11 +14,10 @@ import './bindings/bidings.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  // FirebaseFirestore firestore = FirebaseFirestore.instance;
   // debugPaintSizeEnabled = true; // widgetのレンダリングチェック
   runApp(GetMaterialApp(
     initialBinding: MyPageBinding(), //最初に呼び出すバインディング。理想的にはログインに関わるコントローラーの初期化のみにしたい。
-    debugShowCheckedModeBanner: false, // Remoce the debug banner
+    debugShowCheckedModeBanner: true, // Remoce the debug banner
     // initialRoute: Routes.INITIAL,
     // initialBinding: HomeBinding(),
     theme: appThemeData,

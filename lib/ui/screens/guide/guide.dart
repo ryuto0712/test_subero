@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 // Import the firebase_core and cloud_firestore plugin
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:subero_mobile/controller/guide/guide_controller.dart';
 
 class Guide extends StatelessWidget {
+  final GuideController c = Get.find<GuideController>();
   Guide();
 
   @override
   Widget build(BuildContext context) {
+    c.getData(Get.parameters['id'] ?? 'sample1');
     return Scaffold(
       appBar: AppBar(
         title: Text('ガイド'),
       ),
       body: Container(
-        child: Column(
-          children: [
-            Text('ガイド'),
-            GetUserName('sample1'),
-          ],
-        ),
+        child: Obx(() => Column(
+              children: [
+                Text('ガイド'),
+                GetUserName('sample1'),
+                ElevatedButton(onPressed: () => c.getData('sample1'), child: Text('データを取得')),
+                Text(c.obj),
+              ],
+            )),
       ),
     );
   }
@@ -26,7 +31,7 @@ class Guide extends StatelessWidget {
 
 // * データの取得
 class GetUserName extends StatelessWidget {
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final String documentId;
 
   GetUserName(this.documentId);

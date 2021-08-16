@@ -31,6 +31,7 @@ class LessonDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    c.getLesson(Get.parameters['lesson_id'] ?? 'sample_1'); // レッスンデータの取得．parametersで渡すことを想定
     return Scaffold(
       appBar: AppBar(title: Text('レッスン詳細')),
       body: SingleChildScrollView(
@@ -39,16 +40,19 @@ class LessonDetails extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  EyeCatch(lessonIcon),
+                  EyeCatch(c.lesson.lessonImage),
                   LessonContents(
-                    c.lesson.lessonName,
-                    tagNames,
-                    c.lesson.lessonDescription,
-                    comments,
-                    userNames,
-                    userIcons,
+                    lessonName: c.lesson.lessonName,
+                    tagNames: tagNames,
+                    lessonDescription: c.lesson.lessonDescription,
+                    price: c.lesson.price,
+                    lessonDuration: c.lesson.lessonDuration,
+                    date: c.lesson.date,
+                    skiResort: c.lesson.skiResort,
+                    comments: comments,
+                    userNames: userNames,
+                    userIcons: userIcons,
                   ),
-                  Text('更新済'),
                   Image.asset('images/lesson_detail_event.png'),
                 ],
               ),

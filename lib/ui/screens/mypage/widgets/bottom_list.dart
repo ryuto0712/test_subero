@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:subero_mobile/routes/app_routes.dart';
 import 'package:subero_mobile/ui/screens/index.dart';
 
 class BottomList extends StatelessWidget {
@@ -73,7 +74,7 @@ class BottomList extends StatelessWidget {
         return Get.to(QuestionAndAnswer());
 
       case 'ガイド':
-        return Get.to(Guide());
+        return Get.toNamed(Routes.GUIDE, parameters: {'id': 'sample1'});
     }
   }
 }

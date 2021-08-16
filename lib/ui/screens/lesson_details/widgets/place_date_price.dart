@@ -4,9 +4,14 @@ class PlaceDatePrice extends StatelessWidget {
   final String place;
   final String date;
   final int price;
-  final double perHour;
+  final num lessonDuration;
 
-  PlaceDatePrice(this.place, this.date, this.price, this.perHour);
+  PlaceDatePrice({
+    required this.place,
+    required this.date,
+    required this.price,
+    required this.lessonDuration,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +49,7 @@ class PlaceDatePrice extends StatelessWidget {
             style: TextStyle(fontSize: 20),
           ),
           Text(
-            '/' + perHour.toString() + '時間',
+            '/' + lessonDuration.toString() + '時間',
             style: TextStyle(fontSize: 15),
           ),
         ])
