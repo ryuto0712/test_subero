@@ -11,7 +11,6 @@ class SampleProvider extends GetConnect {
 
 // Get request
   Future<SampleModel> getData(String id) async {
-    print('getData method in SampleProvider is running. The id is $id');
     try {
       DocumentSnapshot _doc = await firestore.collection('users').doc(id).get();
       var user = SampleModel.fromDocumentSnapshot(documentSnapshot: _doc);

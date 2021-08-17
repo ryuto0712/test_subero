@@ -1,5 +1,6 @@
 // LessonCardに表示させる情報
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:subero_mobile/data/model/comment_model.dart';
 
 class LessonModel {
   late String lessonId; // レッスンの固有ID
@@ -10,9 +11,9 @@ class LessonModel {
   late int price; //レッスンの値段
   late num lessonDuration; // レッスンの所要時間
   late String date; // レッスン開催日時
-  late String dates; // レッスン開催日時達
+  late List<String> dates; // レッスン開催日時達
   late String category; // カテゴリ？
-  // late List<String> tags; // タグ
+  late List<String> tags; // タグ
 
   // late String createdAt; // 作成日時
   // late String editedAt; // 更新日時
@@ -22,11 +23,15 @@ class LessonModel {
   late String hostIcon; // レッスン作成者のアイコン
   late num hostRating; // ホストの評価値
 
-  // late Map<String, > comment; // コメント
+  late List<CommentModel>? comments; // コメント  TODO: dynamicの削除
   // late num additionalPrice; // 追加料金
   // late int capacity; // 最大人数
   // late bool canTrade; // 取引可能かどうか
   // late bool onlyOnce;  // 単発か継続か
+
+  static const List<String> initTags = [''];
+  static const List<String> initDates = [''];
+  static const List<CommentModel>? initComments = [];
 
   LessonModel({
     this.lessonId: '',
@@ -37,9 +42,9 @@ class LessonModel {
     this.price: 0,
     this.lessonDuration: 0,
     this.date: '',
-    this.dates: '',
+    this.dates: initDates,
     this.category: '',
-    // this.tags,
+    this.tags: initTags,
 
     // this.createdAt,
     // this.editedAt,
@@ -48,7 +53,7 @@ class LessonModel {
     this.hostName: '',
     this.hostIcon: 'images/app_icon.png',
     this.hostRating: 0,
-    // this.comment: '',
+    this.comments: initComments,
   });
 
   LessonModel.fromDocumentSnapshot({required DocumentSnapshot documentSnapshot}) {
@@ -70,6 +75,8 @@ class LessonModel {
     this.hostName = documentSnapshot['host_name'];
     this.hostIcon = documentSnapshot['host_icon_url'];
     this.hostRating = documentSnapshot['host_rating'];
-    // this.comment = documentSnapshot[''];
+
+    final _comments = documentSnapshot['comments'];
+    this.comments = [for (int i = 0; i < _comments.length; i++) CommentModel.fromMap(comment: _comments[i])];
   }
 }

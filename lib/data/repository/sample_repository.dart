@@ -6,7 +6,6 @@ class SampleRepository {
   SampleRepository({required this.sampleProvider});
 
   getData(String id) {
-    print('getData method in SampleRepository is running. The id is $id');
     return sampleProvider.getData(id);
   }
 }

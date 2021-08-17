@@ -48,7 +48,6 @@ class LessonContents extends StatelessWidget {
             // Image.asset('images/lesson_detail_middle.png'),
             PlaceDatePrice(place: skiResort, date: date, price: price, lessonDuration: lessonDuration),
             LessonDescription(lessonDescription),
-            Comments(comments, userNames, userIcons),
           ],
         ),
       ),

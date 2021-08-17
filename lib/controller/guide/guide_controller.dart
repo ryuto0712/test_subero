@@ -11,11 +11,9 @@ class GuideController extends GetxController {
   get obj => this._obj.value;
 
   getData(String id) async {
-    print('getData method in GuideController is running. The id is $id');
     try {
       final SampleModel sampleModel = await this.repository.getData(id);
       this._obj.value = sampleModel.name;
-      print('Explored data is ${_obj.value}');
     } catch (e) {
       print('controller error: $e');
     }

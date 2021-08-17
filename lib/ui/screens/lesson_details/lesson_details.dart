@@ -53,6 +53,7 @@ class LessonDetails extends StatelessWidget {
                     userNames: userNames,
                     userIcons: userIcons,
                   ),
+                  Comments(),
                   Image.asset('images/lesson_detail_event.png'),
                 ],
               ),

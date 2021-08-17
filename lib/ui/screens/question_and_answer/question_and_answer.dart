@@ -1,66 +1,40 @@
-import 'package:provider/provider.dart';
-
 import 'package:flutter/material.dart';
-
-// class QandA extends StatelessWidget {
-//   QandA();
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('よくある質問'),
-//       ),
-//       body: Container(),
-//     );
-//   }
-// }
-
-class CountModel extends ChangeNotifier {
-  int count = 0;
-  void increment() {
-    count++;
-    notifyListeners();
-  }
-}
+import 'package:subero_mobile/ui/widgets/bubble/bubble_border.dart';
 
 class QuestionAndAnswer extends StatelessWidget {
-  QuestionAndAnswer();
+  final String text = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<CountModel>(
-      create: (context) => CountModel(),
-      child: Consumer<CountModel>(
-        builder: (context, model, child) => Scaffold(
-          appBar: AppBar(
-            title: Text('title'),
-          ),
-          body: Center(
-            child: Column(
-              children: [
-                Text('おしましたね？'),
-                CountText(),
-              ],
-            ),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: model.increment,
-            tooltip: 'Increment',
-            child: Icon(Icons.add),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('よくある質問'),
+      ),
+      body: Container(
+        constraints: BoxConstraints.expand(),
+        height: 100,
+        padding: EdgeInsets.all(16),
+        margin: EdgeInsets.all(20),
+        decoration: ShapeDecoration(
+          color: Colors.white,
+          shadows: [
+            const BoxShadow(
+              color: Colors.grey,
+              offset: Offset(-1, 3),
+              blurRadius: 2,
+            )
+          ],
+          shape: BubbleBorder(),
+        ),
+        child: Container(
+          child: Column(
+            children: [
+              Text(text, overflow: TextOverflow.clip, softWrap: true),
+              Text(text),
+            ],
           ),
         ),
       ),
-    );
-  }
-}
-
-class CountText extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      '${Provider.of<CountModel>(context).count}',
-      style: Theme.of(context).textTheme.headline4,
     );
   }
 }
