@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:subero_mobile/ui/screens/index.dart';
 import 'package:subero_mobile/ui/widgets/index.dart';
 
-class MyPageIcon extends StatefulWidget {
+class MyPageIcon extends StatelessWidget {
   final String video;
   MyPageIcon(this.video);
 
-  @override
-  _MyPageIconState createState() => _MyPageIconState();
-}
-
-class _MyPageIconState extends State<MyPageIcon> {
   static const double size = 100;
 
   List<Widget> iconBackground = [
@@ -27,15 +23,16 @@ class _MyPageIconState extends State<MyPageIcon> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () => Get.to(MoviePlayer(widget.video)),
-        child: Container(
-          height: 120,
-          child: Stack(
-            children: [
-              iconBackground[1],
-              CircleImage('images/app_icon2.png', size),
-            ],
-          ),
-        ));
+      onTap: () => Get.to(Video(video)),
+      child: Container(
+        height: 120,
+        child: Stack(
+          children: [
+            iconBackground[1],
+            CircleImage('images/app_icon2.png', size),
+          ],
+        ),
+      ),
+    );
   }
 }

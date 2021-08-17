@@ -16,7 +16,45 @@ class LessonDetails extends StatelessWidget {
     c.getLesson(Get.parameters['lesson_id'] ?? 'sample_1');
 
     return Scaffold(
-      appBar: AppBar(title: Text('レッスン詳細')),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: Get.back),
+      ),
+      extendBodyBehindAppBar: true, // appBarの下で描画する
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Stack(
+                children: [
+                  Column(
+                    children: [
+                      EyeCatch(),
+                      LessonContents(),
+                      Comments(),
+                      Image.asset('images/lesson_detail_event.png'),
+                    ],
+                  ),
+                  Host(),
+                  Positioned(child: LikeButton(30), top: 130, left: 330),
+                ],
+              ),
+            ),
+          ),
+          Container(
+            child: ElevatedButton(onPressed: () => Get.to(BeforePurchase(), id: null), child: Text('受講する')),
+          ),
+        ],
+      ),
+    );
+/*
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('レッスン詳細'),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+      ),
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -32,18 +70,19 @@ class LessonDetails extends StatelessWidget {
             // #todo: 位置の設定の見直し
             Positioned(child: LikeButton(30), top: 130, left: 330),
             Positioned(
-              child: ElevatedButton(
-                onPressed: () {
-                  Get.to(BeforePurchase(), id: null);
-                },
-                child: Text('購入'),
-              ),
+              child: ElevatedButton(onPressed: () => Get.to(BeforePurchase(), id: null), child: Text('購入')),
               top: 30,
               left: 150,
             ),
+            // Positioned(
+            //   child: GestureDetector(onTap: () => Get.back(), child: Icon(Icons.arrow_back_ios)),
+            //   top: 20,
+            //   left: 30,
+            // ),
           ],
         ),
       ),
     );
+    */
   }
 }

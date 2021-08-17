@@ -6,7 +6,7 @@ import 'comment.dart';
 
 class Comments extends StatelessWidget {
   final LessonDetailsController c = Get.find<LessonDetailsController>();
-  final TextEditingController textEditingController = new TextEditingController(); // 入力フォーム用コントローラ
+  final TextEditingController textEditingController = TextEditingController(); // 入力フォーム用コントローラ
 
   @override
   Widget build(BuildContext context) {
