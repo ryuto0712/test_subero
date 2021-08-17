@@ -1,39 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:subero_mobile/controller/lesson_details/lesson_details_controller.dart';
 import 'package:subero_mobile/ui/widgets/index.dart';
 
 import 'index.dart';
 
 class LessonContents extends StatelessWidget {
-  const LessonContents(this.titleText, this.tagNames, this.description, this.comments, this.userNames, this.userIcons, {Key? key}) : super(key: key);
-
-  final String titleText;
-  final List<String> tagNames;
-  final String description;
-  final List<String> comments;
-  final List<String> userNames;
-  final List<String> userIcons;
-
+  final LessonDetailsController c = Get.find<LessonDetailsController>();
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
             border: Border(
           top: BorderSide(color: Colors.grey, width: 1),
         )),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
               height: 50,
             ),
             // Image.asset('images/lesson_detail_top.png'),
-            LessonTitle(titleText),
-            ClickableTagGenerator(tagNames),
+            LessonTitle(),
+            Obx(() => ClickableTagGenerator(c.lesson.tags)),
 
             // Image.asset('images/lesson_detail_middle.png'),
-            PlaceDatePrice('神立スキー場', '12/28 13:00~', 10000, 3),
-            LessonDescription(description),
-            Comments(comments, userNames, userIcons),
+            PlaceDatePrice(),
+            LessonDescription(),
           ],
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:subero_mobile/routes/routes.dart';
 import 'package:subero_mobile/ui/screens/index.dart';
 import 'package:subero_mobile/ui/widgets/index.dart';
 
@@ -15,7 +16,7 @@ class LessonCardMedium extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.to(LessonDetails(), id: null),
+      onTap: () => Get.toNamed(Routes.LESSON_DETAILS, id: null),
       child: Container(
         width: width,
         height: 200,

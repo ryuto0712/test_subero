@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 
 class ClickableTagGenerator extends StatelessWidget {
-  final List<String> tagNames;
-  ClickableTagGenerator(this.tagNames);
+  final List<dynamic> tags;
+  ClickableTagGenerator(this.tags);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10.5),
-      child: Row(
+      child: Wrap(
         children: <Widget>[
-          for (int i = 0; i < tagNames.length; i++) clickableTag(tagNames.elementAt(i)),
+          for (int i = 0; i < tags.length; i++) clickableTag(tags.elementAt(i).toString()),
         ],
       ),
     );
   }
 
-  Widget clickableTag(String tagName) {
+  Widget clickableTag(String tag) {
     return GestureDetector(
-      onTap: () => {print("$tagName was clicked")},
+      onTap: () => {print("$tag was clicked")},
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 8, horizontal: 6),
         decoration: BoxDecoration(
@@ -28,7 +28,7 @@ class ClickableTagGenerator extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 2, horizontal: 17),
           child: Text(
-            tagName,
+            tag,
             style: TextStyle(fontSize: 10.5, color: Colors.grey.shade600),
           ),
         ),

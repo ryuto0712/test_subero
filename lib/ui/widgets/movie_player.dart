@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 // #todo: 動画が再生できない
 
 class MoviePlayer extends StatelessWidget {
-  String movie;
+  final String movie;
   MoviePlayer(this.movie);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Image.asset(movie),
+      child: Center(child: Image.asset(movie)),
     );
   }
 }

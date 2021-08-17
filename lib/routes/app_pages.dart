@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:subero_mobile/bindings/lesson_details_binding.dart';
 import 'package:subero_mobile/ui/screens/mypage/mypage.dart';
 import 'package:subero_mobile/ui/screens/index.dart';
 import '../bindings/bidings.dart';
 import './app_routes.dart';
 
-
 //bindingの値を設定しておくことで、そのページで使うコントローラーをあらかじめ初期化できる(get.findのみで呼び出せる)。
 //名前付きルーティングでの移動しないとコントローラーの初期化が行われない。
 class AppPages {
   static final routes = [
-    GetPage(name: Routes.HOME, page: () => Home(),binding: HomeBinding()),
+    // GetPage(name: Routes.HOME, page: () => Home(), binding: HomeBinding()),
     GetPage(name: Routes.MYPAGE, page: () => MyPage(), binding: MyPageBinding()),
     GetPage(name: Routes.MESSAGE, page: () => Message(), binding: MyPageBinding()),
     GetPage(name: Routes.POST, page: () => Post(), binding: MyPageBinding()),
@@ -18,10 +18,10 @@ class AppPages {
     GetPage(name: Routes.ACCOUNT_CONFIG, page: () => AccountConfig(), binding: MyPageBinding()),
     GetPage(name: Routes.BEFORE_PURCHASE, page: () => BeforePurchase(), binding: MyPageBinding()),
     GetPage(name: Routes.EDIT_PROFILE, page: () => EditProfile(), binding: MyPageBinding()),
-    GetPage(name: Routes.GUIDE, page: () => Guide(), binding: MyPageBinding()),
+    GetPage(name: Routes.GUIDE, page: () => Guide(), binding: GuidePageBinding()),
     GetPage(name: Routes.IINE_LIST, page: () => IineList(), binding: MyPageBinding()),
     GetPage(name: Routes.INDIVIDUAL_MESSAGE, page: () => IndividualMessage(), binding: MyPageBinding()),
-    GetPage(name: Routes.LESSON_DETAILS, page: () => LessonDetails(), binding: MyPageBinding()),
+    GetPage(name: Routes.LESSON_DETAILS, page: () => LessonDetails(), binding: LessonDetailsBinding()),
     GetPage(name: Routes.NOTIFICATION_CONFIG, page: () => NotificationConfig(), binding: MyPageBinding()),
     GetPage(name: Routes.POST_EVENT, page: () => PostEvent(), binding: MyPageBinding()),
     GetPage(name: Routes.POST_PERMANENT_LESSON, page: () => PostPermanentLesson(), binding: MyPageBinding()),
