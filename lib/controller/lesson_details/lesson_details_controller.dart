@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:subero_mobile/data/model/comment_model.dart';
 import 'package:subero_mobile/data/model/lesson_model.dart';
 import 'package:subero_mobile/data/repository/lesson_repository.dart';
-import 'dart:async';
 
 class LessonDetailsController extends GetxController {
   final LessonRepository repository;

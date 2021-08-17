@@ -13,7 +13,7 @@ class LessonModel {
   late String date; // レッスン開催日時
   late List<String> dates; // レッスン開催日時達
   late String category; // カテゴリ？
-  late List<String> tags; // タグ
+  late List<dynamic> tags; // タグ
 
   // late String createdAt; // 作成日時
   // late String editedAt; // 更新日時
@@ -23,13 +23,13 @@ class LessonModel {
   late String hostIcon; // レッスン作成者のアイコン
   late num hostRating; // ホストの評価値
 
-  late List<CommentModel>? comments; // コメント  TODO: dynamicの削除
+  late List<CommentModel>? comments; // コメント
   // late num additionalPrice; // 追加料金
   // late int capacity; // 最大人数
   // late bool canTrade; // 取引可能かどうか
   // late bool onlyOnce;  // 単発か継続か
 
-  static const List<String> initTags = [''];
+  static const List<dynamic> initTags = [''];
   static const List<String> initDates = [''];
   static const List<CommentModel>? initComments = [];
 
@@ -67,7 +67,7 @@ class LessonModel {
     this.date = documentSnapshot['date'];
     // this.dates = documentSnapshot['dates'];
     this.category = documentSnapshot['category'];
-    // this.tags = documentSnapshot[''];
+    this.tags = documentSnapshot['tags'];
     // this.createdAt = documentSnapshot[''];
     // this.editedAt = documentSnapshot[''];
 

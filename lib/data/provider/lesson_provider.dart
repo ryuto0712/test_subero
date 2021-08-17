@@ -20,7 +20,6 @@ class LessonProvider extends GetConnect {
   }
 
   Future<void> addComment(String lessonId, CommentModel comment) {
-    print('providerなう');
     return this.lessons.doc(lessonId).update({
       'comments': FieldValue.arrayUnion([
         {

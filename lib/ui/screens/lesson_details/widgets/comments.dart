@@ -6,6 +6,7 @@ import 'comment.dart';
 
 class Comments extends StatelessWidget {
   final LessonDetailsController c = Get.find<LessonDetailsController>();
+  final TextEditingController textEditingController = new TextEditingController(); // 入力フォーム用コントローラ
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +35,7 @@ class Comments extends StatelessWidget {
 
   addComment() {
     late String comment;
+
     if (c.doComment.value == false)
       return Center(
         child: ElevatedButton(
@@ -42,21 +44,33 @@ class Comments extends StatelessWidget {
         ),
       );
     else
-      return Column(
-        children: [
-          TextField(
-            onChanged: (text) => comment = text,
-          ),
-          ElevatedButton(
-            onPressed: () => c.addComment(
-              'sample_1',
-              'Izuru Kambayashi',
-              'images/icon_sample.png',
-              comment,
+      return Container(
+        margin: EdgeInsets.fromLTRB(30, 12, 30, 0),
+        child: Column(
+          children: [
+            TextField(
+              onChanged: (text) => comment = text,
+              controller: textEditingController,
+              maxLines: null, // 折り返しの設定
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.grey)),
+                focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.grey)),
+              ),
             ),
-            child: Text('送信'),
-          )
-        ],
+            ElevatedButton(
+              onPressed: () => {
+                c.addComment(
+                  'sample_1',
+                  'Izuru Kambayashi',
+                  'images/icon_sample.png',
+                  comment,
+                ),
+                textEditingController.clear(),
+              },
+              child: Text('送信'),
+            )
+          ],
+        ),
       );
   }
 }

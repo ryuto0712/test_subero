@@ -10,7 +10,6 @@ class LessonRepository {
   }
 
   addComment(String lessonId, CommentModel commentModel) {
-    print('repositoryなう');
     print(
       [commentModel.userId, commentModel.userName, commentModel.contents, commentModel.createdAt],
     );
