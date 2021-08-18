@@ -5,7 +5,6 @@ import 'package:subero_mobile/routes/app_routes.dart';
 import 'package:subero_mobile/ui/screens/index.dart';
 
 class BottomList extends StatelessWidget {
-  const BottomList({Key? key}) : super(key: key);
   static const List<String> buttonName1 = [
     'いいね一覧',
     'アカウント設定',

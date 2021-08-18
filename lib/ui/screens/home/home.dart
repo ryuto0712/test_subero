@@ -19,7 +19,7 @@ class Home extends StatelessWidget {
               Categories(),
               AreaLessons(area),
               NewLessons(constraints.maxWidth),
-              FloatingActionButton(onPressed: ()=>Get.toNamed("/mypage"),child:Text("move_mypage")),
+              // FloatingActionButton(onPressed: ()=>Get.toNamed("/mypage"),child:Text("move_mypage")),
               Image.asset('images/home.png'),
             ],
           );

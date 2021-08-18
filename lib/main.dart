@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'controller/tab/tab_controller.dart';
@@ -13,11 +14,12 @@ import './bindings/bidings.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(); // * firebaseの初期化
+  await GetStorage.init(); // * get storageの初期化.
   // debugPaintSizeEnabled = true; // widgetのレンダリングチェック
   runApp(GetMaterialApp(
     initialBinding: MyPageBinding(), //最初に呼び出すバインディング。理想的にはログインに関わるコントローラーの初期化のみにしたい。
-    debugShowCheckedModeBanner: true, // Remoce the debug banner
+    debugShowCheckedModeBanner: true, // falseにすると右上のdebagのバナーが消える(が警告が出てくる)
     // initialRoute: Routes.INITIAL,
     // initialBinding: HomeBinding(),
     theme: appThemeData,
@@ -28,22 +30,27 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+  final GetStorage box = GetStorage();
   // _pageWidgetsを引数に入れたかったけど入れられなかった．
-  final MyTabController tabController = Get.put(MyTabController([Home(), Search(), if (isHost) Post(), Message(), MyPage()]));
-
-  static const isHost = true; // 登録したライダーかどうか
+  final MyTabController tabController = Get.put(MyTabController([Home(), Search(), Post(), Message(), MyPage()]));
 
   // 表示するタブ
   final _pageWidgets = [
     HomeNavigator(),
     SearchNavigator(),
-    if (isHost) PostNavigator(),
+    PostNavigator(),
     MessageNavigator(),
     MyPageNavigator(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    // TODO: ログイン時にgetStrageに主なユーザーデータを保存
+    box.write('userId', 'sample_1');
+    box.write('userName', 'Kambayashi Izuru');
+    box.write('userIcon', 'images/icon_sample.png');
+    box.write('userRating', 4.0);
+
     return Scaffold(
       bottomNavigationBar: buildBottomNavigationMenu(tabController),
       body: Obx(
@@ -74,7 +81,7 @@ class MyApp extends StatelessWidget {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: '検索'),
-          if (isHost) BottomNavigationBarItem(icon: Icon(Icons.add_box), label: '投稿'),
+          BottomNavigationBarItem(icon: Icon(Icons.add_box), label: '投稿'),
           BottomNavigationBarItem(icon: Icon(Icons.message_outlined), label: 'メッセージ'),
           BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'マイページ'),
         ],

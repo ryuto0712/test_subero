@@ -7,6 +7,8 @@ import 'package:subero_mobile/ui/screens/index.dart';
 
 import 'widgets/index.dart';
 
+// TODO: データ取得時のくるくる
+
 class LessonDetails extends StatelessWidget {
   final LessonDetailsController c = Get.find<LessonDetailsController>();
 
@@ -48,41 +50,5 @@ class LessonDetails extends StatelessWidget {
         ],
       ),
     );
-/*
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('レッスン詳細'),
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
-      ),
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                EyeCatch(),
-                LessonContents(),
-                Comments(),
-                Image.asset('images/lesson_detail_event.png'),
-              ],
-            ),
-            Host(),
-            // #todo: 位置の設定の見直し
-            Positioned(child: LikeButton(30), top: 130, left: 330),
-            Positioned(
-              child: ElevatedButton(onPressed: () => Get.to(BeforePurchase(), id: null), child: Text('購入')),
-              top: 30,
-              left: 150,
-            ),
-            // Positioned(
-            //   child: GestureDetector(onTap: () => Get.back(), child: Icon(Icons.arrow_back_ios)),
-            //   top: 20,
-            //   left: 30,
-            // ),
-          ],
-        ),
-      ),
-    );
-    */
   }
 }

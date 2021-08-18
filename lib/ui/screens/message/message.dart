@@ -8,7 +8,10 @@ class Message extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('メッセージ')),
+      appBar: AppBar(
+        title: Text('メッセージ一覧'),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

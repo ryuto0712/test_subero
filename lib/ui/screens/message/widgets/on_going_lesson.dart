@@ -38,7 +38,7 @@ class OnGoingLesson extends StatelessWidget {
 
   Widget lessonList(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.to(LessonDetails(), id: null),
+      onTap: () => Get.to(IndividualMessage()),
       child: Container(
         height: 80,
         decoration: BoxDecoration(
@@ -55,21 +55,29 @@ class OnGoingLesson extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  Text('○○○○のレッスン'),
-                  Row(
-                    children: <Widget>[
-                      CircleImage('images/app_icon2.png', 10),
-                      Text('toichi shogo'),
-                    ],
-                  ),
-                ],
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text('○○○○のレッスン', style: TextStyle(fontSize: 18)),
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          child: CircleImage('images/app_icon2.png', 20),
+                          margin: EdgeInsets.only(right: 10),
+                        ),
+                        Text('toichi shogo', style: TextStyle(fontSize: 14)),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
             Container(
-              child: Icon(Icons.arrow_forward_sharp),
+              child: Icon(Icons.arrow_forward_ios, color: Colors.grey),
             ),
           ],
         ),

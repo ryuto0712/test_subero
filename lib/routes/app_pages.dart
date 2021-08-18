@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:subero_mobile/bindings/lesson_details_binding.dart';
+import 'package:subero_mobile/bindings/post_event_binding.dart';
 import 'package:subero_mobile/ui/screens/mypage/mypage.dart';
 import 'package:subero_mobile/ui/screens/index.dart';
 import '../bindings/bidings.dart';
@@ -29,6 +30,7 @@ class AppPages {
     GetPage(name: Routes.SEARCHED, page: () => Searched(), binding: MyPageBinding()),
     GetPage(name: Routes.USER_PAGE, page: () => UserPage(), binding: MyPageBinding()),
     GetPage(name: Routes.VIDEO, page: () => Video("a"), binding: MyPageBinding()),
+    GetPage(name: Routes.POST_EVENT, page: () => PostEvent(), binding: LessonPostBinding()),
   ];
 }
 

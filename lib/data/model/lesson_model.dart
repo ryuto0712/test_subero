@@ -15,8 +15,8 @@ class LessonModel {
   late String category; // カテゴリ？
   late List<dynamic> tags; // タグ
 
-  // late String createdAt; // 作成日時
-  // late String editedAt; // 更新日時
+  late DateTime createdAt; // 作成日時
+  late DateTime editedAt; // 更新日時
 
   late String hostId; // ホストID
   late String hostName; // レッスン作成者名
@@ -45,10 +45,8 @@ class LessonModel {
     this.dates: initDates,
     this.category: '',
     this.tags: initTags,
-
-    // this.createdAt,
-    // this.editedAt,
-
+    // required this.createdAt,
+    // required this.editedAt,
     this.hostId: '',
     this.hostName: '',
     this.hostIcon: 'images/app_icon.png',
@@ -68,8 +66,9 @@ class LessonModel {
     // this.dates = documentSnapshot['dates'];
     this.category = documentSnapshot['category'];
     this.tags = documentSnapshot['tags'];
-    // this.createdAt = documentSnapshot[''];
-    // this.editedAt = documentSnapshot[''];
+
+    this.createdAt = documentSnapshot['created_at'].toDate();
+    this.editedAt = documentSnapshot['edited_at'].toDate();
 
     this.hostId = documentSnapshot['host_id'];
     this.hostName = documentSnapshot['host_name'];
