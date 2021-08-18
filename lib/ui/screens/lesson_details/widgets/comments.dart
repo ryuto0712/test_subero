@@ -59,12 +59,7 @@ class Comments extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () => {
-                c.addComment(
-                  'sample_1',
-                  'Izuru Kambayashi',
-                  'images/icon_sample.png',
-                  comment,
-                ),
+                c.addComment(comment),
                 textEditingController.clear(),
               },
               child: Text('送信'),

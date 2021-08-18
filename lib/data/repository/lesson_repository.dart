@@ -1,18 +1,25 @@
 import 'package:subero_mobile/data/model/comment_model.dart';
+import 'package:subero_mobile/data/model/lesson_model.dart';
 import 'package:subero_mobile/data/provider/lesson_provider.dart';
 
 class LessonRepository {
   final LessonProvider lessonProvider;
 
   LessonRepository({required this.lessonProvider});
+
+  // レッスンの投稿
   getLesson(String lessonId) {
     return lessonProvider.getLesson(lessonId);
   }
 
+  // レッスンの投稿
+  Future<String> postLesson(LessonModel lessonModel) {
+    // 投稿したレッスンのidをコントローラに返す
+    return lessonProvider.postLesson(lessonModel);
+  }
+
+  // コメントの投稿
   addComment(String lessonId, CommentModel commentModel) {
-    print(
-      [commentModel.userId, commentModel.userName, commentModel.contents, commentModel.createdAt],
-    );
     return lessonProvider.addComment(lessonId, commentModel);
   }
 }

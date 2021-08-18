@@ -13,15 +13,15 @@ class MessageContents extends StatelessWidget {
       child: Obx(
         () => Column(
           children: <Widget>[
-            if (c.isOngoing.value) toggleButtonsOnGoing() else toggleButtonsFinished(),
-            if (c.isOngoing.value) OnGoingLesson() else OnGoingLesson(),
+            c.isOngoing.value ? toggleButtonsOnGoing() : toggleButtonsFinished(),
+            c.isOngoing.value ? OnGoingLesson() : OnGoingLesson(),
           ],
         ),
       ),
     );
   }
 
-// #todo: いい感じの切り替えボタンのwidgetを使用する
+// TODO: いい感じの切り替えボタンのwidgetを使用する
   Widget toggleButtonsOnGoing() {
     double height = 50;
     double width = 150;

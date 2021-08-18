@@ -4,6 +4,8 @@ import 'package:subero_mobile/routes/routes.dart';
 import 'package:subero_mobile/ui/screens/index.dart';
 import 'package:subero_mobile/ui/widgets/index.dart';
 
+// 画面中で複数のレッスンデータを取得するときどうする？レッスンカードがそれぞれlessonIdからデータを取得する？
+
 class LessonCardMedium extends StatelessWidget {
   final String lessonIcon;
   final String hostIcon;
