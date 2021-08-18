@@ -4,6 +4,9 @@ import 'package:subero_mobile/ui/screens/index.dart';
 
 import 'widgets/index.dart';
 
+// TODO: 進行中/終了したレッスン情報の取得
+// TODO:
+
 class Message extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,12 +18,6 @@ class Message extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            ElevatedButton(
-              onPressed: () {
-                Get.to(IndividualMessage(), id: 3);
-              },
-              child: Text('個別メッセージ'),
-            ),
             MessageContents(),
             Image.asset('images/message.png'),
           ],

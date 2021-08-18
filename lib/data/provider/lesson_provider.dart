@@ -47,7 +47,6 @@ class LessonProvider extends GetConnect {
         'host_rating': lessonModel.hostRating,
         'comments': lessonModel.comments,
       }).then((value) => {lessonId = value.id});
-      // .catchError((e) => print('レッスン投稿に失敗しました．$e'));
 
       return lessonId!;
     } catch (e) {

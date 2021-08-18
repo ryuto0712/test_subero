@@ -13,6 +13,7 @@ import 'widgets/index.dart';
 
 class PostEvent extends StatelessWidget {
   // LessonPostController c = Get.find();
+  // bindingできてなさそうだったのでベタ書き
   final LessonPostController c = Get.put(LessonPostController(repository: LessonRepository(lessonProvider: LessonProvider())));
   PostEvent();
 
@@ -39,7 +40,6 @@ class PostEvent extends StatelessWidget {
                 labelText: '新規レッスン名',
               ),
             ),
-            Obx(() => Text(c.lesson.lessonName)),
             SelectImages(),
             PostInfomationList(),
             Text('詳しい集合場所'),

@@ -25,7 +25,7 @@ class Bubble extends StatelessWidget {
       ),
       child: Container(
         width: 250,
-        margin: EdgeInsets.fromLTRB(15, 10, 15, 10),
+        margin: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
