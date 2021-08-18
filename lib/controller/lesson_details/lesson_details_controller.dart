@@ -25,10 +25,6 @@ class LessonDetailsController extends GetxController {
   }
 
   // * コメント関連
-  // コメントをするボタン
-  final doComment = Rx<bool>(false).obs();
-  toggleDoComment() => {doComment.value = true}; // コメント入力欄の表示
-
   CommentModel _commentModel = CommentModel(); // 投稿するコメント情報
 
   // コメントの追加

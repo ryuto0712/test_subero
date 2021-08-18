@@ -18,21 +18,23 @@ class LessonPriceAndTime extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
           SizedBox(
-              width: 100,
-              child: TextField(
-                onChanged: (price) => c.lesson.price = int.parse(price),
-                keyboardType: TextInputType.number,
-                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-              )),
+            width: 100,
+            child: TextField(
+              onChanged: (price) => c.lesson.price = int.parse(price),
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            ),
+          ),
           Text('円'),
           Text('/'),
           SizedBox(
-              width: 30,
-              child: TextField(
-                onChanged: (lessonDuration) => c.lesson.lessonDuration = double.parse(lessonDuration),
-                keyboardType: TextInputType.number,
-                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-              )),
+            width: 30,
+            child: TextField(
+              onChanged: (lessonDuration) => c.lesson.lessonDuration = double.parse(lessonDuration),
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            ),
+          ),
           Text('時間'),
         ],
       ),

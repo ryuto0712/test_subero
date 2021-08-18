@@ -7,7 +7,7 @@ class LessonRepository {
 
   LessonRepository({required this.lessonProvider});
 
-  // レッスンの投稿
+  // レッスン情報の取得
   getLesson(String lessonId) {
     return lessonProvider.getLesson(lessonId);
   }

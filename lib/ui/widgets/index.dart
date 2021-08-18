@@ -10,3 +10,4 @@ export 'lesson_card/lesson_card_wide.dart';
 export 'like_button.dart';
 export 'movie_player.dart';
 export 'search_bar.dart';
+export 'comment.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:subero_mobile/routes/app_routes.dart';
 
 import 'package:subero_mobile/ui/widgets/index.dart';
-import 'package:subero_mobile/ui/screens/index.dart';
 
 class OnGoingLesson extends StatelessWidget {
   List products = ['aa', 'bb', 'cc', 'dd'];
@@ -38,7 +38,7 @@ class OnGoingLesson extends StatelessWidget {
 
   Widget lessonList(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.to(IndividualMessage()),
+      onTap: () => Get.toNamed(Routes.INDIVIDUAL_MESSAGE, parameters: {'messagesId': 'sample_message'}),
       child: Container(
         height: 80,
         decoration: BoxDecoration(

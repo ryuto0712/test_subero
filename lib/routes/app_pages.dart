@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:subero_mobile/bindings/lesson_details_binding.dart';
+import 'package:subero_mobile/bindings/messages_binding.dart';
 import 'package:subero_mobile/bindings/post_event_binding.dart';
 import 'package:subero_mobile/ui/screens/mypage/mypage.dart';
 import 'package:subero_mobile/ui/screens/index.dart';
@@ -21,7 +22,7 @@ class AppPages {
     GetPage(name: Routes.EDIT_PROFILE, page: () => EditProfile(), binding: MyPageBinding()),
     GetPage(name: Routes.GUIDE, page: () => Guide(), binding: GuidePageBinding()),
     GetPage(name: Routes.IINE_LIST, page: () => IineList(), binding: MyPageBinding()),
-    GetPage(name: Routes.INDIVIDUAL_MESSAGE, page: () => IndividualMessage(), binding: MyPageBinding()),
+    GetPage(name: Routes.INDIVIDUAL_MESSAGE, page: () => IndividualMessage(), binding: MessagesBinding()),
     GetPage(name: Routes.LESSON_DETAILS, page: () => LessonDetails(), binding: LessonDetailsBinding()),
     GetPage(name: Routes.NOTIFICATION_CONFIG, page: () => NotificationConfig(), binding: MyPageBinding()),
     GetPage(name: Routes.POST_EVENT, page: () => PostEvent(), binding: MyPageBinding()),

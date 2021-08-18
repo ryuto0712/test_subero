@@ -76,6 +76,6 @@ class LessonModel {
     this.hostRating = documentSnapshot['host_rating'];
 
     final _comments = documentSnapshot['comments'];
-    this.comments = [for (int i = 0; i < _comments.length; i++) CommentModel.fromMap(comment: _comments[i])];
+    this.comments = [for (int i = 0; i < _comments.length; i++) CommentModel.fromMap(map: _comments[i])];
   }
 }

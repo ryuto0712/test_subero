@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+// import 'package:flutter/rendering.dart'; // レンダリング確認
+
 import 'controller/tab/tab_controller.dart';
 import './routes/routes.dart';
 // import 'package:subero_mobile/bindings/my_bindings.dart';
@@ -19,7 +21,7 @@ void main() async {
   // debugPaintSizeEnabled = true; // widgetのレンダリングチェック
   runApp(GetMaterialApp(
     initialBinding: MyPageBinding(), //最初に呼び出すバインディング。理想的にはログインに関わるコントローラーの初期化のみにしたい。
-    debugShowCheckedModeBanner: true, // falseにすると右上のdebagのバナーが消える(が警告が出てくる)
+    // debugShowCheckedModeBanner: true, // falseにすると右上のdebagのバナーが消える(が警告が出てくる)
     // initialRoute: Routes.INITIAL,
     // initialBinding: HomeBinding(),
     theme: appThemeData,
@@ -71,7 +73,7 @@ class MyApp extends StatelessWidget {
         selectedFontSize: 10,
         unselectedFontSize: 10,
         selectedItemColor: Colors.green,
-        unselectedItemColor: Colors.black.withOpacity(0.1),
+        unselectedItemColor: Colors.black.withOpacity(0.4),
         // fixedColor: Colors.greenAccent,
         // backgroundColor: ,
 
