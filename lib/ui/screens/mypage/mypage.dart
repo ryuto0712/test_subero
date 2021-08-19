@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:subero_mobile/data/provider/user_provider.dart';
-import 'package:subero_mobile/data/repository/test_repository.dart';
+// import 'package:subero_mobile/data/provider/user_provider.dart';
+// import 'package:subero_mobile/data/repository/user_repository.dart';
 import '../../../controller/my_page/user_controller.dart';
 import "../../../controller/controllers.dart";
 import "./widgets/bottom_list.dart";
@@ -13,14 +13,15 @@ class MyPage extends GetView<UserController> {
   Widget build(BuildContext context) {
     final UserController c = Get.find<UserController>();
     c.getUser("1");
-  String userName = c.user.name;
-  String description = c.user.introduction;
-  String playedYear = c.user.playedYear;
-  // String sponser = c.user.sponser;
-  String favoTrick = c.user.favoTrick;
-  String homeGerende = c.user.homeGerende;
+  // String userName = c.user.name;
+  // String description = c.user.introduction;
+  // int career = c.user.career;
+  // // String sponser = c.user.sponser;
+  // String favoriteTrick = c.user.favoriteTrick;
+  // String homeSkiResort = c.user.homeSkiResort;
   String video = 'images/icon_sample.png';
-    return Scaffold(
+    return 
+    Scaffold(
       appBar: AppBar(title: Text('マイページ')),
       body: SingleChildScrollView(
         child: Container
@@ -29,7 +30,9 @@ class MyPage extends GetView<UserController> {
           child:Column(
           children: <Widget>[
             // #todo: 隠れちゃう
-            MyProfile(userName,description, video,playedYear,favoTrick,homeGerende),
+    Obx(()=>
+            MyProfile(c.user.name,c.user.introduction, video,c.user.career,c.user.favoriteTrick,c.user.homeSkiResort),
+    ),
             BottomList(),
             Image.asset('images/mypage.png'),
           ],
