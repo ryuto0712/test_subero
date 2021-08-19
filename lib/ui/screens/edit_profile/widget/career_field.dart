@@ -17,9 +17,12 @@ class CareerField extends StatelessWidget {
           children: [
             Expanded(
               flex: 4,
-              child: Padding(padding: EdgeInsets.all(0),),),
+              child: Padding(
+                padding: EdgeInsets.all(0),
+              ),
+            ),
             Expanded(
-              flex:2,
+              flex: 2,
               child: Obx(
                 () => TextFormField(
                   onChanged: (text) => c.user.career = int.parse(text),
@@ -35,13 +38,13 @@ class CareerField extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: 
-            Text("年")),
+            Expanded(flex: 1, child: Text("年")),
             Expanded(
               flex: 3,
-              child: Padding(padding: EdgeInsets.all(0),),),
+              child: Padding(
+                padding: EdgeInsets.all(0),
+              ),
+            ),
           ],
         ),
       ],

@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:subero_mobile/routes/app_routes.dart';
 import "../../data/model/user_model.dart";
 import '../../data/repository/user_repository.dart';
 

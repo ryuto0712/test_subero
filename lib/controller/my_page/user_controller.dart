@@ -13,13 +13,10 @@ class UserController extends GetxController {
   set user(value) => this._user.value = value;
 
   getUser(String uid) async {
-    print("コントローラで値の取得を始めました");
     try {
       _user.value = await repository.getUser(uid);
-      print("コントローラで値を取得しました。" + _user.value.name);
     } catch (e) {
-      print(e.toString());
-      print("controller error");
+      print("controller error:$e");
     }
   }
 }

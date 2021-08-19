@@ -30,7 +30,8 @@ class LessonPriceAndTime extends StatelessWidget {
           SizedBox(
             width: 30,
             child: TextField(
-              onChanged: (lessonDuration) => c.lesson.lessonDuration = double.parse(lessonDuration),
+              onChanged: (lessonDuration) =>
+                  c.lesson.lessonDuration = double.parse(lessonDuration),
               keyboardType: TextInputType.number,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             ),

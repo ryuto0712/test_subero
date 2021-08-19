@@ -9,11 +9,8 @@ class UserProvider {
 //ユーザの取得
   Future<UserModel> getUser(String uid) async {
     try {
-      print("プロバイダでgetUserが走りました。");
       DocumentSnapshot _doc = await users.doc(uid).get();
-      print("プロバイダで値の取得が完了しました。" + _doc["name"]);
       var u = new UserModel.fromDocumentSnapshot(documentSnapshot: _doc);
-      print("プロバイダでモデルに値が入りました。" + u.name);
       return u;
     } catch (e) {
       print("Provider Error: $e");

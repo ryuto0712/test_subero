@@ -46,6 +46,5 @@ class UserModel {
     this.editedAt = documentSnapshot["edited_at"].toDate();
     this.iconUrl = documentSnapshot["icon_url"];
     this.videoUrl = documentSnapshot["video_url"];
-    print("名前付きコンストラクタが走りました。" + this.name);
   }
 }
