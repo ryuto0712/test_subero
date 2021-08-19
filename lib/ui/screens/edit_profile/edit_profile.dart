@@ -9,6 +9,10 @@ import 'package:subero_mobile/ui/screens/edit_profile/widget/home_ski_resort_fie
 import 'package:subero_mobile/ui/screens/edit_profile/widget/introduction_field.dart';
 import 'package:subero_mobile/ui/screens/edit_profile/widget/name_edit_field.dart';
 
+// TODO: 二回目以降の画面遷移でしかテキストボックスの初期値が行事されない
+// TODO: 写真と動画の設定
+// TODO: バリデーション
+// TODO: 初期値が入力を始めたらすぐ消えるようにする
 class EditProfile extends StatelessWidget {
   final EditProfileController c = Get.put(EditProfileController(
       repository: UserRepository(userProvider: UserProvider())));

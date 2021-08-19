@@ -1,6 +1,7 @@
 // TODO: スノボ歴～～の表示
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:expandable_text/expandable_text.dart';
 
 import 'package:subero_mobile/ui/screens/index.dart';
 // import 'package:subero_mobile/ui/widgets/index.dart';
@@ -33,9 +34,9 @@ class _MyProfileState extends State<MyProfile> {
               MyPageIcon(widget.video),
               _userName(widget.userName),
               _userDescription(widget.description),
-              _profileEditButton(),
               _userInformation(
-                  widget.career, widget.favoriteTrick, widget.homeSkiResort)
+                  widget.career, widget.favoriteTrick, widget.homeSkiResort),
+              _profileEditButton(),
             ],
           ),
         ),
@@ -66,9 +67,13 @@ class _MyProfileState extends State<MyProfile> {
       padding: EdgeInsets.only(top: 10),
       // alignment: ,
       width: 300,
-      child: Text(
+      child: ExpandableText(
         description,
-        style: TextStyle(fontSize: 12),
+        expandText: "もっと見る",
+        collapseText: "閉じる",
+        maxLines: 3,
+        linkColor: Colors.black38,
+        style: TextStyle(fontSize: 13),
         textAlign: TextAlign.center,
       ),
     );
