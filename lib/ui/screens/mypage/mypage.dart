@@ -19,12 +19,6 @@ class MyPage extends GetView<UserController> {
   // String sponser = c.user.sponser;
   String favoTrick = c.user.favoTrick;
   String homeGerende = c.user.homeGerende;
-  // Map<String, String> profileMap = {
-  //   'スノボ歴': c.user.playedYear,
-  //   'スポンサー': c.user.sponser,
-  //   '得意な技': c.user.favoTrick,
-  //   'ホームゲレンデ': c.user.homeGerende,
-  // };
   String video = 'images/icon_sample.png';
     return Scaffold(
       appBar: AppBar(title: Text('マイページ')),
@@ -45,53 +39,3 @@ class MyPage extends GetView<UserController> {
     );
   }
 }
-
-
-
-
-
-  // @override
-  // Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Container(
-//           child: Column(
-//         children: [
-//           Obx(() => Text(c.user.name)),
-//           FloatingActionButton(
-//               child: Text("push"), onPressed: () => c.getUser("1"))
-//         ],
-//       )
-//           ),
-//     );
-//   }
-// }
-
-
-
-
-
-
-          // child: GetBuilder<UserController>(
-          //     initState: (_) async{ await Get.find(UserController(repository:UserRepository(userProvider: UserProvider()))).getUser("1") ;},
-          //     builder: (controller) {
-          //       print('start builder in mypage');
-          //       print(controller.user);
-          //       return
-          //       ListView.builder(
-          //         itemBuilder: (context, index) {
-          //           return ListTile(
-          //             title: Text(controller.user["name"] ?? 'a'),
-          //             subtitle: Text(controller.user["introduction"] ?? 'b'),
-          //           );
-          //         },
-          //         // itemCount: _.user.length,
-          //       );
-          //     }),
-
-
-
-
-
-
-
-// class MyPage extends StatelessWidget {
