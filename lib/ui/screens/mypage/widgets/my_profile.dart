@@ -11,7 +11,11 @@ class MyProfile extends StatefulWidget {
   String description;
   // Map<String, String> ProfileMap;
   String video;
-  MyProfile(this.userName, this.description, this.video);
+  String playedYear;
+  String favoTrick;
+  String homeGerende;
+  MyProfile(this.userName, this.description, this.video, this.playedYear,
+      this.favoTrick, this.homeGerende);
   @override
   _MyProfileState createState() => _MyProfileState();
 }
@@ -24,12 +28,15 @@ class _MyProfileState extends State<MyProfile> {
         Container(
           width: 300,
           margin: EdgeInsets.only(bottom: 10),
+          color: Colors.white,
           child: Column(
             children: [
               MyPageIcon(widget.video),
               _userName(widget.userName),
               _userDescription(widget.description),
               _profileEditButton(),
+              _userInformation(
+                  widget.playedYear, widget.favoTrick, widget.homeGerende)
             ],
           ),
         ),
@@ -50,22 +57,62 @@ class _MyProfileState extends State<MyProfile> {
 
   Widget _userName(String userName) {
     return Container(
-      child: Text(userName),
+      child: Text(userName,
+          style: TextStyle(fontSize: 24, color: Color(0xff555555))),
     );
   }
 
   Widget _userDescription(String description) {
     return Container(
-      width: 300, child: ExpandableText(description),
-      // #todo: スノボ歴～～の表示
+      padding: EdgeInsets.only(top: 10),
+      // alignment: ,
+      width: 300,
+      child: Text(
+        description,
+        style: TextStyle(fontSize: 12),
+        textAlign: TextAlign.center,
+      ),
     );
   }
 
   Widget _profileEditButton() {
     return Container(
-      child: ElevatedButton(
-        onPressed: () => Get.to(EditProfile(), id: null),
-        child: Text('プロフィールを編集する'),
+      child: ButtonTheme(
+        height: 100,
+        minWidth: 200,
+        child: OutlinedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+          ),
+          onPressed: () => Get.to(EditProfile(), id: null),
+          child: Text('プロフィールを編集する',
+              style: TextStyle(color: Colors.black45, fontSize: 10)),
+        ),
+      ),
+    );
+  }
+
+  Widget _userInformation(
+      String playedYear, String favoTrick, String homeGerende) {
+    return Container(
+      margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [Text("スノボ歴"), Text("得意な技"), Text("ホームゲレンデ")]),
+            Padding(
+              padding: EdgeInsets.all(30),
+            ),
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(playedYear),
+              Text(favoTrick),
+              Text(homeGerende)
+            ])
+          ],
+        ),
       ),
     );
   }

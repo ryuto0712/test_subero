@@ -6,7 +6,7 @@ class UserData {
   late String name; // 名前
   late String introduction; // 紹介文
   late String accountType; //プロorプラチナorノーマル
-  late int playedYear; //スノボ歴
+  late String playedYear; //スノボ歴
   late String favoTrick; //得意技、得意種目
   late String sponser; // スポンサー(あれば)
   late String license; //イントラ資格とか(あれば)
@@ -20,7 +20,7 @@ class UserData {
     this.name: '',
     this.introduction: '',
     this.accountType: '',
-    this.playedYear: 0,
+    this.playedYear: "",
     this.favoTrick: "",
     this.sponser: '',
     this.license: '',
@@ -34,15 +34,15 @@ class UserData {
     this.id = documentSnapshot.id;
     this.name = documentSnapshot["name"];
     this.introduction = documentSnapshot["introduction"];
-    this.accountType = documentSnapshot["accountType"];
-    this.playedYear = documentSnapshot["playedYear"];
-    this.favoTrick = documentSnapshot["favoTrick"];
+    this.accountType = documentSnapshot["account_type"];
+    this.playedYear = documentSnapshot["played_year"];
+    this.favoTrick = documentSnapshot["favo_trick"];
     this.sponser = documentSnapshot["sponser"];
     this.license = documentSnapshot["license"];
-    this.homeGerende = documentSnapshot["homeGerende"];
-    this.createdAt = documentSnapshot["createdAt"];
-    this.iconUrl = documentSnapshot["iconUrl"];
-    this.videoUrl = documentSnapshot["videoUrl"];
+    this.homeGerende = documentSnapshot["home_gerende"];
+    this.createdAt = documentSnapshot["created_at"];
+    this.iconUrl = documentSnapshot["icon_url"];
+    this.videoUrl = documentSnapshot["video_url"];
     print("名前付きコンストラクタが走りました。" + this.name);
   }
 }
