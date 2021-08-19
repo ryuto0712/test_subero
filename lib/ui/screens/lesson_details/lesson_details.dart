@@ -21,7 +21,8 @@ class LessonDetails extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: Get.back),
+        leading:
+            IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: Get.back),
       ),
       extendBodyBehindAppBar: true, // appBarの下で描画する
       body: Column(
@@ -45,7 +46,9 @@ class LessonDetails extends StatelessWidget {
             ),
           ),
           Container(
-            child: ElevatedButton(onPressed: () => Get.to(BeforePurchase(), id: null), child: Text('受講する')),
+            child: ElevatedButton(
+                onPressed: () => Get.to(BeforePurchase(), id: null),
+                child: Text('受講する')),
           ),
         ],
       ),

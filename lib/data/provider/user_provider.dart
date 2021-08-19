@@ -3,14 +3,14 @@ import '../model/user_model.dart';
 import "../model/models.dart";
 
 class UserProvider {
-  final CollectionReference users = FirebaseFirestore.instance.collection("users");
+  final CollectionReference users =
+      FirebaseFirestore.instance.collection("users");
 
 //ユーザの取得
   Future<UserModel> getUser(String uid) async {
     try {
       print("プロバイダでgetUserが走りました。");
-      DocumentSnapshot _doc =
-          await users.doc(uid).get();
+      DocumentSnapshot _doc = await users.doc(uid).get();
       print("プロバイダで値の取得が完了しました。" + _doc["name"]);
       var u = new UserModel.fromDocumentSnapshot(documentSnapshot: _doc);
       print("プロバイダでモデルに値が入りました。" + u.name);
@@ -21,7 +21,6 @@ class UserProvider {
     }
   }
 
-
 //ユーザ作成
   Future<String> createNewUser(UserModel userModel) async {
     String? userId;
@@ -29,15 +28,15 @@ class UserProvider {
       users.add({
         "name": userModel.name,
         "introduction": userModel.introduction,
-        "account_type" : userModel.accountType,
-        "career" : userModel.career,
-        "favorite_trick" : userModel.favoriteTrick,
-        "sponser" : userModel.sponser,
-        "license" : userModel.license,
-        "home_ski_resort" : userModel.homeSkiResort,
-        "created_at" : userModel.createdAt,
-        "edited_at" : userModel.editedAt,
-        "icon_url" : userModel.iconUrl,
+        "account_type": userModel.accountType,
+        "career": userModel.career,
+        "favorite_trick": userModel.favoriteTrick,
+        "sponser": userModel.sponser,
+        "license": userModel.license,
+        "home_ski_resort": userModel.homeSkiResort,
+        "created_at": userModel.createdAt,
+        "edited_at": userModel.editedAt,
+        "icon_url": userModel.iconUrl,
         "video_url": userModel.videoUrl,
       }).then((value) => {userId = value.id});
       return userId!;
@@ -48,20 +47,20 @@ class UserProvider {
   }
 
 //ユーザ情報の編集
-  Future<bool> editProfile(UserModel userModel,String uid) async {
+  Future<bool> editProfile(UserModel userModel, String uid) async {
     try {
       await users.doc(uid).set({
         "name": userModel.name,
         "introduction": userModel.introduction,
-        "account_type" : userModel.accountType,
-        "career" : userModel.career,
-        "favorite_trick" : userModel.favoriteTrick,
-        "sponser" : userModel.sponser,
-        "license" : userModel.license,
-        "home_ski_resort" : userModel.homeSkiResort,
-        "created_at" : userModel.createdAt,
-        "edited_at" : userModel.editedAt,
-        "icon_url" : userModel.iconUrl,
+        "account_type": userModel.accountType,
+        "career": userModel.career,
+        "favorite_trick": userModel.favoriteTrick,
+        "sponser": userModel.sponser,
+        "license": userModel.license,
+        "home_ski_resort": userModel.homeSkiResort,
+        "created_at": userModel.createdAt,
+        "edited_at": userModel.editedAt,
+        "icon_url": userModel.iconUrl,
         "video_url": userModel.videoUrl,
       });
       return true;

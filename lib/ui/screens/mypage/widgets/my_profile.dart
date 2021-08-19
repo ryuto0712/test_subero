@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:subero_mobile/ui/screens/index.dart';
-import 'package:subero_mobile/ui/widgets/index.dart';
+// import 'package:subero_mobile/ui/widgets/index.dart';
 import 'index.dart';
 
 class MyProfile extends StatefulWidget {
   String userName;
   String description;
-  // Map<String, String> ProfileMap;
   String video;
   int career;
   String favoriteTrick;
@@ -23,8 +22,7 @@ class MyProfile extends StatefulWidget {
 class _MyProfileState extends State<MyProfile> {
   @override
   Widget build(BuildContext context) {
-    return 
-      Column(
+    return Column(
       children: [
         Container(
           width: 300,
@@ -108,7 +106,7 @@ class _MyProfileState extends State<MyProfile> {
               padding: EdgeInsets.all(30),
             ),
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(career.toString() +"年"),
+              Text(career.toString() + "年"),
               Text(favoriteTrick),
               Text(homeSkiResort)
             ])
