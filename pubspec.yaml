@@ -36,6 +36,7 @@ dependencies:
   video_player: ^2.1.10 # 動画再生
   carousel_slider: ^4.0.0 # 画像スライド
   page_view_indicators: ^2.0.0 # スライドしたの○○○●
+  expandable_text: ^2.2.0 #文章の一部表示と全表示を切り替えられるやつ。ユーザページの自己紹介文
 
   # Firebase連携
   firebase_core: ^1.4.0

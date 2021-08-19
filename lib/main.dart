@@ -20,7 +20,7 @@ void main() async {
   await GetStorage.init(); // * get storageの初期化.
   // debugPaintSizeEnabled = true; // widgetのレンダリングチェック
   runApp(GetMaterialApp(
-    initialBinding: MyPageBinding(), //最初に呼び出すバインディング。理想的にはログインに関わるコントローラーの初期化のみにしたい。
+    // initialBinding: ;
     // debugShowCheckedModeBanner: true, // falseにすると右上のdebagのバナーが消える(が警告が出てくる)
     // initialRoute: Routes.INITIAL,
     // initialBinding: HomeBinding(),

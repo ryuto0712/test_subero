@@ -15,7 +15,15 @@ class PostInfomationList extends StatelessWidget {
     'イベント日時',
   ];
   static const List<String> _categoryList = ['カテゴリ1', 'カテゴリ2', 'カテゴリ3'];
-  static const List<String> _tagList = ['初心者', '中級者', '個人レッスン', 'グループレッスン', 'グラトリ', 'パーク', 'フリーラン'];
+  static const List<String> _tagList = [
+    '初心者',
+    '中級者',
+    '個人レッスン',
+    'グループレッスン',
+    'グラトリ',
+    'パーク',
+    'フリーラン'
+  ];
   static const List<String> _skiResorts = [
     '志賀高原スキー場',
     'ニセコユナイテッド',
@@ -28,16 +36,27 @@ class PostInfomationList extends StatelessWidget {
     'GALA湯沢スキー場',
     'ダイナランド',
   ];
-  static const List<String> _dateList = ['12/25 13:00~', '1/10 12:00~', '1/13 14:00~'];
+  static const List<String> _dateList = [
+    '12/25 13:00~',
+    '1/10 12:00~',
+    '1/13 14:00~'
+  ];
   // static const String _defaultValue = '未選択 >';
-  static const List<List<String>> _lists = [_categoryList, _tagList, _skiResorts, _dateList];
+  static const List<List<String>> _lists = [
+    _categoryList,
+    _tagList,
+    _skiResorts,
+    _dateList
+  ];
 
   late final List<dynamic> cList;
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
-      decoration: BoxDecoration(border: Border(top: BorderSide(width: 1, color: Colors.grey.shade400))),
+      decoration: BoxDecoration(
+          border:
+              Border(top: BorderSide(width: 1, color: Colors.grey.shade400))),
       child: Column(
         children: [for (int i = 0; i < listNames.length; i++) _bottomList(i)],
       ),
@@ -52,12 +71,14 @@ class PostInfomationList extends StatelessWidget {
         height: 40,
         alignment: Alignment.centerLeft,
         decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(width: 1, color: Colors.grey.shade400)),
+          border:
+              Border(bottom: BorderSide(width: 1, color: Colors.grey.shade400)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(listNames[i], style: TextStyle(fontSize: 14, color: Colors.grey[700])),
+            Text(listNames[i],
+                style: TextStyle(fontSize: 14, color: Colors.grey[700])),
             MyDropDown(_lists[i], i),
           ],
         ),

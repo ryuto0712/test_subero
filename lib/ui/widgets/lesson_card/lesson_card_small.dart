@@ -6,7 +6,8 @@ import 'package:subero_mobile/ui/screens/index.dart';
 import 'package:subero_mobile/ui/widgets/index.dart';
 
 class LessonCardSmall extends StatelessWidget {
-  LessonCardSmall(this.lessonName, this.hostName, this.lessonIcon, this.hostIcon);
+  LessonCardSmall(
+      this.lessonName, this.hostName, this.lessonIcon, this.hostIcon);
   final String lessonIcon;
   final String hostIcon;
   final String lessonName;
@@ -31,9 +32,12 @@ class LessonCardSmall extends StatelessWidget {
                   margin: EdgeInsets.only(bottom: 3),
                   decoration: BoxDecoration(
                       border: Border(
-                        bottom: BorderSide(width: 1, color: Colors.grey.shade300),
+                        bottom:
+                            BorderSide(width: 1, color: Colors.grey.shade300),
                       ),
-                      image: DecorationImage(fit: BoxFit.fitWidth, image: AssetImage(lessonIcon)))),
+                      image: DecorationImage(
+                          fit: BoxFit.fitWidth,
+                          image: AssetImage(lessonIcon)))),
               Container(
                 margin: EdgeInsets.only(bottom: 5),
                 child: Text(lessonName, style: TextStyle(fontSize: 10.5)),
@@ -44,7 +48,12 @@ class LessonCardSmall extends StatelessWidget {
                   onTap: () => Get.to(UserPage(), id: null),
                   child: Row(
                     children: [
-                      Container(margin: EdgeInsets.only(right: 5), child: CircleImage(hostIcon, 15, width: 1, color: Colors.grey.shade500), width: 15, height: 15),
+                      Container(
+                          margin: EdgeInsets.only(right: 5),
+                          child: CircleImage(hostIcon, 15,
+                              width: 1, color: Colors.grey.shade500),
+                          width: 15,
+                          height: 15),
                       Text(hostName, style: TextStyle(fontSize: 9)),
                     ],
                   ),

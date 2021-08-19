@@ -1,21 +1,21 @@
 // TODO: スノボ歴～～の表示
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:expandable_text/expandable_text.dart';
 
 import 'package:subero_mobile/ui/screens/index.dart';
-import 'package:subero_mobile/ui/widgets/index.dart';
+// import 'package:subero_mobile/ui/widgets/index.dart';
 import 'index.dart';
 
 class MyProfile extends StatefulWidget {
   String userName;
   String description;
-  // Map<String, String> ProfileMap;
   String video;
-  String playedYear;
-  String favoTrick;
-  String homeGerende;
-  MyProfile(this.userName, this.description, this.video, this.playedYear,
-      this.favoTrick, this.homeGerende);
+  int career;
+  String favoriteTrick;
+  String homeSkiResort;
+  MyProfile(this.userName, this.description, this.video, this.career,
+      this.favoriteTrick, this.homeSkiResort);
   @override
   _MyProfileState createState() => _MyProfileState();
 }
@@ -34,9 +34,9 @@ class _MyProfileState extends State<MyProfile> {
               MyPageIcon(widget.video),
               _userName(widget.userName),
               _userDescription(widget.description),
-              _profileEditButton(),
               _userInformation(
-                  widget.playedYear, widget.favoTrick, widget.homeGerende)
+                  widget.career, widget.favoriteTrick, widget.homeSkiResort),
+              _profileEditButton(),
             ],
           ),
         ),
@@ -67,9 +67,13 @@ class _MyProfileState extends State<MyProfile> {
       padding: EdgeInsets.only(top: 10),
       // alignment: ,
       width: 300,
-      child: Text(
+      child: ExpandableText(
         description,
-        style: TextStyle(fontSize: 12),
+        expandText: "もっと見る",
+        collapseText: "閉じる",
+        maxLines: 3,
+        linkColor: Colors.black38,
+        style: TextStyle(fontSize: 13),
         textAlign: TextAlign.center,
       ),
     );
@@ -93,7 +97,7 @@ class _MyProfileState extends State<MyProfile> {
   }
 
   Widget _userInformation(
-      String playedYear, String favoTrick, String homeGerende) {
+      int career, String favoriteTrick, String homeSkiResort) {
     return Container(
       margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: Center(
@@ -107,9 +111,9 @@ class _MyProfileState extends State<MyProfile> {
               padding: EdgeInsets.all(30),
             ),
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(playedYear),
-              Text(favoTrick),
-              Text(homeGerende)
+              Text(career.toString() + "年"),
+              Text(favoriteTrick),
+              Text(homeSkiResort)
             ])
           ],
         ),
