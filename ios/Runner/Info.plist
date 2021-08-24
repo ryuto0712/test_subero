@@ -47,5 +47,18 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<!-- imagepicker用？ -->
+	<key>NSPhotoLibraryUsageDescription</key>
+<string>This app requires to access your photo library</string>
+<key>NSCameraUsageDescription</key>
+<string>This app requires to add file to your camera</string>
+<key>NSMicrophoneUsageDescription</key>
+<string>This app requires to add file to your photo library your microphone</string>
+	<!-- VideoPlayer用？ -->
+	<key>NSAppTransportSecurity</key>
+  <dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+  </dict>
 </dict>
 </plist>

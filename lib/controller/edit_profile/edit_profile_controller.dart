@@ -2,6 +2,9 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import "../../data/model/user_model.dart";
 import '../../data/repository/user_repository.dart';
+import 'dart:io';
+import 'package:path/path.dart' as path;
+import 'package:image_picker/image_picker.dart';
 
 class EditProfileController extends GetxController {
   final GetStorage box = GetStorage();
@@ -13,7 +16,13 @@ class EditProfileController extends GetxController {
   set user(value) => this._user.value = value;
   get user => this._user.value;
 
-//編集前の情報を取得してから、それを書き換えて、firebaseに入れれ売いかなと思ったけど、うまい書き方が分からんから力技気味。
+  final _fileName = <String, String>{
+    "value": "",
+  }.obs;
+  get fileName => this._fileName["value"];
+  set fileName(value) => this._fileName["value"] = value;
+
+//編集前の情報を取得してから、それを書き換えて、firebaseに入れればいかなと思ったけど、うまい書き方が分からんから力技気味。
   EditProfileController({required this.repository}) {
     Future<UserModel> userInformation = repository.getUser(userId);
     userInformation.then((data) {
@@ -30,6 +39,39 @@ class EditProfileController extends GetxController {
       _user.value.iconUrl = data.iconUrl;
       _user.value.videoUrl = data.videoUrl;
     });
+  }
+
+  editImage() async {
+    //image pickerでファイルを選択
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    final fileName = path.basename(pickedFile!.path);
+    final file = File(pickedFile.path);
+    try {
+      //選択したファイルをアップロードして、そのurlをコントローラに保存
+      String url = await repository.uploadImage(file, userId, fileName);
+      _user.value.iconUrl = url;
+    } catch (e) {
+      print("controller error :$e");
+      rethrow;
+    }
+  }
+
+  editVideo() async {
+    //image pickerでファイルを選択
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickVideo(source: ImageSource.gallery);
+    final fileName = path.basename(pickedFile!.path);
+    final file = File(pickedFile.path);
+    _fileName["value"] = fileName;
+    try {
+      //選択したファイルをアップロードして、そのurlをコントローラに保存
+      String url = await repository.uploadVideo(file, userId, fileName);
+      _user.value.videoUrl = url;
+    } catch (e) {
+      print("controller error :$e");
+      rethrow;
+    }
   }
 
   editProfile() async {
