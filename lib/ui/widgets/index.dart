@@ -11,3 +11,4 @@ export 'like_button.dart';
 export 'movie_player.dart';
 export 'search_bar.dart';
 export 'comment.dart';
+export 'network_circle_image.dart';

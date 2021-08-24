@@ -3,11 +3,8 @@ import 'package:get/get.dart';
 import 'package:subero_mobile/controller/edit_profile/edit_profile_controller.dart';
 import 'package:subero_mobile/data/provider/providers.dart';
 import 'package:subero_mobile/data/repository/repositorys.dart';
-import 'package:subero_mobile/ui/screens/edit_profile/widget/career_field.dart';
-import 'package:subero_mobile/ui/screens/edit_profile/widget/favorite_trick_field.dart';
-import 'package:subero_mobile/ui/screens/edit_profile/widget/home_ski_resort_field.dart';
-import 'package:subero_mobile/ui/screens/edit_profile/widget/introduction_field.dart';
-import 'package:subero_mobile/ui/screens/edit_profile/widget/name_edit_field.dart';
+import 'package:subero_mobile/ui/screens/edit_profile/widget/index.dart';
+import 'package:subero_mobile/ui/widgets/index.dart';
 
 // TODO: 二回目以降の画面遷移でしかテキストボックスの初期値が行事されない
 // TODO: 写真と動画の設定
@@ -30,6 +27,8 @@ class EditProfile extends StatelessWidget {
             width: 300,
             child: Column(
               children: [
+                IconChange(),
+                VideoChange(),
                 NameField(),
                 IntroductionField(),
                 CareerField(),

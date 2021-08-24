@@ -30,7 +30,7 @@ class AppPages {
     GetPage(name: Routes.QUESTION_AND_ANSWER, page: () => QuestionAndAnswer(), binding: MyPageBinding()),
     GetPage(name: Routes.SEARCHED, page: () => Searched(), binding: MyPageBinding()),
     GetPage(name: Routes.USER_PAGE, page: () => UserPage(), binding: MyPageBinding()),
-    GetPage(name: Routes.VIDEO, page: () => Video("a"), binding: MyPageBinding()),
+    GetPage(name: Routes.VIDEO, page: () => Video(), binding: MyPageBinding()),
     GetPage(name: Routes.POST_EVENT, page: () => PostEvent(), binding: LessonPostBinding()),
   ];
 }

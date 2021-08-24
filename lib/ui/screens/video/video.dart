@@ -1,59 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:subero_mobile/ui/widgets/index.dart';
+import '../../../controller/my_page/user_controller.dart';
+import 'package:video_player/video_player.dart';
 
-class Video extends StatelessWidget {
-  final String videoUrl;
-  Video(this.videoUrl);
+class Video extends StatefulWidget {
+  @override
+  _VideoPlayerPageState createState() => _VideoPlayerPageState();
+}
+
+class _VideoPlayerPageState extends State<Video> {
+  UserController c = Get.find<UserController>();
+  late VideoPlayerController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = VideoPlayerController.network(c.user.videoUrl);
+    _controller.initialize().then((_) {
+      // 最初のフレームを描画するため初期化後に更新
+      setState(() {});
+      _controller.play();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    print('video now and the url is $videoUrl');
-    return Stack(
-      children: <Widget>[
-        // new Container(
-        //   height: double.infinity,
-        //   width: double.infinity,
-        //   decoration: new BoxDecoration(
-        //     image: new DecorationImage(
-        //       image: new AssetImage(videoUrl),
-        //       fit: BoxFit.cover,
-        //     ),
-        //   ),
-        // ),
-        Container(
-          color: Colors.black,
-          child: MoviePlayer(videoUrl),
-        ),
-        Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: new AppBar(
-            title: const Text("Standard AppBar"),
-            iconTheme: IconThemeData(
-              color: Colors.grey, //change your color here
+    return Scaffold(
+      body: GestureDetector(
+        //下方向へのスワイプで前の画面に戻る
+        onPanDown: (detail) => Get.back(),
+        child: Container(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            AspectRatio(
+              aspectRatio: _controller.value.aspectRatio,
+              child: VideoPlayer(_controller),
             ),
-            leading: IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: () => Get.back()),
-            backgroundColor: Colors.transparent,
-            elevation: 0.0,
-          ),
-          body: new Container(
-            color: Colors.transparent,
-          ),
-        ),
-      ],
+          ],
+        )),
+      ),
     );
-
-    // return Stack(
-    //   children: <Widget>[
-    //
-    //     // Scaffold(
-    //     //   appBar: AppBar(
-    //     //     backgroundColor: Colors.transparent,
-    //     //     elevation: 0.0,
-    //     //   ),
-    //     //   body: Container(color: Colors.transparent),
-    //     // ),
-    //   ],
-    // );
   }
 }

@@ -11,10 +11,11 @@ class MyProfile extends StatefulWidget {
   String userName;
   String description;
   String video;
+  String iconUrl;
   int career;
   String favoriteTrick;
   String homeSkiResort;
-  MyProfile(this.userName, this.description, this.video, this.career,
+  MyProfile(this.userName, this.description, this.video,this.iconUrl, this.career,
       this.favoriteTrick, this.homeSkiResort);
   @override
   _MyProfileState createState() => _MyProfileState();
@@ -31,7 +32,7 @@ class _MyProfileState extends State<MyProfile> {
           color: Colors.white,
           child: Column(
             children: [
-              MyPageIcon(widget.video),
+              MyPageIcon(widget.video , widget.iconUrl),
               _userName(widget.userName),
               _userDescription(widget.description),
               _userInformation(

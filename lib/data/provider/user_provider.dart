@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../model/user_model.dart';
 import "../model/models.dart";
+import 'package:firebase_storage/firebase_storage.dart';
+import 'dart:io';
 
 class UserProvider {
   final CollectionReference users =
@@ -66,4 +68,33 @@ class UserProvider {
       rethrow;
     }
   }
+
+  Future<String> uploadImage(File file ,String uid, String fileName) async {
+    FirebaseStorage storage = FirebaseStorage.instance;
+    UploadTask task = storage.ref("user_icon").child('$uid-$fileName').putFile(file);
+    try {
+      TaskSnapshot snapshot = await task;
+      final url = await snapshot.ref.getDownloadURL();
+      return url;
+    } catch (e) {
+      print(task.snapshot);
+      print("provider error :$e");
+      rethrow;
+    }
+  }
+
+  Future<String> uploadVideo(File file ,String uid ,String fileName) async {
+    FirebaseStorage storage = FirebaseStorage.instance;
+    UploadTask task = storage.ref("user_video").child('$uid-$fileName').putFile(file);
+    try {
+      TaskSnapshot snapshot = await task;
+      final url = await snapshot.ref.getDownloadURL();
+      return url;
+    } catch (e) {
+      print(task.snapshot);
+      print("provider error :$e");
+      rethrow;
+    }
+  }
+
 }

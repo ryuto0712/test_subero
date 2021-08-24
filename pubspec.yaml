@@ -33,7 +33,6 @@ dependencies:
   get:
   get_storage:
 
-  video_player: ^2.1.10 # 動画再生
   carousel_slider: ^4.0.0 # 画像スライド
   page_view_indicators: ^2.0.0 # スライドしたの○○○●
   expandable_text: ^2.2.0 #文章の一部表示と全表示を切り替えられるやつ。ユーザページの自己紹介文
@@ -49,6 +48,9 @@ dependencies:
   # flutter_search_bar: ^3.0.0-dev.1
 
   image_picker: ^0.8.3+2 # 画像選択
+  path_provider: ^2.0.2 #画像関係
+  video_player: ^2.1.14 #動画再生
+  path: ^1.8.0 #ファイルのパス関連(ファイル名の取得)
 
 dev_dependencies:
   flutter_test:
