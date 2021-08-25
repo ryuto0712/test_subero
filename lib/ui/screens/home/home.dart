@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:subero_mobile/ui/screens/auth/sign_up.dart';
 import 'widgets/index.dart';
 import "package:get/get.dart";
 
@@ -19,8 +20,8 @@ class Home extends StatelessWidget {
               Categories(),
               AreaLessons(area),
               NewLessons(constraints.maxWidth),
-              // FloatingActionButton(onPressed: ()=>Get.toNamed("/mypage"),child:Text("move_mypage")),
               Image.asset('images/home.png'),
+              FloatingActionButton(onPressed: ()=>Get.to(SignUp()),child:Text("登録ページへ")),
             ],
           );
         },

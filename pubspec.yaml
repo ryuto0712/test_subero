@@ -51,6 +51,7 @@ dependencies:
   path_provider: ^2.0.2 #画像関係
   video_player: ^2.1.14 #動画再生
   path: ^1.8.0 #ファイルのパス関連(ファイル名の取得)
+  flutter_easyloading: ^3.0.0 #ローディング
 
 dev_dependencies:
   flutter_test:

@@ -12,8 +12,8 @@ class UserRepository {
     return userProvider.getUser(uid);
   }
 
-  createNewUser(UserModel userModel) {
-    return userProvider.createNewUser(userModel);
+  createNewUser(String email , String name) {
+    return userProvider.createNewUser(email,name);
   }
 
   editProfile(UserModel userModel, String uid) {

@@ -21,24 +21,12 @@ class UserProvider {
   }
 
 //ユーザ作成
-  Future<String> createNewUser(UserModel userModel) async {
-    String? userId;
+  Future<bool> createNewUser(String email, String name) async {
     try {
-      users.add({
-        "name": userModel.name,
-        "introduction": userModel.introduction,
-        "account_type": userModel.accountType,
-        "career": userModel.career,
-        "favorite_trick": userModel.favoriteTrick,
-        "sponser": userModel.sponser,
-        "license": userModel.license,
-        "home_ski_resort": userModel.homeSkiResort,
-        "created_at": userModel.createdAt,
-        "edited_at": userModel.editedAt,
-        "icon_url": userModel.iconUrl,
-        "video_url": userModel.videoUrl,
-      }).then((value) => {userId = value.id});
-      return userId!;
+      await users.doc(email).set({
+        "name": name,
+      });
+      return true;
     } catch (e) {
       print('Privider Error: $e');
       rethrow;
@@ -69,9 +57,10 @@ class UserProvider {
     }
   }
 
-  Future<String> uploadImage(File file ,String uid, String fileName) async {
+  Future<String> uploadImage(File file, String uid, String fileName) async {
     FirebaseStorage storage = FirebaseStorage.instance;
-    UploadTask task = storage.ref("user_icon").child('$uid-$fileName').putFile(file);
+    UploadTask task =
+        storage.ref("user_icon").child('$uid-$fileName').putFile(file);
     try {
       TaskSnapshot snapshot = await task;
       final url = await snapshot.ref.getDownloadURL();
@@ -83,9 +72,10 @@ class UserProvider {
     }
   }
 
-  Future<String> uploadVideo(File file ,String uid ,String fileName) async {
+  Future<String> uploadVideo(File file, String uid, String fileName) async {
     FirebaseStorage storage = FirebaseStorage.instance;
-    UploadTask task = storage.ref("user_video").child('$uid-$fileName').putFile(file);
+    UploadTask task =
+        storage.ref("user_video").child('$uid-$fileName').putFile(file);
     try {
       TaskSnapshot snapshot = await task;
       final url = await snapshot.ref.getDownloadURL();
@@ -96,5 +86,4 @@ class UserProvider {
       rethrow;
     }
   }
-
 }
