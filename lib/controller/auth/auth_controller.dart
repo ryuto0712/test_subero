@@ -1,10 +1,13 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:subero_mobile/main.dart';
+import 'package:subero_mobile/ui/screens/auth/sign_up.dart';
 import '../../data/repository/auth_repository.dart';
 import '../../data/repository/user_repository.dart';
 import '../../ui/screens/home/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import '../../main.dart';
 
 class AuthController extends GetxController {
   final GetStorage box = GetStorage();
@@ -15,6 +18,7 @@ class AuthController extends GetxController {
   RxString email = ''.obs;
   RxString password = "".obs;
   RxString name = "".obs;
+  // late RxBool loggedIn ;
 
   void emailChanged(String value) => email.value = value;
   void passwordChanged(String value) => password.value = value;
@@ -22,21 +26,37 @@ class AuthController extends GetxController {
 
   registerUser() async {
     try {
-      final userId = await authRepository.registerUser(email.value, password.value);
+      final userId =
+          await authRepository.registerUser(email.value, password.value);
       await userRepository.createNewUser(userId, name.value);
       box.write("userName", name.value);
       box.write("userId", userId);
-      // Get.toNamed("/home");
-      Get.to(Home());
+      Get.to(MyApp());
     } catch (e) {
       print('Controller Error: $e');
       rethrow;
     }
   }
+
+  loginFromEmail() async {
+    try {
+      await authRepository.loginFromEmail(email.value, password.value);
+      Get.to(MyApp());
+    } catch (e) {
+      print('Controller Error: $e');
+      rethrow;
+    }
+  }
+
+  loginCheck() {
+    try {
+      authRepository.loginCheck();
+    } catch (e) {
+      print("controller error: $e");
+      Get.to(SignUp());
+    }
+  }
 }
-
-
-
 
 // import 'package:connectivity/connectivity.dart';
 // import 'package:email_validator/email_validator.dart';
@@ -84,4 +104,3 @@ class AuthController extends GetxController {
 //       Get.offNamed(Routes.DASHBOARD);
 //     }
 //   }
-

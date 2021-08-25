@@ -9,8 +9,7 @@ import 'package:image_picker/image_picker.dart';
 class EditProfileController extends GetxController {
   final GetStorage box = GetStorage();
   final UserRepository repository;
-  // String userId = box.read("userId");
-  String userId = "1";
+  // String userId = "1";
 
   final _user = UserModel().obs;
   set user(value) => this._user.value = value;
@@ -24,6 +23,7 @@ class EditProfileController extends GetxController {
 
 //編集前の情報を取得してから、それを書き換えて、firebaseに入れればいかなと思ったけど、うまい書き方が分からんから力技気味。
   EditProfileController({required this.repository}) {
+  String userId = box.read("userId");
     Future<UserModel> userInformation = repository.getUser(userId);
     userInformation.then((data) {
       _user.value.name = data.name;
@@ -42,6 +42,7 @@ class EditProfileController extends GetxController {
   }
 
   editImage() async {
+  String userId = box.read("userId");
     //image pickerでファイルを選択
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
@@ -58,6 +59,7 @@ class EditProfileController extends GetxController {
   }
 
   editVideo() async {
+  String userId = box.read("userId");
     //image pickerでファイルを選択
     final picker = ImagePicker();
     final pickedFile = await picker.pickVideo(source: ImageSource.gallery);
@@ -75,6 +77,7 @@ class EditProfileController extends GetxController {
   }
 
   editProfile() async {
+  String userId = box.read("userId");
     try {
       _user.value.editedAt = DateTime.now();
 

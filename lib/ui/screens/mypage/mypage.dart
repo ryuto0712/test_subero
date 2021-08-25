@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:subero_mobile/data/provider/providers.dart';
 import 'package:subero_mobile/data/repository/repositorys.dart';
 import '../../../controller/my_page/user_controller.dart';
@@ -15,22 +16,9 @@ class MyPage extends GetView<UserController> {
 
   @override
   Widget build(BuildContext context) {
-
-  //   var imageUrl="https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3".obs;
-
-  //   Future<void> download() async{
-  // // FirebaseStorage storage = FirebaseStorage.instance;
-  // // Reference imageRef = storage.ref().child("user_icon").child('308866.png');
-  // // final url = await imageRef.getDownloadURL();
-  // // // imageUrl = url.toString().obs;
-  // // final img = new Image.network(imageUrl);
-  //   }
-
-
-
-    // final UserController c = Get.find<UserController>();
     final UserController c = Get.put(UserController(repository: UserRepository(userProvider: UserProvider())));
-    c.getUser("1");
+    final GetStorage box = GetStorage();
+    c.getUser(box.read("userId"));
     // download();
     String video = 'images/icon_sample.png';
     return Scaffold(

@@ -11,6 +11,7 @@ import './routes/routes.dart';
 import 'ui/screens/index.dart';
 import 'ui/theme/app_theme.dart';
 import './bindings/bidings.dart';
+import './ui/screens/auth/login_check.dart';
 
 // todo: 現在のルートのアイコンを押したらルートの初期ページに直接移動できない
 
@@ -27,7 +28,7 @@ void main() async {
     theme: appThemeData,
     defaultTransition: Transition.fade,
     getPages: AppPages.routes,
-    home: MyApp(),
+    home: LoginCheck(),
   ));
 }
 
@@ -48,10 +49,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: ログイン時にgetStrageに主なユーザーデータを保存
-    box.write('userId', 'sample_1');
-    box.write('userName', 'Kambayashi Izuru');
-    box.write('userIcon', 'images/icon_sample.png');
-    box.write('userRating', 4.0);
+    // box.write('userId', 'sample_1');
+    // box.write('userName', 'Kambayashi Izuru');
+    // box.write('userIcon', 'images/icon_sample.png');
+    // box.write('userRating', 4.0);
 
     return Scaffold(
       bottomNavigationBar: buildBottomNavigationMenu(tabController),

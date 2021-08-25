@@ -33,15 +33,26 @@ class SignUp extends StatelessWidget {
                 Text("パスワード"),
                 TextField(onChanged: (value) => c.passwordChanged(value)),
                 Padding(padding: EdgeInsets.only(top: 10)),
-                ElevatedButton(
-                  onPressed: () => {c.registerUser()},
-                  child: Text("登録",
-                      style: TextStyle(color: Colors.black45, fontSize: 20)),
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white),
+                Row(children: [
+                  ElevatedButton(
+                    onPressed: () => {c.registerUser()},
+                    child: Text("登録",
+                        style: TextStyle(color: Colors.black45, fontSize: 20)),
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.white),
+                    ),
                   ),
-                ),
+                  ElevatedButton(
+                    onPressed: () => {c.loginFromEmail()},
+                    child: Text("ログイン",
+                        style: TextStyle(color: Colors.black45, fontSize: 20)),
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.white),
+                    ),
+                  ),
+                ]),
               ],
             ),
           ),

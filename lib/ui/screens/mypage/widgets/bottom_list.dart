@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:subero_mobile/routes/app_routes.dart';
+import 'package:subero_mobile/ui/screens/auth/sign_up.dart';
 import 'package:subero_mobile/ui/screens/index.dart';
 
 class BottomList extends StatelessWidget {
@@ -10,10 +11,7 @@ class BottomList extends StatelessWidget {
     'アカウント設定',
     '通知設定',
   ];
-  static const List<String> buttonName2 = [
-    'よくある質問',
-    'ガイド',
-  ];
+  static const List<String> buttonName2 = ['よくある質問', 'ガイド', 'ログアウト'];
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +21,7 @@ class BottomList extends StatelessWidget {
           _backGround(),
           for (int i = 0; i < 3; i++) _bottomList(context, buttonName1[i]),
           _backGround(),
-          for (int i = 0; i < 2; i++) _bottomList(context, buttonName2[i]),
+          for (int i = 0; i < 3; i++) _bottomList(context, buttonName2[i]),
           _backGround(),
         ],
       ),
@@ -38,11 +36,13 @@ class BottomList extends StatelessWidget {
         width: 400, // #todo: 幅の設定
         alignment: Alignment.centerLeft,
         decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(width: 1, color: Colors.grey.shade400)),
+          border:
+              Border(bottom: BorderSide(width: 1, color: Colors.grey.shade400)),
         ),
         child: Container(
           margin: EdgeInsets.only(left: 40),
-          child: Text(text, style: TextStyle(fontSize: 14, color: Colors.grey[700])),
+          child: Text(text,
+              style: TextStyle(fontSize: 14, color: Colors.grey[700])),
         ),
       ),
     );
@@ -52,10 +52,17 @@ class BottomList extends StatelessWidget {
     return Container(
       height: 10,
       decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(width: 1, color: Colors.grey.shade400)),
+        border:
+            Border(bottom: BorderSide(width: 1, color: Colors.grey.shade400)),
         color: Colors.grey[200],
       ),
     );
+  }
+
+  logOut() async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    await auth.signOut();
+    Get.to(SignUp());
   }
 
   onTap(BuildContext context, String text) {
@@ -74,6 +81,9 @@ class BottomList extends StatelessWidget {
 
       case 'ガイド':
         return Get.toNamed(Routes.GUIDE, parameters: {'id': 'sample1'});
+
+      case 'ログアウト':
+        return logOut();
     }
   }
 }
