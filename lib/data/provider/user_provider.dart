@@ -2,11 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../model/user_model.dart';
 import "../model/models.dart";
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:get_storage/get_storage.dart';
 import 'dart:io';
 
 class UserProvider {
   final CollectionReference users =
       FirebaseFirestore.instance.collection("users");
+  final GetStorage box = GetStorage();
 
 //ユーザの取得
   Future<UserModel> getUser(String uid) async {
@@ -21,14 +23,28 @@ class UserProvider {
   }
 
 //ユーザ作成
-  Future<bool> createNewUser(String email, String name) async {
+  Future<bool> createNewUser(String userId, String name) async {
     try {
-      await users.doc(email).set({
+      await users.doc(userId).set({
         "name": name,
+        "introduction": "",
+        "account_type": "normal",
+        "career": 1,
+        "favorite_trick": "",
+        "sponser": "",
+        "license": "",
+        "home_ski_resort": "",
+        "created_at": DateTime.now(),
+        "edited_at": DateTime.now(),
+        "icon_url":
+            "https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3",
+        "video_url":
+            "https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_video%2F1-image_picker6901468253184652419.mp4?alt=media&token=bf5f99e4-fc00-487c-83b4-5169d6d836fc",
+        "rating": 0,
       });
       return true;
     } catch (e) {
-      print('Privider Error: $e');
+      print('Provider Error: $e');
       rethrow;
     }
   }
@@ -49,7 +65,12 @@ class UserProvider {
         "edited_at": userModel.editedAt,
         "icon_url": userModel.iconUrl,
         "video_url": userModel.videoUrl,
+        "rating": userModel.rating,
       });
+      box.write("userName", userModel.name);
+      box.write("userId", uid);
+      box.write("userIcon", userModel.iconUrl);
+      box.write("userRating", userModel.rating);
       return true;
     } catch (e) {
       print('Provider Error: $e');

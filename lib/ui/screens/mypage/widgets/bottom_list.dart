@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:subero_mobile/routes/app_routes.dart';
-import 'package:subero_mobile/ui/screens/auth/sign_up.dart';
+import 'package:subero_mobile/ui/screens/auth/sign_in.dart';
 import 'package:subero_mobile/ui/screens/index.dart';
 
 class BottomList extends StatelessWidget {
@@ -62,7 +62,7 @@ class BottomList extends StatelessWidget {
   logOut() async {
     final FirebaseAuth auth = FirebaseAuth.instance;
     await auth.signOut();
-    Get.to(SignUp());
+    Get.to(SignIn());
   }
 
   onTap(BuildContext context, String text) {

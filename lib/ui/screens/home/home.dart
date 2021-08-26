@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:subero_mobile/ui/screens/auth/sign_up.dart';
 import 'widgets/index.dart';
-import "package:get/get.dart";
-import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class Home extends StatelessWidget {
   final String area = '湯沢';
   final GetStorage box = GetStorage();
-  var name = "none".obs;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +21,9 @@ class Home extends StatelessWidget {
               AreaLessons(area),
               NewLessons(constraints.maxWidth),
               Image.asset('images/home.png'),
-              FloatingActionButton(onPressed: ()=>Get.to(SignUp()),child:Text("登録ページへ")),
-              Obx(()=>Text(name.toString())),
-              FloatingActionButton(onPressed: () => print(box.read("userId")),child:Text("ユーザ")),
+              FloatingActionButton(
+                  onPressed: () => print(box.read("userId")),
+                  child: Text("ユーザ")),
             ],
           );
         },
