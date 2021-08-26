@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'widgets/index.dart';
-import "package:get/get.dart";
+import 'package:get_storage/get_storage.dart';
 
 class Home extends StatelessWidget {
   final String area = '湯沢';
+  final GetStorage box = GetStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +20,10 @@ class Home extends StatelessWidget {
               Categories(),
               AreaLessons(area),
               NewLessons(constraints.maxWidth),
-              // FloatingActionButton(onPressed: ()=>Get.toNamed("/mypage"),child:Text("move_mypage")),
               Image.asset('images/home.png'),
+              FloatingActionButton(
+                  onPressed: () => print(box.read("userId")),
+                  child: Text("ユーザ")),
             ],
           );
         },

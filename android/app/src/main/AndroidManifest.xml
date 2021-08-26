@@ -40,6 +40,8 @@
     </application>
     <!-- firebaseデータ取得エラー回避(意味なし) -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- android実機エラー防止 -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- 動画再生用 -->
     <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
