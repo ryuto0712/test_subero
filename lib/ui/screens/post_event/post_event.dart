@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:subero_mobile/controller/lesson_post/lesson_post_controller.dart';
 import 'package:subero_mobile/data/provider/lesson_provider.dart';
+import 'package:subero_mobile/data/provider/providers.dart';
 import 'package:subero_mobile/data/repository/lesson_repository.dart';
+import 'package:subero_mobile/data/repository/repositorys.dart';
 import 'package:subero_mobile/ui/screens/post_event/widgets/post_infomation_list.dart';
 import 'widgets/index.dart';
 
@@ -14,9 +16,12 @@ import 'widgets/index.dart';
 class PostEvent extends StatelessWidget {
   // LessonPostController c = Get.find();
   // bindingできてなさそうだったのでベタ書き
-  final LessonPostController c = Get.put(LessonPostController(
-      repository: LessonRepository(lessonProvider: LessonProvider())));
-  PostEvent();
+  final LessonPostController c = Get.put(
+    LessonPostController(
+      lessonRepository: LessonRepository(lessonProvider: LessonProvider()),
+      userRepository: UserRepository(userProvider: UserProvider()),
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +29,7 @@ class PostEvent extends StatelessWidget {
       // appBar: AppBar(title: Text('イベントの投稿')),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios), onPressed: () => Get.back()),
+        leading: IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: () => Get.back()),
         elevation: 0.0,
       ),
       // extendBodyBehindAppBar: true,
@@ -37,12 +41,8 @@ class PostEvent extends StatelessWidget {
               onChanged: (text) => c.lesson.lessonName = text,
               maxLines: null, // 折り返しの設定
               decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey)),
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey)),
+                enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.grey)),
+                focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.grey)),
                 labelText: '新規レッスン名',
               ),
             ),
@@ -53,12 +53,8 @@ class PostEvent extends StatelessWidget {
               onChanged: (text) => {},
               maxLines: null, // 折り返しの設定
               decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey)),
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey)),
+                enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.grey)),
+                focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.grey)),
               ),
             ),
             Text('レッスン説明'),
@@ -67,17 +63,12 @@ class PostEvent extends StatelessWidget {
               maxLines: null, // 折り返しの設定
               minLines: 5,
               decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey)),
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey)),
+                enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.grey)),
+                focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.grey)),
               ),
             ),
             LessonPriceAndTime(),
-            ElevatedButton(
-                onPressed: () => {c.postLesson()}, child: Text('投稿')),
+            ElevatedButton(onPressed: () => {c.postLesson()}, child: Text('投稿')),
             Image.asset('images/event_post.png'),
           ],
         ),

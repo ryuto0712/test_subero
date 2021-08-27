@@ -8,9 +8,7 @@ import 'package:subero_mobile/controller/auth/auth_controller.dart';
 import 'package:subero_mobile/ui/screens/auth/mail_sign_up.dart';
 
 class SignIn extends StatelessWidget {
-  final AuthController c = Get.put(AuthController(
-      authRepository: AuthRepository(authProvider: AuthProvider()),
-      userRepository: UserRepository(userProvider: UserProvider())));
+  final AuthController c = Get.put(AuthController(authRepository: AuthRepository(authProvider: AuthProvider()), userRepository: UserRepository(userProvider: UserProvider())));
   SignIn();
 
   @override
@@ -26,17 +24,18 @@ class SignIn extends StatelessWidget {
             child: Column(
               children: [
                 Text("メールアドレス"),
-                TextField(onChanged: (value) => c.emailChanged(value)),
+                TextField(
+                  onChanged: (value) => c.emailChanged(value),
+                  keyboardType: TextInputType.emailAddress,
+                ),
                 Text("パスワード"),
-                TextField(onChanged: (value) => c.passwordChanged(value)),
+                TextField(onChanged: (value) => c.passwordChanged(value), keyboardType: TextInputType.visiblePassword),
                 Padding(padding: EdgeInsets.only(top: 10)),
                 ElevatedButton(
                   onPressed: () => {c.signInWithEmail()},
-                  child: Text("ログイン",
-                      style: TextStyle(color: Colors.black45, fontSize: 20)),
+                  child: Text("ログイン", style: TextStyle(color: Colors.black45, fontSize: 20)),
                   style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white),
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
                   ),
                 ),
                 GestureDetector(
