@@ -14,11 +14,11 @@ class Message extends StatelessWidget {
         title: Text('メッセージ一覧'),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
+      body: Container(
         child: Column(
           children: <Widget>[
             MessageContents(),
-            Image.asset('images/message.png'),
+            // Image.asset('images/message.png'),
           ],
         ),
       ),

@@ -21,7 +21,7 @@ class PostedLessonCardController extends GetxController {
         ];
         this._lessons.value = RxList(await repository.searchLessons(queries));
       } catch (e) {
-        print('投稿されたレッスン情報を取得できませんでした．$e');
+        print('PostedLessonCardController Error: $e');
       }
     }
   }
