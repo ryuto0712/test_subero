@@ -29,7 +29,7 @@ class LessonNameCard extends StatelessWidget {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(right: 10),
-                  child: Obx(() => CircleImage(c.messages.hostIcon, 40)),
+                  child: Obx(() => NetworkCircleImage(40, imageUrl: c.messages.hostIcon)),
                 ),
                 Obx(() => Text(c.messages.hostName, style: TextStyle(fontSize: 20, color: Colors.grey))),
               ],

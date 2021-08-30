@@ -3,11 +3,16 @@ import 'package:subero_mobile/data/model/lesson_model.dart';
 import 'package:subero_mobile/ui/widgets/index.dart';
 
 class PublishedPost extends StatelessWidget {
-  PublishedPost();
-  List<LessonModel> lessons = [
-    LessonModel(lessonId: 'sample_1', lessonName: 'lessonName', hostName: 'toichi shogo', lessonImage: 'images/app_icon.png', hostIcon: 'images/app_icon2.png', price: 3000),
-    LessonModel(lessonId: 'sample_1', lessonName: 'lessonName', hostName: 'toichi shogo', lessonImage: 'images/app_icon.png', hostIcon: 'images/app_icon2.png', price: 3000),
-    LessonModel(lessonId: 'sample_1', lessonName: 'lessonName', hostName: 'toichi shogo', lessonImage: 'images/app_icon.png', hostIcon: 'images/app_icon2.png', price: 3000),
+  final List<LessonModel> lessons = [
+    for (int i = 0; i < 3; i++)
+      LessonModel(
+        lessonId: 'sample_$i',
+        lessonName: 'lessonName$i',
+        hostName: 'toichi shogo',
+        lessonImage: 'https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3',
+        hostIcon: 'https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3',
+        price: 3000,
+      ),
   ];
 
   @override
@@ -31,7 +36,7 @@ class PublishedPost extends StatelessWidget {
       children: <Widget>[
         for (int i = 0; i < lessons.length; i++)
           LessonCardWide(
-            lessonId: lessons[i].lessonId,
+            lesson: lessons[i],
             width: 400,
           ),
       ],

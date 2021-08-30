@@ -68,7 +68,10 @@ class PostEvent extends StatelessWidget {
               ),
             ),
             LessonPriceAndTime(),
-            ElevatedButton(onPressed: () => {c.postLesson()}, child: Text('投稿')),
+            ElevatedButton(
+              onPressed: () => {c.postLesson(), Get.back()},
+              child: Text('投稿'),
+            ),
             Image.asset('images/event_post.png'),
           ],
         ),

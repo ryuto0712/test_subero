@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:subero_mobile/data/model/lesson_model.dart';
 import 'package:subero_mobile/ui/widgets/index.dart';
 
 class AreaLessons extends StatelessWidget {
@@ -22,20 +23,20 @@ class AreaLessons extends StatelessWidget {
     'TOICHI SHOGO',
   ];
   final List<String> lessonIcons = [
-    'images/raimbow.png',
-    'images/raimbow.png',
-    'images/raimbow.png',
-    'images/raimbow.png',
-    'images/raimbow.png',
-    'images/raimbow.png',
+    'https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3',
+    'https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3',
+    'https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3',
+    'https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3',
+    'https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3',
+    'https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3',
   ];
   final List<String> hostIcons = [
-    'images/icon_sample.png',
-    'images/icon_sample.png',
-    'images/icon_sample.png',
-    'images/icon_sample.png',
-    'images/icon_sample.png',
-    'images/icon_sample.png',
+    'https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3',
+    'https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3',
+    'https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3',
+    'https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3',
+    'https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3',
+    'https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3',
   ];
 
   @override
@@ -43,8 +44,10 @@ class AreaLessons extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 10),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
+          Padding(
+            padding: EdgeInsets.only(left: 20),
             child: Text(area + 'のレッスン'),
           ),
           Container(
@@ -54,10 +57,12 @@ class AreaLessons extends StatelessWidget {
                 children: <Widget>[
                   for (int i = 0; i < lessonNames.length; i++)
                     LessonCardSmall(
-                      lessonNames[i],
-                      hostNames[i],
-                      lessonIcons[i],
-                      hostIcons[i],
+                      LessonModel(
+                        lessonName: lessonNames[i],
+                        hostName: hostNames[i],
+                        lessonImage: lessonIcons[i],
+                        hostIcon: hostIcons[i],
+                      ),
                     ),
                 ],
               ),

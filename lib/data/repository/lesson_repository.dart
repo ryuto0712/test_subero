@@ -8,7 +8,7 @@ class LessonRepository {
   LessonRepository({required this.lessonProvider});
 
   // レッスン情報の取得
-  getLesson(String lessonId) {
+  Future<LessonModel> getLesson(String lessonId) {
     return lessonProvider.getLesson(lessonId);
   }
 

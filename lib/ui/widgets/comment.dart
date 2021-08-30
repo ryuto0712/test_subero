@@ -21,14 +21,7 @@ class Comment extends StatelessWidget {
             width: 40,
             height: 40,
             margin: EdgeInsets.only(top: 12),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(color: Colors.grey, width: 1),
-              image: DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage(comment.userIcon),
-              ),
-            ),
+            child: NetworkCircleImage(40, imageUrl: comment.userIcon),
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 6),
@@ -70,14 +63,14 @@ String fromAtNow(DateTime date) {
 
 // メッセージの送信履歴を表示
 class CommentBuilder extends StatelessWidget {
-  final List<CommentModel> comments;
+  final List<CommentModel?> comments;
   CommentBuilder(this.comments);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        children: [for (int i = 0; i < comments.length; i++) Comment(comment: comments[i])],
+        children: [for (int i = 0; i < comments.length; i++) Comment(comment: comments[i]!)],
       ),
     );
   }

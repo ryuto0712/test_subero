@@ -15,24 +15,25 @@ class LessonProvider extends GetConnect {
     try {
       DocumentSnapshot _doc = await this.lessons.doc(lessonId).get();
       var lesson = LessonModel.fromDocumentSnapshot(documentSnapshot: _doc);
+      print('${lesson.lessonId}, ${lesson.lessonName}, レッスン');
       return lesson;
     } catch (e) {
-      print('Privider Error: $e');
+      print('Lesson Privider Error: $e');
       rethrow;
     }
   }
 
   // レッスンの投稿
   Future<String> postLesson(LessonModel lessonModel) async {
-    String? lessonId;
+    late String lessonId; // 投稿したレッスンのIDを取得
     try {
-      lessons.add({
+      await lessons.add({
         'lesson_name': lessonModel.lessonName,
         'lesson_description': lessonModel.lessonDescription,
         'lesson_image_url': lessonModel.lessonImage,
         'ski_resort': lessonModel.skiResort,
         'price': lessonModel.price,
-        'lessonDuration': lessonModel.lessonDuration,
+        'lesson_duration': lessonModel.lessonDuration,
         'date': lessonModel.date,
         // 'dates': lessonModel.dates,
         'category': lessonModel.category,
@@ -45,12 +46,12 @@ class LessonProvider extends GetConnect {
         'host_name': lessonModel.hostName,
         'host_icon_url': lessonModel.hostIcon,
         'host_rating': lessonModel.hostRating,
-        'comments': lessonModel.comments,
+        'comments': [], // 投稿時はコメントが無いので空の配列にする
       }).then((value) => {lessonId = value.id});
 
-      return lessonId!;
+      return lessonId;
     } catch (e) {
-      print('Privider Error: $e');
+      print('Lesson Privider Error: $e');
       rethrow;
     }
   }

@@ -1,42 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:subero_mobile/controller/lesson_card/lesson_card_controller.dart';
+import 'package:subero_mobile/data/provider/lesson_provider.dart';
+import 'package:subero_mobile/data/repository/lesson_repository.dart';
 import 'package:subero_mobile/ui/widgets/index.dart';
 
 class ContractingLessons extends StatelessWidget {
-  final List<String> lessonNames = [
-    'グラトリ半日レッスン',
-    'やさしい初心者レッスン',
-    '上級者向けレッスン',
-    'グラトリ半日レッスン',
-    'やさしい初心者レッスン',
-    '上級者向けレッスン',
-  ];
-  final List<String> hostNames = [
-    'Toichi Shogo',
-    'toichi shogo',
-    'TOICHI SHOGO',
-    'Toichi Shogo',
-    'toichi shogo',
-    'TOICHI SHOGO',
-  ];
-  final List<String> lessonIcons = [
-    'images/raimbow.png',
-    'images/raimbow.png',
-    'images/raimbow.png',
-    'images/raimbow.png',
-    'images/raimbow.png',
-    'images/raimbow.png',
-  ];
-  final List<String> hostIcons = [
-    'images/icon_sample.png',
-    'images/icon_sample.png',
-    'images/icon_sample.png',
-    'images/icon_sample.png',
-    'images/icon_sample.png',
-    'images/icon_sample.png',
+  final LessonCardController lc = Get.put(LessonCardController(LessonRepository(lessonProvider: LessonProvider())));
+  final List<String> lessonIds = [
+    'sample_1',
+    'sample_1',
   ];
 
   @override
   Widget build(BuildContext context) {
+    lc.getLessons(lessonIds);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -47,11 +25,11 @@ class ContractingLessons extends StatelessWidget {
         Container(
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                for (int i = 0; i < lessonNames.length; i++) LessonCardSmall(lessonNames[i], hostNames[i], lessonIcons[i], hostIcons[i]),
-              ],
-            ),
+            child: Obx(() => Row(
+                  children: [
+                    for (int i = 0; i < lc.lessons.length; i++) LessonCardSmall(lc.lessons[i]),
+                  ],
+                )),
           ),
         ),
       ],

@@ -4,8 +4,9 @@ import 'package:subero_mobile/data/model/lesson_model.dart';
 
 import 'package:subero_mobile/data/repository/lesson_repository.dart';
 import 'package:subero_mobile/data/repository/repositorys.dart';
+// import 'package:subero_mobile/routes/routes.dart';
 
-// TODO: レッスンの写真の複数選択
+// TODO: レッスンの写真の投稿
 
 class LessonPostController extends GetxController {
   final GetStorage box = GetStorage();
@@ -29,13 +30,11 @@ class LessonPostController extends GetxController {
       _lesson.value.hostIcon = box.read('userIcon');
       _lesson.value.hostRating = box.read('userRating');
 
-      print('投稿するよ');
       // 投稿を行い，新しく投稿したレッスンのidを取得
       _lesson.value.lessonId = await lessonRepository.postLesson(_lesson.value);
 
-      print('投稿したよ');
-      // TODO: 新しく投稿したレッスン情報(lessonId等？)をuserの投稿したレッスンに追加
       userRepository.addPostedLessons(_lesson.value.lessonId);
+      // Get.toNamed(Routes.LESSON_DETAILS, parameters: {'lessonId': _lesson.value.lessonId});
     } catch (e) {
       print('Controller Error: $e');
     }

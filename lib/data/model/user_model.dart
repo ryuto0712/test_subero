@@ -16,7 +16,7 @@ class UserModel {
   late String? iconUrl; //アイコンの参照元
   late String? videoUrl; //ビデオの参照元
   late int? rating;
-  // late List<String>? postedLessons; // 投稿済みのレッスン
+  late List<String>? postedLessons; // 投稿済みのレッスン
 
   UserModel({
     this.id: '',
@@ -33,9 +33,9 @@ class UserModel {
     this.iconUrl: '',
     this.videoUrl: '',
     this.rating: 0,
-    // this.postedLessons: null,
+    this.postedLessons: null,
   }) {
-    print("コンストラクタが走りました。");
+    // print("コンストラクタが走りました。");
   }
 
   UserModel.fromDocumentSnapshot({required DocumentSnapshot documentSnapshot}) {
@@ -53,6 +53,11 @@ class UserModel {
     this.iconUrl = documentSnapshot["icon_url"] ?? "https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3";
     this.videoUrl = documentSnapshot["video_url"] ?? "https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_video%2F1?alt=media&token=4e921236-65bf-4c17-bd0b-9f33caee0c97";
     this.rating = documentSnapshot["rating"] ?? 0;
-    // this.postedLessons = documentSnapshot["posted_lessons"] ?? [];
+    var _postedLessons = documentSnapshot["posted_lessons"];
+    if (_postedLessons == null)
+      this.postedLessons = null;
+    else {
+      this.postedLessons = [for (int i = 0; i < _postedLessons.length; i++) _postedLessons[i].toString()];
+    }
   }
 }

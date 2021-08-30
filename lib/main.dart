@@ -10,7 +10,6 @@ import './routes/routes.dart';
 // import 'package:subero_mobile/bindings/my_bindings.dart';
 import 'ui/screens/index.dart';
 import 'ui/theme/app_theme.dart';
-import './bindings/bidings.dart';
 import './ui/screens/auth/login_check.dart';
 
 void main() async {

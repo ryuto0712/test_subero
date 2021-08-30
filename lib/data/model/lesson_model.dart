@@ -1,4 +1,3 @@
-// LessonCardに表示させる情報
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:subero_mobile/data/model/comment_model.dart';
 
@@ -23,7 +22,7 @@ class LessonModel {
   late String hostIcon; // レッスン作成者のアイコン
   late num hostRating; // ホストの評価値
 
-  late List<CommentModel>? comments; // コメント
+  late List<CommentModel?> comments; // コメント
   // late num additionalPrice; // 追加料金
   // late int capacity; // 最大人数
   // late bool canTrade; // 取引可能かどうか
@@ -31,13 +30,13 @@ class LessonModel {
 
   static const List<dynamic> initTags = [''];
   static const List<String> initDates = [''];
-  static const List<CommentModel>? initComments = [];
+  static const List<CommentModel?> initComments = [];
 
   LessonModel({
-    this.lessonId: '',
+    this.lessonId: 'sample_1',
     this.lessonName: '',
     this.lessonDescription: '',
-    this.lessonImage: 'images/app_icon.png',
+    this.lessonImage: 'https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3',
     this.skiResort: '',
     this.price: 0,
     this.lessonDuration: 0,
@@ -49,7 +48,7 @@ class LessonModel {
     // required this.editedAt,
     this.hostId: '',
     this.hostName: '',
-    this.hostIcon: 'images/app_icon.png',
+    this.hostIcon: 'https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3',
     this.hostRating: 0,
     this.comments: initComments,
   });
@@ -76,6 +75,9 @@ class LessonModel {
     this.hostRating = documentSnapshot['host_rating'];
 
     final _comments = documentSnapshot['comments'];
-    this.comments = [for (int i = 0; i < _comments.length; i++) CommentModel.fromMap(map: _comments[i])];
+    if (_comments == null)
+      this.comments = [];
+    else
+      this.comments = [for (int i = 0; i < _comments.length; i++) CommentModel.fromMap(map: _comments[i])];
   }
 }
