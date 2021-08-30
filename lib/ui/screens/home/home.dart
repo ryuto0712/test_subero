@@ -3,7 +3,7 @@ import 'widgets/index.dart';
 import 'package:get_storage/get_storage.dart';
 
 class Home extends StatelessWidget {
-  final String area = '湯沢';
+  final String area = '野沢温泉スキー場';
   final GetStorage box = GetStorage();
 
   @override
@@ -14,16 +14,12 @@ class Home extends StatelessWidget {
         builder: (context, constraints) {
           // constraints.maxWidth(Height)で縦横のサイズを取得
           return ListView(
-            // crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               HomeBanner(),
               Categories(),
               AreaLessons(area),
               NewLessons(constraints.maxWidth),
               Image.asset('images/home.png'),
-              FloatingActionButton(
-                  onPressed: () => print(box.read("userId")),
-                  child: Text("ユーザ")),
             ],
           );
         },

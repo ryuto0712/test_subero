@@ -5,7 +5,6 @@ import 'package:subero_mobile/ui/screens/index.dart';
 import 'widgets/index.dart';
 
 // TODO: 進行中/終了したレッスン情報の取得
-// TODO:
 
 class Message extends StatelessWidget {
   @override

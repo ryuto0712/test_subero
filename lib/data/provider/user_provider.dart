@@ -67,9 +67,7 @@ class UserProvider {
       });
       // getStrageの値の更新
       box.write("userName", userModel.name);
-      // box.write("userId", uid);
       box.write("userIcon", userModel.iconUrl);
-      // box.write("userRating", userModel.rating);
       return true;
     } catch (e) {
       print('Provider Error: $e');

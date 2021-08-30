@@ -12,6 +12,11 @@ class LessonRepository {
     return lessonProvider.getLesson(lessonId);
   }
 
+  // レッスン情報の検索
+  Future<List<LessonModel>> searchLessons(List<List> queries) {
+    return lessonProvider.searchLessons(queries);
+  }
+
   // レッスンの投稿
   Future<String> postLesson(LessonModel lessonModel) {
     // 投稿したレッスンのidをコントローラに返す

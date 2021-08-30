@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:subero_mobile/controller/searched/searched_lessons_controller.dart';
 import 'package:subero_mobile/data/model/lesson_model.dart';
+import 'package:subero_mobile/data/provider/lesson_provider.dart';
+import 'package:subero_mobile/data/repository/lesson_repository.dart';
 import 'package:subero_mobile/ui/widgets/index.dart';
 
 class SearchedLessons extends StatelessWidget {
+  final SearchedLessonsController c = Get.put(SearchedLessonsController(LessonRepository(lessonProvider: LessonProvider())));
+
   SearchedLessons(this.width);
   final double width;
 
@@ -19,30 +26,25 @@ class SearchedLessons extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 10),
       child: Column(
         children: <Widget>[
-          _newLessons(),
+          gridCards(),
         ],
       ),
     );
   }
 
-  Widget _newLessons() {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          rowCards(),
-          rowCards(),
+  Widget gridCards() {
+    c.searchLessons();
+    return Obx(
+      () => GridView.count(
+        // crossAxisSpacing: 0,
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+
+        crossAxisCount: 2,
+        children: [
+          for (int i = 0; i < c.lessons.length; i++) LessonCardMedium(c.lessons[i], width / 2),
         ],
       ),
-    );
-  }
-
-  Widget rowCards() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        LessonCardMedium(lesson, width / 2),
-        LessonCardMedium(lesson, width / 2),
-      ],
     );
   }
 }

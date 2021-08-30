@@ -16,7 +16,9 @@ class UserModel {
   late String? iconUrl; //アイコンの参照元
   late String? videoUrl; //ビデオの参照元
   late int? rating;
-  late List<String>? postedLessons; // 投稿済みのレッスン
+  late List<String> postedLessons; // 投稿済みのレッスン
+
+  static const List<String> initPostedLessons = [];
 
   UserModel({
     this.id: '',
@@ -33,7 +35,7 @@ class UserModel {
     this.iconUrl: '',
     this.videoUrl: '',
     this.rating: 0,
-    this.postedLessons: null,
+    this.postedLessons: initPostedLessons,
   }) {
     // print("コンストラクタが走りました。");
   }
@@ -55,7 +57,7 @@ class UserModel {
     this.rating = documentSnapshot["rating"] ?? 0;
     var _postedLessons = documentSnapshot["posted_lessons"];
     if (_postedLessons == null)
-      this.postedLessons = null;
+      this.postedLessons = [];
     else {
       this.postedLessons = [for (int i = 0; i < _postedLessons.length; i++) _postedLessons[i].toString()];
     }

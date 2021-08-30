@@ -80,4 +80,32 @@ class LessonModel {
     else
       this.comments = [for (int i = 0; i < _comments.length; i++) CommentModel.fromMap(map: _comments[i])];
   }
+
+  LessonModel.fromQueryDocumentSnapshot({required QueryDocumentSnapshot snapshot}) {
+    this.lessonId = snapshot.id;
+    this.lessonName = snapshot['lesson_name'];
+    this.lessonDescription = snapshot['lesson_description'];
+    this.lessonImage = snapshot['lesson_image_url'];
+    this.skiResort = snapshot['ski_resort'];
+    this.price = snapshot['price'];
+    this.lessonDuration = snapshot['lesson_duration'];
+    this.date = snapshot['date'];
+    // this.dates = snapshot['dates'];
+    this.category = snapshot['category'];
+    this.tags = snapshot['tags'];
+
+    this.createdAt = snapshot['created_at'].toDate();
+    this.editedAt = snapshot['edited_at'].toDate();
+
+    this.hostId = snapshot['host_id'];
+    this.hostName = snapshot['host_name'];
+    this.hostIcon = snapshot['host_icon_url'];
+    this.hostRating = snapshot['host_rating'];
+
+    final _comments = snapshot['comments'];
+    if (_comments == null)
+      this.comments = [];
+    else
+      this.comments = [for (int i = 0; i < _comments.length; i++) CommentModel.fromMap(map: _comments[i])];
+  }
 }

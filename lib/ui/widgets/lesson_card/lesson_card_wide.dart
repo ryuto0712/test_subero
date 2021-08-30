@@ -3,22 +3,21 @@ import 'package:get/get.dart';
 import 'package:subero_mobile/data/model/lesson_model.dart';
 
 import 'package:subero_mobile/routes/routes.dart';
-import 'package:subero_mobile/ui/screens/index.dart';
 import 'package:subero_mobile/ui/widgets/index.dart';
 
 class LessonCardWide extends StatelessWidget {
   final double width; // カードの幅
   final LessonModel lesson;
 
-  LessonCardWide({required this.lesson, this.width: 400}); // 幅の初期設定は適当
+  LessonCardWide(this.lesson, {this.width: 400}); // 幅の初期設定は適当
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed(Routes.LESSON_DETAILS, id: null, parameters: {'lessonId': this.lesson.lessonId}),
-      child: Container(
+      onTap: () => Get.toNamed(Routes.LESSON_DETAILS, parameters: {'lessonId': this.lesson.lessonId}),
+      child: SizedBox(
         width: width,
-        height: 120,
+        height: 110,
         child: Card(
           margin: const EdgeInsets.fromLTRB(15, 0, 15, 10),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),

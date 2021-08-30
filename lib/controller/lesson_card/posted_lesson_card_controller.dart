@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'package:subero_mobile/data/model/lesson_model.dart';
 import 'package:subero_mobile/data/repository/lesson_repository.dart';
@@ -6,20 +7,21 @@ import 'package:subero_mobile/data/repository/lesson_repository.dart';
 class PostedLessonCardController extends GetxController {
   final LessonRepository repository;
   PostedLessonCardController(this.repository);
+  final GetStorage box = GetStorage();
 
   final _lessons = RxList<LessonModel>().obs;
-  // set lessons(value) => this._lessons.value = value;
   get lessons => this._lessons.value;
 
-  getLessons(List<String> lessonIds) async {
+  getLessons() async {
     if (this._lessons.value.length == 0) {
       try {
-        this._lessons.value = RxList([for (int i = 0; i < lessonIds.length; i++) LessonModel()]);
-        for (int i = 0; i < lessonIds.length; i++) {
-          this._lessons.value[i] = await repository.getLesson(lessonIds[i]);
-        }
+        List<List> queries = [
+          ['where', 'host_id', '==', box.read('userId')],
+          ['orderBy', 'created_at', false],
+        ];
+        this._lessons.value = RxList(await repository.searchLessons(queries));
       } catch (e) {
-        print('postedレッスン情報を取得できませんでした．$e');
+        print('投稿されたレッスン情報を取得できませんでした．$e');
       }
     }
   }
