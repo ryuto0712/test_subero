@@ -25,6 +25,7 @@ class MessagesController extends GetxController {
 
   addMessage(String contents) async {
     try {
+      // getStorageからuserIdを取得し，レッスンの投稿者かどうか判別
       _postMessage.isHost = box.read('userId') == _messages.value.hostId;
       _postMessage.contents = contents;
       _postMessage.createdAt = DateTime.now();

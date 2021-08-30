@@ -10,10 +10,7 @@ import './routes/routes.dart';
 // import 'package:subero_mobile/bindings/my_bindings.dart';
 import 'ui/screens/index.dart';
 import 'ui/theme/app_theme.dart';
-import './bindings/bidings.dart';
 import './ui/screens/auth/login_check.dart';
-
-// todo: 現在のルートのアイコンを押したらルートの初期ページに直接移動できない
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +21,6 @@ void main() async {
     // initialBinding: ;
     // debugShowCheckedModeBanner: true, // falseにすると右上のdebagのバナーが消える(が警告が出てくる)
     // initialRoute: Routes.INITIAL,
-    // initialBinding: HomeBinding(),
     theme: appThemeData,
     defaultTransition: Transition.fade,
     getPages: AppPages.routes,
@@ -33,7 +29,6 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final GetStorage box = GetStorage();
   // _pageWidgetsを引数に入れたかったけど入れられなかった．
   final MyTabController tabController = Get.put(MyTabController([Home(), Search(), Post(), Message(), MyPage()]));
 
@@ -48,12 +43,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: ログイン時にgetStrageに主なユーザーデータを保存
-    // box.write('userId', 'sample_1');
-    // box.write('userName', 'Kambayashi Izuru');
-    // box.write('userIcon', 'images/icon_sample.png');
-    // box.write('userRating', 4.0);
-
     return Scaffold(
       bottomNavigationBar: buildBottomNavigationMenu(tabController),
       body: Obx(

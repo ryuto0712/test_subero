@@ -12,8 +12,8 @@ class UserRepository {
     return userProvider.getUser(uid);
   }
 
-  createNewUser(String email , String name) {
-    return userProvider.createNewUser(email,name);
+  createNewUser(String email, String name) {
+    return userProvider.createNewUser(email, name);
   }
 
   editProfile(UserModel userModel, String uid) {
@@ -26,5 +26,9 @@ class UserRepository {
 
   uploadVideo(File file, String uid, String fileName) {
     return userProvider.uploadVideo(file, uid, fileName);
+  }
+
+  addPostedLessons(String lessonId) {
+    return userProvider.addPostedLesson(lessonId);
   }
 }

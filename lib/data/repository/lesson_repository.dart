@@ -8,8 +8,13 @@ class LessonRepository {
   LessonRepository({required this.lessonProvider});
 
   // レッスン情報の取得
-  getLesson(String lessonId) {
+  Future<LessonModel> getLesson(String lessonId) {
     return lessonProvider.getLesson(lessonId);
+  }
+
+  // レッスン情報の検索
+  Future<List<LessonModel>> searchLessons(List<List> queries) {
+    return lessonProvider.searchLessons(queries);
   }
 
   // レッスンの投稿

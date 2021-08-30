@@ -10,7 +10,7 @@ class EyeCatch extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() => Container(
           height: 175,
-          decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fitWidth, image: NetworkImage(c.lesson.lessonImage))),
+          decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fitWidth, image: AssetImage(c.lesson.lessonImage))),
         ));
   }
 }

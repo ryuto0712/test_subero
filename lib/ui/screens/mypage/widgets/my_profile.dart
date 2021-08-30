@@ -1,27 +1,13 @@
-// TODO: スノボ歴～～の表示
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expandable_text/expandable_text.dart';
+import 'package:subero_mobile/controller/controllers.dart';
 
 import 'package:subero_mobile/ui/screens/index.dart';
-// import 'package:subero_mobile/ui/widgets/index.dart';
 import 'index.dart';
 
-class MyProfile extends StatefulWidget {
-  String userName;
-  String description;
-  String video;
-  String iconUrl;
-  int career;
-  String favoriteTrick;
-  String homeSkiResort;
-  MyProfile(this.userName, this.description, this.video,this.iconUrl, this.career,
-      this.favoriteTrick, this.homeSkiResort);
-  @override
-  _MyProfileState createState() => _MyProfileState();
-}
-
-class _MyProfileState extends State<MyProfile> {
+class MyProfile extends StatelessWidget {
+  final UserController c = Get.find<UserController>();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -30,46 +16,53 @@ class _MyProfileState extends State<MyProfile> {
           width: 300,
           margin: EdgeInsets.only(bottom: 10),
           color: Colors.white,
-          child: Column(
-            children: [
-              MyPageIcon(widget.video , widget.iconUrl),
-              _userName(widget.userName),
-              _userDescription(widget.description),
-              _userInformation(
-                  widget.career, widget.favoriteTrick, widget.homeSkiResort),
-              _profileEditButton(),
-            ],
-          ),
+          child: Obx(() => Column(
+                children: [
+                  MyPageIcon(c.user.videoUrl, c.user.iconUrl),
+                  _userName(c.user.name),
+                  _userDescription(c.user.introduction),
+                  _userInformation(c.user.career, c.user.favoriteTrick, c.user.homeSkiResort),
+                  _profileEditButton(),
+                ],
+              )),
         ),
-        Container(
-          padding: EdgeInsets.only(bottom: 10),
-          child: ContractingLessons(),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(width: 1, color: Colors.grey.shade400),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: EdgeInsets.only(bottom: 10),
+              child: ContractingLessons(),
             ),
-          ),
+            Container(
+              padding: EdgeInsets.only(bottom: 10),
+              child: PostedLessons(),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(width: 1, color: Colors.grey.shade400),
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );
   }
 
-  Widget _userName(String userName) {
+  Widget _userName(String name) {
     return Container(
-      child: Text(userName,
-          style: TextStyle(fontSize: 24, color: Color(0xff555555))),
+      child: Text(name, style: TextStyle(fontSize: 24, color: Color(0xff555555))),
     );
   }
 
-  Widget _userDescription(String description) {
+  Widget _userDescription(String introduction) {
     return Container(
       padding: EdgeInsets.only(top: 10),
       // alignment: ,
       width: 300,
       child: ExpandableText(
-        description,
+        introduction,
         expandText: "もっと見る",
         collapseText: "閉じる",
         maxLines: 3,
@@ -90,32 +83,24 @@ class _MyProfileState extends State<MyProfile> {
             backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
           ),
           onPressed: () => Get.to(EditProfile(), id: null),
-          child: Text('プロフィールを編集する',
-              style: TextStyle(color: Colors.black45, fontSize: 10)),
+          child: Text('プロフィールを編集する', style: TextStyle(color: Colors.black45, fontSize: 10)),
         ),
       ),
     );
   }
 
-  Widget _userInformation(
-      int career, String favoriteTrick, String homeSkiResort) {
+  Widget _userInformation(int career, String favoriteTrick, String homeSkiResort) {
     return Container(
       margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [Text("スノボ歴"), Text("得意な技"), Text("ホームゲレンデ")]),
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text("スノボ歴"), Text("得意な技"), Text("ホームゲレンデ")]),
             Padding(
               padding: EdgeInsets.all(30),
             ),
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(career.toString() + "年"),
-              Text(favoriteTrick),
-              Text(homeSkiResort)
-            ])
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(career.toString() + "年"), Text(favoriteTrick), Text(homeSkiResort)])
           ],
         ),
       ),

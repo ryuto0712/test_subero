@@ -10,13 +10,16 @@ import '../../../data/provider/user_provider.dart';
 import '../../../data/repository/auth_repository.dart';
 
 class LoginCheck extends StatelessWidget {
+  // ログイン状態に応じて、画面を切り替える
+  final AuthController c = Get.put(
+    AuthController(
+      authRepository: AuthRepository(authProvider: AuthProvider()),
+      userRepository: UserRepository(userProvider: UserProvider()),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
-    // ログイン状態に応じて、画面を切り替える
-    final AuthController c = Get.put(AuthController(
-        authRepository: AuthRepository(authProvider: AuthProvider()),
-        userRepository: UserRepository(userProvider: UserProvider())));
-
     c.loginCheck();
 
     return Container(

@@ -16,7 +16,6 @@ class LessonDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     // レッスンデータの取得．lessonIdはparametersで渡すことを想定
     c.getLesson(Get.parameters['lessonId'] ?? 'sample_1');
-    print('レッスンIDは：${Get.parameters["lessonId"]}');
 
     return Scaffold(
       appBar: AppBar(

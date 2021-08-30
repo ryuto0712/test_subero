@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:subero_mobile/controller/lesson_details/lesson_details_controller.dart';
 import 'package:subero_mobile/ui/screens/index.dart';
-import 'package:subero_mobile/ui/widgets/index.dart';
 
 class Host extends StatelessWidget {
   final LessonDetailsController c = Get.find<LessonDetailsController>();
@@ -17,10 +16,16 @@ class Host extends StatelessWidget {
             GestureDetector(
               onTap: () => Get.to(UserPage(), id: null),
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: EdgeInsets.symmetric(
+                  horizontal: 20,
+                ),
                 width: 75,
                 height: 75,
-                child: NetworkCircleImage(75, imageUrl: c.lesson.hostIcon),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.grey),
+                  image: DecorationImage(fit: BoxFit.fill, image: NetworkImage(c.lesson.hostIcon)),
+                ),
               ),
             ),
             Container(

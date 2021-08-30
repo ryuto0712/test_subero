@@ -13,19 +13,18 @@ class AuthRepository {
     return authProvider.signInWithEmail(email, password);
   }
 
-  loginCheck(){
+  loginCheck() {
     return authProvider.loginCheck();
   }
 
-signInWithGoogle(){
-  return authProvider.signInWithGoogle();
-}
+  signInWithGoogle() {
+    return authProvider.signInWithGoogle();
+  }
+
+  signOutUser() {
+    return authProvider.signOutUser();
+  }
 }
   // resetPassword(String email) {
   //   return authProvider.resetPassword(email);
   // }
-
-  // signOutUser() {
-  //   return authProvider.signOutUser();
-  // }
-

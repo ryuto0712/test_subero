@@ -5,7 +5,6 @@ import 'package:subero_mobile/ui/screens/index.dart';
 import 'widgets/index.dart';
 
 // TODO: 進行中/終了したレッスン情報の取得
-// TODO:
 
 class Message extends StatelessWidget {
   @override
@@ -15,11 +14,11 @@ class Message extends StatelessWidget {
         title: Text('メッセージ一覧'),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
+      body: Container(
         child: Column(
           children: <Widget>[
             MessageContents(),
-            Image.asset('images/message.png'),
+            // Image.asset('images/message.png'),
           ],
         ),
       ),
