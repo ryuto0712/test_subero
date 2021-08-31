@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:subero_mobile/data/model/comment_model.dart';
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:firebase_storage/firebase_storage.dart';
+import 'dart:io';
 
 import 'package:subero_mobile/data/model/lesson_model.dart';
 
@@ -10,7 +11,7 @@ import 'package:subero_mobile/data/model/lesson_model.dart';
 
 class LessonProvider extends GetConnect {
   final CollectionReference lessons = FirebaseFirestore.instance.collection('lessons');
-  firebase_storage.FirebaseStorage storage = firebase_storage.FirebaseStorage.instance;
+  FirebaseStorage storage = FirebaseStorage.instance;
 
   Future<LessonModel> getLesson(String lessonId) async {
     try {
@@ -106,6 +107,38 @@ class LessonProvider extends GetConnect {
     }
   }
 
+  // レッスンの投稿
+  Future<bool> editLesson(String lessonId, LessonModel lessonModel) async {
+    try {
+      await lessons.doc(lessonId).update({
+        'lesson_name': lessonModel.lessonName,
+        'lesson_description': lessonModel.lessonDescription,
+        'lesson_image_url': lessonModel.lessonImage,
+        'ski_resort': lessonModel.skiResort,
+        'price': lessonModel.price,
+        'lesson_duration': lessonModel.lessonDuration,
+        'date': lessonModel.date,
+        // 'dates': lessonModel.dates,
+        'category': lessonModel.category,
+        'tags': lessonModel.tags,
+
+        // 'created_at': lessonModel.createdAt,
+        'edited_at': lessonModel.editedAt,
+
+        // 'host_id': lessonModel.hostId,
+        // 'host_name': lessonModel.hostName,
+        // 'host_icon_url': lessonModel.hostIcon,
+        // 'host_rating': lessonModel.hostRating,
+        // 'comments': lessonModel.comments,
+      });
+
+      return true;
+    } catch (e) {
+      print('Lesson Privider Error: $e');
+      rethrow;
+    }
+  }
+
   Future<void> addComment(String lessonId, CommentModel comment) {
     return this.lessons.doc(lessonId).update({
       'comments': FieldValue.arrayUnion([
@@ -118,5 +151,18 @@ class LessonProvider extends GetConnect {
         }
       ])
     });
+  }
+
+  Future<String> uploadImage(File file, String fileName) async {
+    UploadTask task = storage.ref("lesson_image").child('${DateTime.now().toString()}-$fileName').putFile(file);
+    try {
+      TaskSnapshot snapshot = await task;
+      final url = await snapshot.ref.getDownloadURL();
+      return url;
+    } catch (e) {
+      print(task.snapshot);
+      print("provider error :$e");
+      rethrow;
+    }
   }
 }

@@ -1,7 +1,10 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:subero_mobile/data/model/lesson_model.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart' as path;
+import 'dart:io';
 
+import 'package:subero_mobile/data/model/lesson_model.dart';
 import 'package:subero_mobile/data/repository/lesson_repository.dart';
 import 'package:subero_mobile/data/repository/repositorys.dart';
 // import 'package:subero_mobile/routes/routes.dart';
@@ -17,6 +20,8 @@ class LessonPostController extends GetxController {
   final _lesson = LessonModel().obs;
   set lesson(value) => this._lesson.value = value;
   get lesson => this._lesson.value;
+
+  initLesson() => this._lesson.value = LessonModel();
 
   postLesson() async {
     try {
@@ -37,6 +42,22 @@ class LessonPostController extends GetxController {
       // Get.toNamed(Routes.LESSON_DETAILS, parameters: {'lessonId': _lesson.value.lessonId});
     } catch (e) {
       print('Controller Error: $e');
+    }
+  }
+
+  addLessonImage() async {
+    //image pickerでファイルを選択
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    final fileName = path.basename(pickedFile!.path);
+    final file = File(pickedFile.path);
+    try {
+      //選択したファイルをアップロードして、そのurlをコントローラに保存
+      String url = await lessonRepository.uploadImage(file, fileName);
+      _lesson.value.lessonImage = url;
+    } catch (e) {
+      print("controller error :$e");
+      rethrow;
     }
   }
 }

@@ -29,7 +29,7 @@ class PostEvent extends StatelessWidget {
       // appBar: AppBar(title: Text('イベントの投稿')),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        leading: IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: () => Get.back()),
+        leading: IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: () => {c.initLesson(), Get.back()}),
         elevation: 0.0,
       ),
       // extendBodyBehindAppBar: true,
@@ -69,7 +69,11 @@ class PostEvent extends StatelessWidget {
             ),
             LessonPriceAndTime(),
             ElevatedButton(
-              onPressed: () => {c.postLesson(), Get.back()},
+              onPressed: () => {
+                c.postLesson(),
+                Get.back(),
+                Get.defaultDialog(title: '投稿が完了しました', middleText: '以下のURLを使用してレッスンを拡散しましょう！\n{Firebase Dynamic Linkを使用してURLを作成}\nレッスンのURLは投稿後のレッスン詳細からも取得できます。'),
+              },
               child: Text('投稿'),
             ),
             Image.asset('images/event_post.png'),

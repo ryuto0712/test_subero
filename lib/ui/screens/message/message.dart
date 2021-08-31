@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:subero_mobile/ui/screens/index.dart';
 
 import 'widgets/index.dart';
 
