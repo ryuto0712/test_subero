@@ -47,7 +47,6 @@ class AuthController extends GetxController {
   signInWithGoogle() async {
     try {
       await authRepository.signInWithGoogle();
-      Get.to(MyApp());
     } catch (e) {
       print('Controller Error: $e');
       rethrow;

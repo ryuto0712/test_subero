@@ -31,6 +31,7 @@ class AuthProvider {
       box.write("userName", user["name"]);
       box.write("userIcon", user["icon_url"]);
       box.write("userRating", user["rating"]);
+      // Get.to(MyApp());
       return true;
     } catch (e) {
       print("login error: $e");
@@ -110,6 +111,7 @@ class AuthProvider {
               "https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3");
           box.write("userRating",
               "https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_video%2F1-image_picker6901468253184652419.mp4?alt=media&token=bf5f99e4-fc00-487c-83b4-5169d6d836fc");
+          Get.to(MyApp());
           return true;
         } catch (e) {
           print("provider error: $e");

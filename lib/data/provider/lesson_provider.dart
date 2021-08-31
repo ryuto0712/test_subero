@@ -8,8 +8,10 @@ import 'package:subero_mobile/data/model/lesson_model.dart';
 // TODO: cloud strageへのアップロード，URLの取得
 
 class LessonProvider extends GetConnect {
-  final CollectionReference lessons = FirebaseFirestore.instance.collection('lessons');
-  firebase_storage.FirebaseStorage storage = firebase_storage.FirebaseStorage.instance;
+  final CollectionReference lessons =
+      FirebaseFirestore.instance.collection('lessons');
+  firebase_storage.FirebaseStorage storage =
+      firebase_storage.FirebaseStorage.instance;
 
   Future<LessonModel> getLesson(String lessonId) async {
     try {
@@ -19,6 +21,27 @@ class LessonProvider extends GetConnect {
     } catch (e) {
       print('Privider Error: $e');
       rethrow;
+    }
+  }
+
+  Future<List<LessonModel>?> searchLesson(String key, String value) async {
+    final List<LessonModel> searchedLessons = [];
+    try {
+      lessons
+          .where(key, isEqualTo: value)
+          .where("can_trade", isEqualTo: true)
+          .orderBy("createdAt")
+          .get()
+          .then((QuerySnapshot querySnapshot) {
+        querySnapshot.docs.forEach((doc) {
+          var lesson = LessonModel.fromDocumentSnapshot(documentSnapshot: doc);
+          searchedLessons.add(lesson);
+        });
+      });
+
+      return searchedLessons;
+    } catch (e) {
+      print('Provider Error: $e');
     }
   }
 
