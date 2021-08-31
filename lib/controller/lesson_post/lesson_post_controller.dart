@@ -9,7 +9,9 @@ import 'package:subero_mobile/data/repository/lesson_repository.dart';
 import 'package:subero_mobile/data/repository/repositorys.dart';
 // import 'package:subero_mobile/routes/routes.dart';
 
-// TODO: レッスンの写真の投稿
+
+// TODO: レッスンの写真の複数選択
+//↑写真1枚で十分じゃね説↑
 
 class LessonPostController extends GetxController {
   final GetStorage box = GetStorage();

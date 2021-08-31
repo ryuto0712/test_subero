@@ -13,9 +13,14 @@ class LessonRepository {
     return lessonProvider.getLesson(lessonId);
   }
 
+
+  searchLesson(String key , String value){
+    return lessonProvider.searchLesson(key, value);
+
   // レッスン情報の検索
   Future<List<LessonModel>> searchLessons(List<List> queries) {
     return lessonProvider.searchLessons(queries);
+
   }
 
   // レッスンの投稿

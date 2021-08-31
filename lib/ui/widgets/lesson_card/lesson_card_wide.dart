@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:subero_mobile/data/model/lesson_model.dart';
+
 
 import 'package:subero_mobile/routes/routes.dart';
 import 'package:subero_mobile/ui/widgets/index.dart';
 
 class LessonCardWide extends StatelessWidget {
+
   final double width; // カードの幅
   final LessonModel lesson;
 

@@ -27,8 +27,13 @@ class SearchList extends StatelessWidget {
         onTap: () => Get.to(Searched(), id: 1),
         child: Container(
           height: height,
-          decoration: BoxDecoration(border: Border.symmetric(horizontal: BorderSide(color: Colors.grey.shade300, width: 1))),
-          child: Container(margin: EdgeInsets.fromLTRB(height / 2, height / 5, 0, 0), child: Text(caption[i] + 'からさがす')),
+          decoration: BoxDecoration(
+              border: Border.symmetric(
+                  horizontal:
+                      BorderSide(color: Colors.grey.shade300, width: 1))),
+          child: Container(
+              margin: EdgeInsets.fromLTRB(height / 2, height / 5, 0, 0),
+              child: Text(caption[i] + 'からさがす')),
         ),
       );
     } else {
@@ -36,8 +41,12 @@ class SearchList extends StatelessWidget {
         onTap: () => Get.to(Searched(), id: 1),
         child: Container(
           height: height,
-          decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.grey.shade300, width: 1))),
-          child: Container(margin: EdgeInsets.fromLTRB(height / 2, height / 5, 0, 0), child: Text(caption[i] + 'からさがす')),
+          decoration: BoxDecoration(
+              border: Border(
+                  bottom: BorderSide(color: Colors.grey.shade300, width: 1))),
+          child: Container(
+              margin: EdgeInsets.fromLTRB(height / 2, height / 5, 0, 0),
+              child: Text(caption[i] + 'からさがす')),
         ),
       );
     }
