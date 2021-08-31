@@ -1,94 +1,64 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// Import the firebase_core and cloud_firestore plugin
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:subero_mobile/controller/guide/guide_controller.dart';
+
+import 'package:subero_mobile/data/model/lesson_model.dart';
+import 'package:subero_mobile/ui/widgets/index.dart';
 
 class Guide extends StatelessWidget {
-  final GuideController c = Get.find<GuideController>();
   Guide();
 
   @override
   Widget build(BuildContext context) {
-    c.getData(Get.parameters['id'] ?? 'sample1');
     return Scaffold(
       appBar: AppBar(
         title: Text('ガイド'),
       ),
-      body: Container(
-        child: Obx(() => Column(
-              children: [
-                Text('ガイド'),
-                GetUserName('sample1'),
-                AddUser('osato takumi'),
-                ElevatedButton(onPressed: () => c.getData('sample1'), child: Text('データを取得')),
-                Text(c.obj),
-              ],
-            )),
-      ),
+      body: myDropDown(),
+    );
+  }
+
+  Widget guideTest() {
+    List colors = [Colors.red, Colors.green, Colors.blue, Colors.black, Colors.yellow];
+    return GridView.count(
+      crossAxisCount: 2,
+      children: [
+        for (int i = 0; i < 4; i++) LessonCardSmall(LessonModel(hostName: 'izuru', lessonName: 'sampleLesson')),
+      ],
+    );
+  }
+
+  Widget myDropDown() {
+    GuideController c = Get.put(GuideController());
+    return Column(
+      children: [
+        Obx(() => Text(c.select)),
+        Obx(
+          () => DropdownButton<String>(
+            hint: Text(c.select),
+            // onChanged: (value) => c.setSelected(value!),
+            onChanged: (value) => c.select = value!,
+            // items: c.listType.map((selectedType) {
+            //   return DropdownMenuItem<String>(
+            //     child: Text(selectedType),
+            //     value: selectedType,
+            //   );
+            // }),
+            items: [for (int i = 0; i < 4; i++) DropdownMenuItem(value: i.toString(), child: Text(i.toString()))],
+          ),
+        ),
+      ],
     );
   }
 }
 
-// * データの取得
-class GetUserName extends StatelessWidget {
-  final FirebaseFirestore firestore = FirebaseFirestore.instance;
-  final String documentId;
+class GuideController extends GetxController {
+  final _select = 'default value of observable varias'.obs;
+  set select(value) => this._select.value = value;
+  get select => this._select.value;
 
-  GetUserName(this.documentId);
-
-  @override
-  Widget build(BuildContext context) {
-    CollectionReference users = firestore.collection('users');
-
-    return FutureBuilder<DocumentSnapshot>(
-      future: users.doc(documentId).collection('name').doc('dd9xjFFfhsmhGRDgf0EX').get(),
-      builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-        if (snapshot.hasError) {
-          return Text("Something went wrong");
-        }
-
-        if (snapshot.hasData && !snapshot.data!.exists) {
-          return Text("Document does not exist");
-        }
-
-        if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
-          return Text("Full Name: ${data['name']}");
-        }
-
-        return Text("loading");
-      },
-    );
+  void setSelected(String value) {
+    _select.value = value;
   }
-}
 
-// * データの登録
-class AddUser extends StatelessWidget {
-  final String fullName;
-
-  AddUser(this.fullName);
-
-  @override
-  Widget build(BuildContext context) {
-    // Create a CollectionReference called users that references the firestore collection
-    CollectionReference users = FirebaseFirestore.instance.collection('users');
-
-    Future<void> addUser() {
-      // Call the user's CollectionReference to add a new user
-      return users
-          .add({
-            'name': fullName, //
-          })
-          .then((value) => print("User Added"))
-          .catchError((error) => print("Failed to add user: $error"));
-    }
-
-    return TextButton(
-      onPressed: addUser,
-      child: Text(
-        "Add User",
-      ),
-    );
-  }
+  final listType = ['1', '2', '3', '4'];
 }

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:subero_mobile/controller/message/messege_contents_controller.dart';
+import 'package:subero_mobile/data/provider/lesson_provider.dart';
+import 'package:subero_mobile/data/repository/lesson_repository.dart';
 
 import 'index.dart';
 
 class MessageContents extends StatelessWidget {
-  final MessageContentsController c = Get.put(MessageContentsController());
+  final MessageContentsController c = Get.put(MessageContentsController(LessonRepository(lessonProvider: LessonProvider())));
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,6 @@ class MessageContents extends StatelessWidget {
     );
   }
 
-// TODO: いい感じの切り替えボタンのwidgetを使用する
   Widget toggleButtonsOnGoing() {
     double height = 50;
     double width = 150;

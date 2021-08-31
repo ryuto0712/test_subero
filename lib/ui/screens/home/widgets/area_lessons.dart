@@ -1,65 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:subero_mobile/controller/home/area_lessons_controller.dart';
+import 'package:subero_mobile/data/provider/lesson_provider.dart';
+import 'package:subero_mobile/data/repository/lesson_repository.dart';
 import 'package:subero_mobile/ui/widgets/index.dart';
 
 class AreaLessons extends StatelessWidget {
+  final AreaLessonsController c = Get.put(AreaLessonsController(LessonRepository(lessonProvider: LessonProvider())));
   final String area;
   AreaLessons(this.area);
 
-  final List<String> lessonNames = [
-    'グラトリ半日レッスン',
-    'やさしい初心者レッスン',
-    '上級者向けレッスン',
-    'グラトリ半日レッスン',
-    'やさしい初心者レッスン',
-    '上級者向けレッスン',
-  ];
-  final List<String> hostNames = [
-    'Toichi Shogo',
-    'toichi shogo',
-    'TOICHI SHOGO',
-    'Toichi Shogo',
-    'toichi shogo',
-    'TOICHI SHOGO',
-  ];
-  final List<String> lessonIcons = [
-    'images/raimbow.png',
-    'images/raimbow.png',
-    'images/raimbow.png',
-    'images/raimbow.png',
-    'images/raimbow.png',
-    'images/raimbow.png',
-  ];
-  final List<String> hostIcons = [
-    'images/icon_sample.png',
-    'images/icon_sample.png',
-    'images/icon_sample.png',
-    'images/icon_sample.png',
-    'images/icon_sample.png',
-    'images/icon_sample.png',
-  ];
-
   @override
   Widget build(BuildContext context) {
+    c.getAreaLessons(area);
+
     return Container(
       margin: EdgeInsets.only(bottom: 10),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
+          Padding(
+            padding: EdgeInsets.only(left: 20),
             child: Text(area + 'のレッスン'),
           ),
           Container(
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Row(
-                children: <Widget>[
-                  for (int i = 0; i < lessonNames.length; i++)
-                    LessonCardSmall(
-                      lessonNames[i],
-                      hostNames[i],
-                      lessonIcons[i],
-                      hostIcons[i],
-                    ),
-                ],
+              child: Obx(
+                () => Row(
+                  children: <Widget>[for (int i = 0; i < c.lessons.length; i++) LessonCardSmall(c.lessons[i])],
+                ),
               ),
             ),
           ),

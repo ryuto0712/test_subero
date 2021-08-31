@@ -16,6 +16,9 @@ class UserModel {
   late String? iconUrl; //アイコンの参照元
   late String? videoUrl; //ビデオの参照元
   late int? rating;
+  late List<String> postedLessons; // 投稿済みのレッスン
+
+  static const List<String> initPostedLessons = [];
 
   UserModel({
     this.id: '',
@@ -32,8 +35,9 @@ class UserModel {
     this.iconUrl: '',
     this.videoUrl: '',
     this.rating: 0,
+    this.postedLessons: initPostedLessons,
   }) {
-    print("コンストラクタが走りました。");
+    // print("コンストラクタが走りました。");
   }
 
   UserModel.fromDocumentSnapshot({required DocumentSnapshot documentSnapshot}) {
@@ -48,10 +52,14 @@ class UserModel {
     this.homeSkiResort = documentSnapshot["home_ski_resort"] ?? "未設定";
     this.createdAt = documentSnapshot["created_at"].toDate() ?? DateTime.now();
     this.editedAt = documentSnapshot["edited_at"].toDate() ?? DateTime.now();
-    this.iconUrl = documentSnapshot["icon_url"] ??
-        "https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3";
-    this.videoUrl = documentSnapshot["video_url"] ??
-        "https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_video%2F1?alt=media&token=4e921236-65bf-4c17-bd0b-9f33caee0c97";
+    this.iconUrl = documentSnapshot["icon_url"] ?? "https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_icon%2F308866.png?alt=media&token=dfc47611-1203-4953-be36-7c6bf9806cb3";
+    this.videoUrl = documentSnapshot["video_url"] ?? "https://firebasestorage.googleapis.com/v0/b/subero-app.appspot.com/o/user_video%2F1?alt=media&token=4e921236-65bf-4c17-bd0b-9f33caee0c97";
     this.rating = documentSnapshot["rating"] ?? 0;
+    var _postedLessons = documentSnapshot["posted_lessons"];
+    if (_postedLessons == null)
+      this.postedLessons = [];
+    else {
+      this.postedLessons = [for (int i = 0; i < _postedLessons.length; i++) _postedLessons[i].toString()];
+    }
   }
 }

@@ -30,9 +30,11 @@ class LessonDetailsController extends GetxController {
   // コメントの追加
   addComment(String contents) async {
     try {
+      // getStorageからuser id, user name, user iconの値を取得
       _commentModel.userId = box.read('userId');
       _commentModel.userName = box.read('userName');
       _commentModel.userIcon = box.read('userIcon');
+
       _commentModel.contents = contents;
       _commentModel.createdAt = DateTime.now();
 

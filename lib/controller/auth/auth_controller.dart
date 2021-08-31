@@ -22,8 +22,7 @@ class AuthController extends GetxController {
 
   registerUser() async {
     try {
-      final userId =
-          await authRepository.registerUser(email.value, password.value);
+      final userId = await authRepository.registerUser(email.value, password.value);
       await userRepository.createNewUser(userId, name.value);
       box.write("userName", name.value);
       box.write("userId", userId);
@@ -59,6 +58,14 @@ class AuthController extends GetxController {
     } catch (e) {
       print("controller error: $e");
       Get.to(SignIn());
+    }
+  }
+
+  signOut() {
+    try {
+      authRepository.signOutUser();
+    } catch (e) {
+      print('ログアウトに失敗しました．');
     }
   }
 }

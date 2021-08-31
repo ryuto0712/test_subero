@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:subero_mobile/bindings/lesson_details_binding.dart';
 import 'package:subero_mobile/bindings/messages_binding.dart';
+import 'package:subero_mobile/bindings/my_page_binding.dart';
 import 'package:subero_mobile/bindings/post_event_binding.dart';
 import 'package:subero_mobile/ui/screens/mypage/mypage.dart';
 import 'package:subero_mobile/ui/screens/index.dart';
-import '../bindings/bidings.dart';
 import './app_routes.dart';
 
 //bindingの値を設定しておくことで、そのページで使うコントローラーをあらかじめ初期化できる(get.findのみで呼び出せる)。
@@ -20,7 +20,7 @@ class AppPages {
     GetPage(name: Routes.ACCOUNT_CONFIG, page: () => AccountConfig(), binding: MyPageBinding()),
     GetPage(name: Routes.BEFORE_PURCHASE, page: () => BeforePurchase(), binding: MyPageBinding()),
     GetPage(name: Routes.EDIT_PROFILE, page: () => EditProfile(), binding: MyPageBinding()),
-    GetPage(name: Routes.GUIDE, page: () => Guide(), binding: GuidePageBinding()),
+    GetPage(name: Routes.GUIDE, page: () => Guide()),
     GetPage(name: Routes.IINE_LIST, page: () => IineList(), binding: MyPageBinding()),
     GetPage(name: Routes.INDIVIDUAL_MESSAGE, page: () => IndividualMessage(), binding: MessagesBinding()),
     GetPage(name: Routes.LESSON_DETAILS, page: () => LessonDetails(), binding: LessonDetailsBinding()),

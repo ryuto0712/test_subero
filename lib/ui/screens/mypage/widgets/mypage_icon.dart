@@ -6,12 +6,11 @@ import 'package:subero_mobile/ui/widgets/index.dart';
 class MyPageIcon extends StatelessWidget {
   final String video;
   final String? iconUrl;
-  MyPageIcon(this.video,[this.iconUrl]);
+  MyPageIcon(this.video, [this.iconUrl]);
 
   static const double size = 100;
 
-
-  List<Widget> iconBackground = [
+  final List<Widget> iconBackground = [
     Container(
         width: size + 7,
         height: size + 7,
@@ -19,10 +18,9 @@ class MyPageIcon extends StatelessWidget {
           shape: BoxShape.circle,
           color: Colors.grey,
         )),
-    CircleImage('images/raimbow.jpg', size +7),
+    CircleImage('images/raimbow.jpg', size + 7),
   ];
   @override
-
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Get.to(Video()),
@@ -31,7 +29,7 @@ class MyPageIcon extends StatelessWidget {
         child: Stack(
           children: [
             iconBackground[1],
-            NetworkCircleImage(size,alt:'images/app_icon2.png',imageUrl:iconUrl??"none"),
+            NetworkCircleImage(size, alt: 'images/app_icon2.png', imageUrl: iconUrl ?? "none"),
           ],
         ),
       ),
