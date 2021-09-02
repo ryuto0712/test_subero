@@ -16,7 +16,7 @@ class LessonRepository {
 
   searchLesson(String key , String value){
     return lessonProvider.searchLesson(key, value);
-
+  }
   // レッスン情報の検索
   Future<List<LessonModel>> searchLessons(List<List> queries) {
     return lessonProvider.searchLessons(queries);

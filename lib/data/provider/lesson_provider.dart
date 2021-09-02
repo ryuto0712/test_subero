@@ -10,10 +10,9 @@ import 'package:subero_mobile/data/model/lesson_model.dart';
 // TODO: 複数クエリ検索
 
 class LessonProvider extends GetConnect {
-
-  final CollectionReference lessons = FirebaseFirestore.instance.collection('lessons');
+  final CollectionReference lessons =
+      FirebaseFirestore.instance.collection('lessons');
   FirebaseStorage storage = FirebaseStorage.instance;
-
 
   Future<LessonModel> getLesson(String lessonId) async {
     try {
@@ -51,23 +50,115 @@ class LessonProvider extends GetConnect {
       List query = queries[0];
       late QuerySnapshot snapshot;
       if (query[0] == 'orderBy') {
-        snapshot = await this.lessons.orderBy(query[1], descending: query[2]).get();
+        snapshot =
+            await this.lessons.orderBy(query[1], descending: query[2]).get();
         print('orderByでデータ取得完了');
       } else if (query[0] == 'where') {
-        if (query[2] == '==') snapshot = await this.lessons.where(query[1], isEqualTo: query[3]).get();
-        if (query[2] == '<=') snapshot = await this.lessons.where(query[1], isLessThanOrEqualTo: query[3]).get();
-        if (query[2] == '>=') snapshot = await this.lessons.where(query[1], isGreaterThanOrEqualTo: query[3]).get();
-        if (query[2] == 'array-contains') snapshot = await this.lessons.where(query[1], arrayContains: query[3]).get();
-        if (query[2] == 'array-contains-any') snapshot = await this.lessons.where(query[1], arrayContainsAny: query[3]).get();
+        if (query[2] == '==')
+          snapshot =
+              await this.lessons.where(query[1], isEqualTo: query[3]).get();
+        if (query[2] == '<=')
+          snapshot = await this
+              .lessons
+              .where(query[1], isLessThanOrEqualTo: query[3])
+              .get();
+        if (query[2] == '>=')
+          snapshot = await this
+              .lessons
+              .where(query[1], isGreaterThanOrEqualTo: query[3])
+              .get();
+        if (query[2] == 'array-contains')
+          snapshot =
+              await this.lessons.where(query[1], arrayContains: query[3]).get();
+        if (query[2] == 'array-contains-any')
+          snapshot = await this
+              .lessons
+              .where(query[1], arrayContainsAny: query[3])
+              .get();
         if (query[2] == 'in')
-          snapshot = await this.lessons.where(query[1], whereIn: query[3]).get();
+          snapshot =
+              await this.lessons.where(query[1], whereIn: query[3]).get();
         else
           print('検索方法を正しく入力してください: query = ${query}');
         print('whereでデータ取得完了');
       }
 
       final List<LessonModel> lessons = [];
-      snapshot.docs.forEach((_doc) => {lessons.add(LessonModel.fromQueryDocumentSnapshot(snapshot: _doc))});
+      snapshot.docs.forEach((_doc) =>
+          {lessons.add(LessonModel.fromQueryDocumentSnapshot(snapshot: _doc))});
+
+      return lessons;
+    } catch (e) {
+      print('Lesson Privider Error (searchLessons): $e');
+      rethrow;
+    }
+  }
+
+  Future<List<LessonModel>> searchLessons2(List queries) async {
+    // https://zenn.dev/mamushi/articles/a5e6c9f71e6ea4
+    // https://qiita.com/kabochapo/items/1ef39942ac1206c38b2d
+    // https://zenn.dev/tentel/articles/ea7d5c03e68e6d142d98
+
+    try {
+      // 複数クエリで検索良い感じに実装しようとしたけどできてない
+      dynamic _docs = this.lessons;
+      String _ref = "";
+
+      // queries.forEach((query) => {
+      //       if (query[0] == 'where')
+      //         {
+      //           _docs = _docs.where(query[1], query[2], query[3]),
+      //         }
+      //       else if (query[0] == 'orderBy')
+      //         {
+      //           _docs = _docs.orderBy(query[1], descending: query[2]),
+      //         }
+      //     });
+      // QuerySnapshot snapshot = await _docs.get();
+
+      List query = queries[0];
+      late QuerySnapshot snapshot;
+      queries.forEach((query) async {
+        if (query[0] == 'orderBy') {
+          snapshot =
+              await this.lessons.orderBy(query[1], descending: query[2]).get();
+          print('orderByでデータ取得完了');
+        } else if (query[0] == 'where') {
+          if (query[2] == '==')
+            snapshot =
+                await this.lessons.where(query[1], isEqualTo: query[3]).get();
+          if (query[2] == '<=')
+            snapshot = await this
+                .lessons
+                .where(query[1], isLessThanOrEqualTo: query[3])
+                .get();
+          if (query[2] == '>=')
+            snapshot = await this
+                .lessons
+                .where(query[1], isGreaterThanOrEqualTo: query[3])
+                .get();
+          if (query[2] == 'array-contains')
+            snapshot = await this
+                .lessons
+                .where(query[1], arrayContains: query[3])
+                .get();
+          if (query[2] == 'array-contains-any')
+            snapshot = await this
+                .lessons
+                .where(query[1], arrayContainsAny: query[3])
+                .get();
+          if (query[2] == 'in')
+            snapshot =
+                await this.lessons.where(query[1], whereIn: query[3]).get();
+          else
+            print('検索方法を正しく入力してください: query = ${query}');
+          print('whereでデータ取得完了');
+        }
+      });
+
+      final List<LessonModel> lessons = [];
+      snapshot.docs.forEach((_doc) =>
+          {lessons.add(LessonModel.fromQueryDocumentSnapshot(snapshot: _doc))});
 
       return lessons;
     } catch (e) {
@@ -177,7 +268,10 @@ class LessonProvider extends GetConnect {
   }
 
   Future<String> uploadImage(File file, String fileName) async {
-    UploadTask task = storage.ref("lesson_image").child('${DateTime.now().toString()}-$fileName').putFile(file);
+    UploadTask task = storage
+        .ref("lesson_image")
+        .child('${DateTime.now().toString()}-$fileName')
+        .putFile(file);
     try {
       TaskSnapshot snapshot = await task;
       final url = await snapshot.ref.getDownloadURL();

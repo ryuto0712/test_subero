@@ -36,7 +36,6 @@ class AuthController extends GetxController {
   signInWithEmail() async {
     try {
       await authRepository.signInWithEmail(email.value, password.value);
-      Get.to(MyApp());
     } catch (e) {
       print('Controller Error: $e');
       rethrow;

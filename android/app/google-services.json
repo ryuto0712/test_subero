@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "732770489404-06qomc04euudsba1oamri59j6trk8n97.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.subero_mobile",
+            "certificate_hash": "7b887b3c9d6b39d05a8fe11590143f8914ce804f"
+          }
+        },
+        {
           "client_id": "732770489404-mm4mm40me3s0vpkp4to570h8en50ke3u.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -49,6 +57,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "732770489404-psi5c78t13cutltkf1qmda9ch4mtfutv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.subero_mobile_",
+            "certificate_hash": "7b887b3c9d6b39d05a8fe11590143f8914ce804f"
+          }
+        },
         {
           "client_id": "732770489404-mm4mm40me3s0vpkp4to570h8en50ke3u.apps.googleusercontent.com",
           "client_type": 3

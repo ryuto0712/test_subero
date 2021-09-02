@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expandable_text/expandable_text.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:subero_mobile/controller/controllers.dart';
 
 import 'package:subero_mobile/ui/screens/index.dart';
@@ -8,8 +9,10 @@ import 'index.dart';
 
 class MyProfile extends StatelessWidget {
   final UserController c = Get.find<UserController>();
+  final GetStorage box =GetStorage();
   @override
   Widget build(BuildContext context) {
+  c.getUser(box.read("userId"));
     return Column(
       children: [
         Container(
